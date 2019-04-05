@@ -1,0 +1,50 @@
+<div class="main">
+  <div class="title">
+    <h4>Реєстрація
+      <a routerLink="/login">Вхід</a>
+      <router-outlet></router-outlet>
+    </h4>
+  </div>
+
+  <form #register="ngForm" (ngSubmit)="createUser(register)">
+    <input #nameI="ngModel"
+           type="text"
+           placeholder="name"
+           name="name"
+           ngModel
+           required>
+    <br>
+    <input #phone="ngModel"
+           type="text"
+           placeholder="phone"
+           name="phone"
+           ngModel
+           required>
+    <br>
+    <input type="text"
+           placeholder="email"
+           name="email"
+           ngModel
+           required>
+    <br>
+    <input type="text"
+           placeholder="password"
+           name="password"
+           ngModel
+           required>
+    <br>
+    <small>Реєструючись, ви погоджуєтеся з <a href=""
+                                              style="text-decoration: none">
+      <br>угодою користувача</a></small>
+    <input type="checkbox"
+           name="submit"
+           ngModel
+           required>
+    <br>
+
+    <input type="submit" value="Зареєструватися">
+  </form>
+
+  <p>У вас вже є аккаунт?</p>
+  <a routerLink="/login">Вхід</a>
+</div>

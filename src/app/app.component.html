@@ -1,0 +1,51 @@
+<div class="main">
+  <ul id='menu'>
+    <li><a class='prett' routerLink="" (click)="closeMenu()">Категорії товарів</a>
+      <!--------------------------Menu----------------------------->
+      <ul class='menus' *ngIf="isOpen" (click)="closeMenu()">
+        <!---------------------------SubMenu1---------------------------->
+        <!---------------------------SubMenu2---------------------------->
+        <li class='has-submenu'><a class='prett' routerLink="">Смартфони</a>
+          <ul class='submenu'>
+            <li><a routerLink="/phones">Asus</a></li>
+            <li><a routerLink="/phones">Lenovo</a></li>
+            <li><a routerLink="/phones">Apple</a></li>
+          </ul>
+        </li>
+
+        <!----------------------SubMenu3--------------------------->
+      </ul>
+      <!--DropDownMenu-->
+
+    <li>
+      <form>
+        <input type="search" placeholder="Введіть товар">
+        <input type="submit" value="Шукати">
+      </form>
+    </li>
+
+    <li>
+      <a routerLink="">Контакти</a>
+    </li>
+
+
+    <li>
+      <a routerLink="">Послуги</a>
+    </li>
+
+
+    <li>
+      <a routerLink="">Корзина</a>
+    </li>
+
+    <li>
+      <a routerLink="/register">Аккаунт</a>
+    </li>
+
+
+
+
+  </ul>
+</div>
+
+<router-outlet></router-outlet>

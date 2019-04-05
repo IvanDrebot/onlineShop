@@ -1,0 +1,25 @@
+<div class="main">
+  <div class="title">
+    <h4>
+      <a routerLink="/register">Реєстрація</a>
+      <router-outlet></router-outlet>
+      Вхід
+    </h4>
+  </div>
+  <form #login="ngForm" (ngSubmit)="loginUser(login)">
+    <input type="text"
+           placeholder="  email"
+           name="email"
+           ngModel
+           required>
+    <br>
+    <input type="text"
+           placeholder="  password"
+           name="password"
+           ngModel
+           required>
+    <br>
+    <input type="submit" value="Вхід">
+  </form>
+  <router-outlet></router-outlet>
+</div>

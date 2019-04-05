@@ -1,0 +1,17 @@
+form [type='text'], [type='submit']{
+  margin-top: 10px;
+}
+.main{
+  background: white;
+  width: 25%;
+  margin: 0 auto;
+  border-radius: 10px;
+}
+h4, a, form, p{
+  text-align: center;
+  text-decoration: none;
+}
+h4{
+  font-size: 20px;
+}
+
