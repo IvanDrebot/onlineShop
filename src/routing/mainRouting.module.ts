@@ -7,13 +7,18 @@ import {UserInfoComponent} from '../app/user/user-info/user-info.component';
 import {LogoutComponent} from '../app/user/logout/logout.component';
 import {SingleProductComponent} from '../app/product/single-product/single-product.component';
 import {ProductListComponent} from '../app/product/product-list/product-list.component';
+import {ProductGridComponent} from '../app/product/product-grid/product-grid.component';
+import {FilterComponent} from '../app/product/filter/filter.component';
 
 const routes: Routes = [
   {path: 'register', component: RegisterComponent},
   {path: 'login', component: LoginComponent},
   {path: 'user-info', component: UserInfoComponent},
   {path: 'logout', component: LogoutComponent},
-  {path: 'products', component: ProductListComponent},
+  {path: 'products', component: ProductListComponent, children: [
+      {path: 'category', component: ProductGridComponent},
+      {path: 'category', component: FilterComponent}
+    ]},
   {path: 'product/:id', component: SingleProductComponent},
 ];
 
