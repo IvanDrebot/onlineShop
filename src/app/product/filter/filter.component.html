@@ -1,13 +1,15 @@
 <div class="filters">
+  <form>
   <h6>Відфільтрувати товари:</h6>
-  <select>
-    <option></option>
-  </select>
+    <button *ngFor="let category of category">{{category.name}}</button>
+<!--  <select>-->
+<!--    <option *ngFor="let category of category">{{category.name}}</option>-->
+<!--  </select>-->
   <br><br>
 
   <h6>Brand:</h6>
-  <p *ngFor="let producer of producer">{{producer.name}}
-    <input type="radio" name="phone" routerLink="/products">
+  <p *ngFor="let producer of producer">
+    <input type="radio" name="">{{producer.name}}
   </p>
 
   <h6>Price:</h6>
@@ -20,3 +22,5 @@
 
   <button type="submit" class="btn btn-success" style="margin-right: 10px">Шукати</button>
   <button type="reset" class="btn btn-secondary">Скасувати</button>
+  </form>
+</div>

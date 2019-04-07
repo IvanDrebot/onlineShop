@@ -13,6 +13,7 @@ export class FilterComponent implements OnInit {
 
   category: Category[] = [];
   producer: Producer[] = [];
+  queryWithFilter = {};
 
   constructor(
     private service: ProductService,
@@ -21,7 +22,7 @@ export class FilterComponent implements OnInit {
 
   ngOnInit() {
     this.getAllCategory();
-
+    this.getAllProducer();
   }
 
   getAllCategory() {

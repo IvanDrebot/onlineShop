@@ -5,3 +5,8 @@
   float: left;
   height: 600px;
 }
+button{
+  width: 50%;
+  display: block;
+
+}
