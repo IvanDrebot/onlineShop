@@ -1,13 +1,14 @@
 import {Category} from './Category';
-import {Brand} from './Brand';
+import {Producer} from './Producer';
 
 export class Product {
   constructor(
-    private id: String = '',
-    private category: Category[] = [],
-    private imgUrl: String = '',
-    private price: Number = null,
-    private brand: Brand[] = [],
+    public id: String = '',
+    public category: Category[] = [],
+    public imgUrl: String = '',
+    public price: Number = null,
+    public brand: String = '',
+    public producer: Producer[] = [],
   ) {
   }
 }

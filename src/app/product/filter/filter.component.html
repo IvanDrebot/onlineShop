@@ -1,3 +1,22 @@
-<p>
-  filter works!
-</p>
+<div class="filters">
+  <h6>Відфільтрувати товари:</h6>
+  <select>
+    <option></option>
+  </select>
+  <br><br>
+
+  <h6>Brand:</h6>
+  <p *ngFor="let producer of producer">{{producer.name}}
+    <input type="radio" name="phone" routerLink="/products">
+  </p>
+
+  <h6>Price:</h6>
+  <form oninput="x.value=parseInt(a.value)">
+    <input type="range" min="2000" max="15000" id="a" name="a" step="100"><br>
+    <output name="x" for="a"></output>
+    <!--          <input type="text" placeholder="Від" style="width: 20%">-->
+    <!--          <input type="text" placeholder="До" style="width: 20%">-->
+  </form>
+
+  <button type="submit" class="btn btn-success" style="margin-right: 10px">Шукати</button>
+  <button type="reset" class="btn btn-secondary">Скасувати</button>

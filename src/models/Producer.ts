@@ -1,8 +1,7 @@
-export class Category {
-
+export class Producer {
   constructor(
     public id: String = '',
-    public name: String = ''
+    public name: String = '',
   ) {
   }
 }

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {ProductService} from '../../../services/product.service';
 import {Product} from '../../../models/Product';
+import {Producer} from '../../../models/Producer';
 
 @Component({
   selector: 'app-product-grid',
@@ -10,6 +11,7 @@ import {Product} from '../../../models/Product';
 export class ProductGridComponent implements OnInit {
 
   products: Product[] = [];
+
   query: any = {};
   constructor(private productService: ProductService
   ) { }

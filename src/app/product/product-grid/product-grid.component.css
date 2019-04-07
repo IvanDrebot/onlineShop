@@ -2,6 +2,7 @@
   width: 75%;
   float: right;
   display: inline-block;
+  background: red;
 }
 
 div.gallery {

@@ -3,7 +3,7 @@ import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {Category} from '../models/Category';
 import {Product} from '../models/Product';
-import {Brand} from '../models/Brand';
+import {Producer} from '../models/Producer';
 
 @Injectable({
   providedIn: 'root'
@@ -12,7 +12,7 @@ export class ProductService {
 
   productUrl = 'http://localhost:3000/api/product';
   categoryUrl = 'http://localhost:3000/api/category';
-  brandUrl = 'http://localhost:3000/api/brand';
+  producerUrl = 'http://localhost:3000/api/producer';
 
   constructor(private http: HttpClient) { }
 
@@ -20,8 +20,8 @@ export class ProductService {
     return this.http.get<Category[]>(this.categoryUrl);
   }
 
-  getBrand(): Observable<Brand[]> {
-    return this.http.get<Brand[]>(this.brandUrl);
+  getProducer(): Observable<Producer[]> {
+    return this.http.get<Producer[]>(this.producerUrl);
   }
 
   getAllProduct(query): Observable<Product[]> {
