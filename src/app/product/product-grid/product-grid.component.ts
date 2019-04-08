@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {ProductService} from '../../../services/product.service';
 import {Product} from '../../../models/Product';
+import {ActivatedRoute} from '@angular/router';
 
 @Component({
   selector: 'app-product-grid',
@@ -17,7 +18,9 @@ export class ProductGridComponent implements OnInit {
   countOfProducts: any;
   arrayOfPages: any = [];
 
-  constructor(private productService: ProductService
+  constructor(
+    private productService: ProductService,
+    private router: ActivatedRoute
   ) { }
 
   ngOnInit() {
@@ -30,7 +33,7 @@ export class ProductGridComponent implements OnInit {
   getAllProduct(query) {
     this.productService.getAllProduct(query).subscribe((product) => {
       this.products = product;
-      console.log(product);
+      // console.log(product);
     });
   }
 

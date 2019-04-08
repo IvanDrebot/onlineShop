@@ -2,14 +2,14 @@
   width: 75%;
   float: right;
   display: inline-block;
-  background: darkslategray;
+  background: white;
 }
 
 div.gallery {
   margin: 15px;
   float: left;
   width: 180px;
-  color: white;
+  color: black;
 }
 
 div.desc {

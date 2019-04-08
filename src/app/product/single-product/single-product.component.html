@@ -1,3 +1,13 @@
-<p>
-  single-product works!
-</p>
+<div *ngIf="singleProduct" style="text-align: center">
+  <a routerLink="">
+    <img src="{{singleProduct.imgUrl}}" width="40%" height="160px">
+  </a>
+  <p>Category: {{singleProduct.category.name}}</p>
+  <p>Producer: {{singleProduct.producer.name}}</p>
+  <p>Price: {{singleProduct.price}}</p>
+  <p>Brand: {{singleProduct.brand}}</p>
+<hr>
+  <button>Купити</button><br>
+  <a routerLink="">Додати в корзину</a>
+</div>
+
