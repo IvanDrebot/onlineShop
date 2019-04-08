@@ -1,7 +1,7 @@
 <div class="filters">
   <form>
   <h6>Відфільтрувати товари:</h6>
-    <button *ngFor="let category of category">{{category.name}}</button>
+    <button *ngFor="let category of category" (click)="returnCategory(category)">{{category.name}}</button>
 <!--  <select>-->
 <!--    <option *ngFor="let category of category">{{category.name}}</option>-->
 <!--  </select>-->
@@ -9,15 +9,15 @@
 
   <h6>Brand:</h6>
   <p *ngFor="let producer of producer">
-    <input type="radio" name="">{{producer.name}}
+    <input type="radio" name="" (click)="returnProducer(producer)">{{producer.name}}
   </p>
 
   <h6>Price:</h6>
   <form oninput="x.value=parseInt(a.value)">
     <input type="range" min="2000" max="15000" id="a" name="a" step="100"><br>
     <output name="x" for="a"></output>
-    <!--          <input type="text" placeholder="Від" style="width: 20%">-->
-    <!--          <input type="text" placeholder="До" style="width: 20%">-->
+              <input type="text" placeholder="Від" style="width: 20%">
+              <input type="text" placeholder="До" style="width: 20%">
   </form>
 
   <button type="submit" class="btn btn-success" style="margin-right: 10px">Шукати</button>

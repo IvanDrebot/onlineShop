@@ -5,6 +5,7 @@ import { ProductListComponent } from './product-list/product-list.component';
 import { FilterComponent } from './filter/filter.component';
 import { ProductGridComponent } from './product-grid/product-grid.component';
 import { SingleProductComponent } from './single-product/single-product.component';
+import {FormsModule} from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import { SingleProductComponent } from './single-product/single-product.componen
   ],
   imports: [
     CommonModule,
-    MainRoutingModule
+    MainRoutingModule,
+    FormsModule
   ],
   exports: [
     ProductListComponent,
