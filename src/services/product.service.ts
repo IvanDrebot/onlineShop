@@ -52,7 +52,7 @@ export class ProductService {
   }
 
   getAllProduct(query): Observable<Product[]> {
-    return this.http.get<Product[]>(`${this.productUrl}?skip=0&limit=50`);
+    return this.http.get<Product[]>(`${this.productUrl}?skip=${query.skip}&limit=${query.limit}`);
   }
 
   getProductById(id): Observable<Product> {

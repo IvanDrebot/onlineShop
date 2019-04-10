@@ -33,7 +33,6 @@ export class FilterComponent implements OnInit {
   getAllCategory() {
     this.service.getAllCategory().subscribe((category) => {
       this.category = category;
-      console.log(category);
     });
   }
 
@@ -56,13 +55,11 @@ export class FilterComponent implements OnInit {
   createQuery(obj) {
     const arrOfQuery = [];
     for (let key in obj) {
-      console.log(obj);
       if (obj[key]) {
         arrOfQuery.push(`${key}=${obj[key]}`);
       }
     }
     const concatArr = arrOfQuery.join('&');
-    console.log(concatArr);
     this.filterService.subject.next(concatArr);
   }
 }
