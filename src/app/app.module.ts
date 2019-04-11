@@ -7,6 +7,7 @@ import {HttpClientModule} from '@angular/common/http';
 import {MainRoutingModule} from '../routing/mainRouting.module';
 import {AuthModule} from './user/auth.module';
 import {ProductModule} from './product/product.module';
+import {AdminModule} from './admin/admin/admin.module';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import {ProductModule} from './product/product.module';
     HttpClientModule,
     MainRoutingModule,
     AuthModule,
-    ProductModule
+    ProductModule,
+    AdminModule
   ],
   providers: [],
   bootstrap: [AppComponent]

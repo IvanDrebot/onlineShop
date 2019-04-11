@@ -9,6 +9,11 @@ import {SingleProductComponent} from '../app/product/single-product/single-produ
 import {ProductListComponent} from '../app/product/product-list/product-list.component';
 import {ProductGridComponent} from '../app/product/product-grid/product-grid.component';
 import {FilterComponent} from '../app/product/filter/filter.component';
+import {AdminComponent} from '../app/admin/admin/admin.component';
+import {AddProductComponent} from '../app/admin/add-product/add-product.component';
+import {UpdateProductComponent} from '../app/admin/update-product/update-product.component';
+import {DeleteProductComponent} from '../app/admin/delete-product/delete-product.component';
+import {StatisticComponent} from '../app/admin/statistic/statistic.component';
 
 const routes: Routes = [
   {path: 'register', component: RegisterComponent},
@@ -20,6 +25,12 @@ const routes: Routes = [
       {path: 'category', component: FilterComponent}
     ]},
   {path: 'product/:id', component: SingleProductComponent},
+  {path: 'admin', component: AdminComponent, children: [
+      {path: 'add-Product', component: AddProductComponent},
+      {path: 'update-Product', component: UpdateProductComponent},
+      {path: 'delete-Product', component: DeleteProductComponent},
+      {path: 'statistics', component: StatisticComponent}
+    ]},
 ];
 
 @NgModule({

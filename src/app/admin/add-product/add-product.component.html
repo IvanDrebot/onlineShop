@@ -1,0 +1,51 @@
+<div>
+  <form #Product="ngForm" (ngSubmit)="createProduct(Product)">
+    <p>Введіть категорію продукту:
+    <input list="category"
+           type="text"
+           name="category"
+           ngModel required>
+    <datalist id="category">
+      <option value="5caf05d7785b181cb4b2e30e">Phones</option>
+      <option value="5caf05e6785b181cb4b2e30f">Laptops</option>
+      <option value="5caf05f5785b181cb4b2e310">Televisions</option>
+    </datalist>
+  </p>
+
+  <p>Введіть назву виробника:
+    <input type="text" name="producer"
+           ngModel required list="producer"
+           style="margin-left: 18px">
+    <datalist id="producer">
+      <option value="5caf0637785b181cb4b2e311">Xiaomi</option>
+      <option value="5caf063d785b181cb4b2e312">Asus</option>
+      <option value="5caf0647785b181cb4b2e313">Samsung</option>
+      <option value="5caf0653785b181cb4b2e314">Lenovo</option>
+      <option value="5caf065a785b181cb4b2e315">HP</option>
+      <option value="5caf0667785b181cb4b2e316">Iphone</option>
+      <option value="5caf0672785b181cb4b2e317">Nokia</option>
+    </datalist>
+  </p>
+
+  <p>Ціна продукту:
+    <input type="text" name="price"
+           ngModel required
+           style="margin-left: 97px">
+  </p>
+
+  <p>Введіть назву бренду:
+    <input type="text" name="brand"
+           ngModel required
+           style="margin-left: 45px">
+  </p>
+
+  <p>Завантажити фотографію:
+    <input type="file" name="imgUrl"
+           ngModel value=""
+           style="margin-left: 13px">
+  </p>
+  <input type="submit" value="Add product">
+  </form>
+
+  <p *ngIf="res">{{res | json}}</p>
+</div>

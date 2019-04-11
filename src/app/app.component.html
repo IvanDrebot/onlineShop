@@ -1,6 +1,6 @@
 <div class="main">
   <ul id='menu'>
-    <li><a class='prett' routerLink="" (click)="closeMenu()">Категорії товарів</a>
+    <li><a class='prett' routerLink="" (click)="closeMenu()">&#9776;  Категорії</a>
       <!--------------------------Menu----------------------------->
       <ul class='menus' *ngIf="isOpen" (click)="closeMenu()">
         <!---------------------------SubMenu1---------------------------->
@@ -18,8 +18,10 @@
       <!--DropDownMenu-->
 
     <li>
-      <form>
-        <input type="search" placeholder="Введіть товар">
+      <form #search="ngForm" (ngSubmit)="searchAllProduct(search)">
+        <input type="search" name="producer"
+               placeholder="Введіть товар"
+               ngModel>
         <input type="submit" value="Шукати">
       </form>
     </li>
@@ -40,6 +42,10 @@
 
     <li>
       <a routerLink="/register">Аккаунт</a>
+    </li>
+
+    <li>
+      <a routerLink="/admin">Admin</a>
     </li>
 
 

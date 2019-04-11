@@ -1,15 +1,22 @@
-<div>
-  <h3>Інформація про клієнта</h3>
-  <a routerLink="">Кошик</a>
-  <br>
-  <a routerLink="">Мій список бажань</a>
-  <br>
-  <a routerLink="">Переглянуті товари</a>
-  <br>
-  <a routerLink="">Мої замовлення</a>
-  <br>
-  <a routerLink="/logout" (click)="logout()">Вихід</a>
-</div>
+ <div id="mySidebar" class="sidebar">
+    <a class="closebtn" (click)="closeNav()">&times;</a>
+    <a (click)="closeNav()">---</a><br>
+    <a href="#">Services</a>
+    <a href="#">Clients</a>
+    <a href="#">Contact</a>
+  </div>
+  <div id="main">
+    <button class="openbtn" (click)="openNav()">&#9776; Personal cabinet</button>
+    <a routerLink="">Кошик</a>
+    <br>
+    <a routerLink="">Мій список бажань</a>
+    <br>
+    <a routerLink="">Переглянуті товари</a>
+    <br>
+    <a routerLink="">Мої замовлення</a>
+    <br>
+    <a routerLink="/logout" (click)="logout()">Вихід</a>
+  </div>
 
 
 <router-outlet></router-outlet>
