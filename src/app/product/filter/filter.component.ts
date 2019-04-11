@@ -1,11 +1,10 @@
-import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {ProductService} from '../../../services/product.service';
 import {ActivatedRoute} from '@angular/router';
 import {Category} from '../../../models/Category';
 import {Producer} from '../../../models/Producer';
-import {hasOwnProperty} from 'tslint/lib/utils';
-import {logger} from 'codelyzer/util/logger';
 import {FilterServiceService} from './filter-service.service';
+import {Product} from '../../../models/Product';
 
 @Component({
   selector: 'app-filter',
@@ -13,53 +12,51 @@ import {FilterServiceService} from './filter-service.service';
   styleUrls: ['./filter.component.css']
 })
 export class FilterComponent implements OnInit {
-@ViewChild('filterCompn') filterCompn: ElementRef;
 
   category: Category[] = [];
   producer: Producer[] = [];
-  objQuery: any = {};
+  filter: any = {};
+  filteredProduct: any = [];
 
   constructor(
     private service: ProductService,
     private router: ActivatedRoute,
     private filterService: FilterServiceService
-  ) { }
-
-  ngOnInit() {
-    this.getAllCategory();
-    this.getAllProducer();
+  ) {
   }
 
-  getAllCategory() {
+  ngOnInit() {
+    this.service.getProducer().subscribe((producer) => {
+      this.producer = producer;
+    });
     this.service.getAllCategory().subscribe((category) => {
       this.category = category;
     });
   }
 
-  getAllProducer() {
-    this.service.getProducer().subscribe((producer) => {
-      this.producer = producer;
+  sendFilter(obj) {
+    this.service.createFilter(this.filter).subscribe((res) => {
+      this.filteredProduct = res;
+      this.sendDateInGrid();
     });
   }
 
+  sendDateInGrid() {
+    if (this.filteredProduct.length) {
+      this.filterService.subject.next(this.filteredProduct);
+    }
+  }
+
   returnProducer(producer) {
-    this.objQuery.producer = producer._id;
-    this.createQuery(this.objQuery);
+    const producerId = producer._id;
+    this.filter.producer = producerId;
+    this.sendFilter(this.filter);
   }
 
   returnCategory(category) {
-    this.objQuery.category = category._id;
-    this.createQuery(this.objQuery);
+    const categoryId = category._id;
+    this.filter.category = categoryId;
+    this.sendFilter(this.filter);
   }
 
-  createQuery(obj) {
-    const arrOfQuery = [];
-    for (let key in obj) {
-      if (obj[key]) {
-        arrOfQuery.push(`${key}=${obj[key]}`);
-      }
-    }
-    const concatArr = arrOfQuery.join('&');
-    this.filterService.subject.next(concatArr);
-  }
 }

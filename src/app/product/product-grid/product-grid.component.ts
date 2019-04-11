@@ -28,14 +28,18 @@ export class ProductGridComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.filterService.subject.subscribe((res) => {
-      this.query.category = res;
-    });
-    this.getCountOfProduct(this.query);
+    this.getFilteredProduct();
+    this.getCountOfProduct();
     this.query.limit = this.limit;
     this.query.skip = 0;
     this.getAllProduct(this.query);
-    console.log(this.query);
+  }
+
+  getFilteredProduct() {
+    this.filterService.subject.subscribe((res) => {
+      this.products = res;
+      this.countOfProducts = res.length;
+    });
   }
 
   getAllProduct(query) {
@@ -44,8 +48,8 @@ export class ProductGridComponent implements OnInit {
     });
   }
 
-  getCountOfProduct(query) {
-    this.productService.getAllProduct(query).subscribe((products) => {
+  getCountOfProduct() {
+      this.productService.getAllProduct(this.query).subscribe((products) => {
       this.countOfProducts = products.length;
       this.getCountOfPages(products.length);
     });

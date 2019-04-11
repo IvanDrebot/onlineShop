@@ -5,6 +5,7 @@ import {Category} from '../models/Category';
 import {Product} from '../models/Product';
 import {Producer} from '../models/Producer';
 import {ActivatedRoute} from '@angular/router';
+import {Filter} from '../models/Filter';
 
 @Injectable({
   providedIn: 'root'
@@ -21,28 +22,6 @@ export class ProductService {
     private router: ActivatedRoute) {
   }
 
-
-  // queryFilter(query) {
-  //   query = {
-  //     category: `&category=${query.category}`,
-  //     producer: `&producer=${query.producer}`,
-  //     price: `&price=${query.price}`
-  //   };
-  // }
-  //
-  // queryParser = (queryFilter) => {
-  //  let result = '';
-  //   for (const key in queryFilter) {
-  //     if (typeof queryFilter[key] === 'object') {
-  //       result += `${queryFilter[key].join(',')}$`;
-  //     } else {
-  //       result += `${key}=${queryFilter[key]}$`;
-  //     }
-  //   }
-  //   return result;
-  // }
-
-
   getAllCategory(): Observable<Category[]> {
     return this.http.get<Category[]>(this.categoryUrl);
   }
@@ -57,5 +36,9 @@ export class ProductService {
 
   getProductById(id): Observable<Product> {
     return this.http.get<Product>(this.productUrl + '/' + id);
+  }
+
+  createFilter(obj: Filter) {
+    return this.http.post(this.productUrl, obj);
   }
 }
