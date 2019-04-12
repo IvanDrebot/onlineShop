@@ -4,7 +4,6 @@ import {ActivatedRoute} from '@angular/router';
 import {Category} from '../../../models/Category';
 import {Producer} from '../../../models/Producer';
 import {FilterServiceService} from './filter-service.service';
-import {Product} from '../../../models/Product';
 
 @Component({
   selector: 'app-filter',

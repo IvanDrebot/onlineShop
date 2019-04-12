@@ -22,7 +22,7 @@
         <input type="search" name="producer"
                placeholder="Введіть товар"
                ngModel>
-        <input type="submit" value="Шукати">
+        <input type="submit" value="Шукати" routerLink="/search-product">
       </form>
     </li>
 
@@ -37,7 +37,7 @@
 
 
     <li>
-      <a routerLink="">Корзина</a>
+      <a routerLink="/selected-products" *ngIf="corbOfProduct">Корзина {{corbOfProduct.length}}</a>
     </li>
 
     <li>

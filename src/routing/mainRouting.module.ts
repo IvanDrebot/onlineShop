@@ -14,12 +14,16 @@ import {AddProductComponent} from '../app/admin/add-product/add-product.componen
 import {UpdateProductComponent} from '../app/admin/update-product/update-product.component';
 import {DeleteProductComponent} from '../app/admin/delete-product/delete-product.component';
 import {StatisticComponent} from '../app/admin/statistic/statistic.component';
+import {SelectedProductsComponent} from '../app/product/selected-products/selected-products.component';
+import {SearchProductsComponent} from '../app/product/search-product/search-products.component';
 
 const routes: Routes = [
   {path: 'register', component: RegisterComponent},
   {path: 'login', component: LoginComponent},
   {path: 'user-info', component: UserInfoComponent},
   {path: 'logout', component: LogoutComponent},
+  {path: 'selected-products', component: SelectedProductsComponent},
+  {path: 'search-product', component: SearchProductsComponent},
   {path: 'products', component: ProductListComponent, children: [
       {path: 'category', component: ProductGridComponent},
       {path: 'category', component: FilterComponent}

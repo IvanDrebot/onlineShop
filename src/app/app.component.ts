@@ -1,34 +1,36 @@
-import { Component } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {NgForm} from '@angular/forms';
 import {ProductService} from '../services/product.service';
+import {FilterServiceService} from './product/filter/filter-service.service';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
+
   isOpen = true;
   selectedProduct: any = [];
+  corbOfProduct: any = [];
 
   constructor(
-    private productService: ProductService
+    private productService: ProductService,
+    private filterService: FilterServiceService
   ) {
   }
+
+  ngOnInit(): void {
+    this.filterService.subject.subscribe((res) => {
+      this.corbOfProduct.push(res);
+    });
+  }
+
 
   closeMenu() {
     this.isOpen = !this.isOpen;
   }
 
-  openNav() {
-    document.getElementById('mySidebar').style.width = '250px';
-    document.getElementById('main').style.marginLeft = '250px';
-  }
-
-  closeNav() {
-    document.getElementById('mySidebar').style.width = '0';
-    document.getElementById('main').style.marginLeft = '0';
-  }
 
   searchAllProduct(form: NgForm) {
     const product = form.value;

@@ -8,5 +8,5 @@
   <p>Brand: {{singleProduct.brand}}</p>
 <hr>
   <button>Купити</button><br>
-  <a routerLink="">Додати в корзину</a>
+  <a routerLink="" (click)="AddProductToCart(singleProduct._id)">Додати в корзину</a>
 </div>
