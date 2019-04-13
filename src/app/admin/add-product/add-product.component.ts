@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {ProductService} from '../../../services/product.service';
 import {NgForm} from '@angular/forms';
+import {AdminService} from '../../../services/admin.service';
 
 @Component({
   selector: 'app-add-product',
@@ -12,6 +13,7 @@ export class AddProductComponent implements OnInit {
   res: any;
 
   constructor(
+    private adminService: AdminService,
     private productService: ProductService
   ) {
   }
@@ -19,7 +21,7 @@ export class AddProductComponent implements OnInit {
 
   createProduct(form: NgForm) {
     const product = form.value;
-    this.productService.createProduct(product).subscribe((res) => {
+    this.adminService.createProduct(product).subscribe((res) => {
       this.res = res;
     });
   }

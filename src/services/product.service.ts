@@ -42,7 +42,4 @@ export class ProductService {
     return this.http.post(this.productUrl, obj);
   }
 
-  createProduct(product: Product) {
-    return this.http.post(this.productUrl, product);
-  }
 }
