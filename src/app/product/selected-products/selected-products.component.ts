@@ -25,4 +25,5 @@ export class SelectedProductsComponent implements OnInit {
         });
     });
   }
+
 }

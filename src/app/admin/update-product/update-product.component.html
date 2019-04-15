@@ -1,19 +1,46 @@
 <p>Search:
-  <input type="search">
+  <input type="search" placeholder="">
   <input type="submit" value="Знайти">
 </p>
 
 <div class="item" *ngFor="let product of product">
-    <span><a routerLink="">Producer: {{product.producer.name}}, Brand: {{product.brand}}</a></span>
+    <span><a [routerLink]="'/product/' + product._id">
+      Producer: {{product.producer.name}},
+      Brand: {{product.brand}}</a>
+    </span>
     <div class="control">
       <button (click)="showEditForm()">edit</button>
-      <form *ngIf="isShow">
-       <p>Category: <input type="text"></p>
-       <p>Brand: <input type="text"></p>
-       <p>Producer: <input type="text"></p>
-       <p>Price: <input type="text"></p>
-       <p>Img: <input type="file"></p>
+      <form *ngIf="isShow" #update="ngForm" (ngSubmit)="updateProduct(update)">
+       <p>Category: <input type="text"
+                           name="category"
+                           ngModel>
+       </p>
+       <p>Brand: <input type="text"
+                        name="brand"
+                        ngModel>
+       </p>
+       <p>Producer: <input type="text"
+                           name="producer"
+                           ngModel>
+       </p>
+       <p>Price: <input type="text"
+                        name="price"
+                        ngModel>
+       </p>
+       <p>Img: <input type="file"
+                      name="imgUrl"
+                      ngModel>
+       </p>
+        <p name="id">{{product._id}}</p>
+        <input type="submit" value="Change Product">
       </form>
       <button (click)="deleteProduct(product._id)">delete</button>
     </div>
   </div>
+
+<div class="pagination">
+  <a routerLink="">&laquo;</a>
+  <a class="active" routerLink="/update-Product" *ngFor="let page of arrayOfPages"
+     (click)="changePage(page)">{{page}}</a>
+  <a routerLink="">&raquo;</a>
+</div>

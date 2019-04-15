@@ -4,6 +4,7 @@ import {ActivatedRoute} from '@angular/router';
 import {Product} from '../models/Product';
 import {Category} from '../models/Category';
 import {Producer} from '../models/Producer';
+import {Observable} from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -41,6 +42,10 @@ export class AdminService {
 
   deleteProduct(id: any) {
     return this.http.delete(this.adminUrl + '/' + id);
+  }
+
+  updateProduct(id: string, product: Product): Observable<Product> {
+    return this.http.put<Product>(this.adminUrl + '/' + id, product);
   }
 
   getCountOfProduct() {

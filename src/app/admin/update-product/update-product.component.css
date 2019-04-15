@@ -11,3 +11,12 @@ p{
   border-radius: 3px;
   background: lightgray;
 }
+
+.pagination{
+  display: inline;
+  margin-left: 30%;
+}
+
+.active{
+  margin: 10px;
+}

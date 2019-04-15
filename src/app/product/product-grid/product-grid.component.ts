@@ -57,7 +57,7 @@ export class ProductGridComponent implements OnInit {
 
   getCountOfPages(quntityProduct) {
     const countOfPages = quntityProduct / this.limit;
-    for (let i = 1; i <= countOfPages; i++) {
+    for (let i = 0; i <= countOfPages; i++) {
       this.arrayOfPages.push(i);
     }
   }

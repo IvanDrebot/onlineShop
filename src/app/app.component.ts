@@ -34,9 +34,10 @@ export class AppComponent implements OnInit {
 
   searchAllProduct(form: NgForm) {
     const product = form.value;
-    this.productService.getAllProduct(product).subscribe((res) => {
+    this.productService.getProductById(product).subscribe((res) => {
       this.selectedProduct = res;
       console.log(this.selectedProduct);
     });
   }
+
 }
