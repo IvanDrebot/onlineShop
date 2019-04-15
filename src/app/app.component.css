@@ -1,5 +1,5 @@
 .main{
-  background: crimson;
+  background: black;
   width: 100%;
   height: 50px;
   padding-top: 10px;
@@ -18,7 +18,7 @@ li {
 }
 
 #menu {
-  background: crimson;
+  background: black;
   color: #eee;
   height: 45px;
 }

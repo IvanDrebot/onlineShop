@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {AdminService} from '../../../services/admin.service';
+import {ActivatedRoute} from '@angular/router';
 
 @Component({
   selector: 'app-delete-product',
@@ -7,9 +9,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DeleteProductComponent implements OnInit {
 
-  constructor() { }
+  url;
+  res: any = [];
+
+  constructor(
+    private adminService: AdminService,
+    private activatedRoute: ActivatedRoute
+  ) { }
 
   ngOnInit() {
+  }
+
+  deleteProducer() {
+    this.adminService.deleteProducer(this.url).subscribe((res) => {
+      this.res = res;
+    });
   }
 
 }

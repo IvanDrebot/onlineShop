@@ -6,9 +6,8 @@
            name="category"
            ngModel required>
     <datalist id="category">
-      <option value="5caf05d7785b181cb4b2e30e">Phones</option>
-      <option value="5caf05e6785b181cb4b2e30f">Laptops</option>
-      <option value="5caf05f5785b181cb4b2e310">Televisions</option>
+      <option value="5cb35a43e616aa0984af8715">Phones</option>
+      <option value="5cb35a4ce616aa0984af8716">Laptops</option>
     </datalist>
   </p>
 
@@ -17,13 +16,9 @@
            ngModel required list="producer"
            style="margin-left: 18px">
     <datalist id="producer">
-      <option value="5caf0637785b181cb4b2e311">Xiaomi</option>
-      <option value="5caf063d785b181cb4b2e312">Asus</option>
-      <option value="5caf0647785b181cb4b2e313">Samsung</option>
-      <option value="5caf0653785b181cb4b2e314">Lenovo</option>
-      <option value="5caf065a785b181cb4b2e315">HP</option>
-      <option value="5caf0667785b181cb4b2e316">Iphone</option>
-      <option value="5caf0672785b181cb4b2e317">Nokia</option>
+      <option value="5cb35ae3e616aa0984af8718">Xiaomi</option>
+      <option value="5cb35adce616aa0984af8717">Asus</option>
+      <option value="5cb35aece616aa0984af8719">Iphone</option>
     </datalist>
   </p>
 
@@ -47,5 +42,32 @@
   <input type="submit" value="Add product">
   </form>
 
-  <p *ngIf="res">{{res | json}}</p>
+  <p *ngIf="product">{{product | json}}</p>
+  <br><hr>
+
+  <form #Category="ngForm" (ngSubmit)="addCategory(Category)">
+    <p>Додати нову категорію товару:
+      <input type="text"
+             name="name"
+             placeholder="  category"
+             ngModel required>
+      <input type="submit" value="Add category">
+    </p>
+  </form>
+  <p *ngIf="category">{{category | json}}</p>
+
+  <br><hr>
+
+
+  <form #Producer="ngForm" (ngSubmit)="addProducer(Producer)">
+    <p>Додати нового виробника:
+      <input type="text"
+             name="name"
+             placeholder="  producer"
+             ngModel required
+             style="margin-left: 27px">
+      <input type="submit" value="Add producer">
+    </p>
+  </form><hr>
+  <p *ngIf="producer">{{producer | json}}</p>
 </div>

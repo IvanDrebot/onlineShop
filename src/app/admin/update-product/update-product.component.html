@@ -1,3 +1,19 @@
-<p>
-  update-product works!
+<p>Search:
+  <input type="search">
+  <input type="submit" value="Знайти">
 </p>
+
+<div class="item" *ngFor="let product of product">
+    <span><a routerLink="">Producer: {{product.producer.name}}, Brand: {{product.brand}}</a></span>
+    <div class="control">
+      <button (click)="showEditForm()">edit</button>
+      <form *ngIf="isShow">
+       <p>Category: <input type="text"></p>
+       <p>Brand: <input type="text"></p>
+       <p>Producer: <input type="text"></p>
+       <p>Price: <input type="text"></p>
+       <p>Img: <input type="file"></p>
+      </form>
+      <button (click)="deleteProduct(product._id)">delete</button>
+    </div>
+  </div>

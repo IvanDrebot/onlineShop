@@ -10,7 +10,9 @@ import {AdminService} from '../../../services/admin.service';
 })
 export class AddProductComponent implements OnInit {
 
-  res: any;
+  product: any;
+  category: any;
+  producer: any;
 
   constructor(
     private adminService: AdminService,
@@ -18,15 +20,28 @@ export class AddProductComponent implements OnInit {
   ) {
   }
 
+  ngOnInit() {
+  }
 
   createProduct(form: NgForm) {
     const product = form.value;
     this.adminService.createProduct(product).subscribe((res) => {
-      this.res = res;
+      this.product = res;
     });
   }
 
-  ngOnInit() {
+  addCategory(form: NgForm) {
+    const category = form.value;
+    this.adminService.createCategory(category).subscribe((res) => {
+      this.category = res;
+    });
+  }
+
+  addProducer(form: NgForm) {
+    const producer = form.value;
+    this.adminService.createProducer(producer).subscribe((res) => {
+      this.producer = res;
+    });
   }
 
 }

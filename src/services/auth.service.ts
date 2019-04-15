@@ -26,4 +26,8 @@ export class InitService {
     return this.http.get(this.logoutUrl);
   }
 
+  getCount() {
+    return this.http.get(this.usersUrl);
+  }
+
 }

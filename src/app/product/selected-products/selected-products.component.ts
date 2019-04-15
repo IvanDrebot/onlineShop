@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import {ProductService} from '../../../services/product.service';
 import {FilterServiceService} from '../filter/filter-service.service';
 import {Product} from '../../../models/Product';
-import {ActivatedRoute, Router} from '@angular/router';
 
 @Component({
   selector: 'app-selected-prdocuts',
@@ -15,18 +14,15 @@ export class SelectedProductsComponent implements OnInit {
 
   constructor(
     private productService: ProductService,
-    private nextService: FilterServiceService,
-    private router: Router
+    private selectedService: FilterServiceService,
   ) { }
 
   ngOnInit() {
-    this.nextService.subject.subscribe((res) => {
-      if (res) {
-        this.productService.getProductById(res).subscribe((product) => {
+    this.selectedService.subject.subscribe((id) => {
+        this.productService.getProductById(id).subscribe((product) => {
           this.selectedProducts.push(product);
           console.log(this.selectedProducts);
         });
-      }
     });
   }
 }
