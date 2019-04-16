@@ -23,33 +23,27 @@ export class ProductGridComponent implements OnInit {
   constructor(
     private productService: ProductService,
     private router: ActivatedRoute,
-    private filterService: FilterServiceService
-  ) {
-  }
+    private filterService: FilterServiceService) {}
 
   ngOnInit() {
-    this.getFilteredProduct();
+    this.filterService.subject.subscribe((res) => {
+      this.query = res;
+      this.getAllProduct(this.query);
+    });
     this.getCountOfProduct();
     this.query.limit = this.limit;
     this.query.skip = 0;
     this.getAllProduct(this.query);
   }
 
-  getFilteredProduct() {
-    this.filterService.subject.subscribe((res) => {
-      this.products = res;
-      this.countOfProducts = res.length;
-    });
-  }
-
   getAllProduct(query) {
-    this.productService.getAllProduct(query).subscribe((product) => {
+    this.productService.getAllProduct(this.query).subscribe((product) => {
       this.products = product;
     });
   }
 
   getCountOfProduct() {
-      this.productService.getAllProduct(this.query).subscribe((products) => {
+    this.productService.getAllProduct(this.query).subscribe((products) => {
       this.countOfProducts = products.length;
       this.getCountOfPages(products.length);
     });
@@ -57,7 +51,7 @@ export class ProductGridComponent implements OnInit {
 
   getCountOfPages(quntityProduct) {
     const countOfPages = quntityProduct / this.limit;
-    for (let i = 0; i <= countOfPages; i++) {
+    for (let i = 1; i <= countOfPages; i++) {
       this.arrayOfPages.push(i);
     }
   }

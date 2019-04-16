@@ -18,12 +18,12 @@ export class SelectedProductsComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.selectedService.subject.subscribe((id) => {
-        this.productService.getProductById(id).subscribe((product) => {
-          this.selectedProducts.push(product);
-          console.log(this.selectedProducts);
-        });
-    });
+    // this.selectedService.subject.subscribe((id) => {
+    //     this.productService.getProductById(id).subscribe((product) => {
+    //       this.selectedProducts.push(product);
+    //       console.log(this.selectedProducts);
+    //     });
+    // });
   }
 
 }

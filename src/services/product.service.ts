@@ -6,12 +6,12 @@ import {Product} from '../models/Product';
 import {Producer} from '../models/Producer';
 import {ActivatedRoute} from '@angular/router';
 import {Filter} from '../models/Filter';
+import {addParams} from './urlParser';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProductService {
-
 
   productUrl = 'http://localhost:3000/api/product';
   categoryUrl = 'http://localhost:3000/api/category';
@@ -30,16 +30,14 @@ export class ProductService {
     return this.http.get<Producer[]>(this.producerUrl);
   }
 
-  getAllProduct(query): Observable<Product[]> {
-    return this.http.get<Product[]>(`${this.productUrl}?skip=${query.skip}&limit=${query.limit}`);
+  getAllProduct(query = {}): Observable<Product[]> {
+    const url = addParams(this.productUrl, query);
+    console.log(url);
+    return this.http.get<Product[]>(url);
   }
 
   getProductById(id): Observable<Product> {
     return this.http.get<Product>(this.productUrl + '/' + id);
-  }
-
-  createFilter(obj: Filter) {
-    return this.http.post(this.productUrl, obj);
   }
 
 }
