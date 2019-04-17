@@ -33,9 +33,6 @@ export class UpdateProductComponent implements OnInit {
     this.query.skip = 0;
     this.query.limit = this.limit;
     this.getAllProduct(this.query);
-
-    // this.activatedRoute.queryParams.subscribe((id) => {
-    //   console.log(id);
   }
 
   showEditForm() {
@@ -77,8 +74,11 @@ export class UpdateProductComponent implements OnInit {
 
 // PAGINATION--------------------------------
 
-  updateProduct(update: NgForm) {
+  updateProduct(update: NgForm, id) {
     const updatedProduct = update.value;
-    console.log(updatedProduct);
+    const newId = id;
+    this.adminService.updateProduct(newId, updatedProduct).subscribe((res) => {
+      console.log(res);
+    });
   }
 }

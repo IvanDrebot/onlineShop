@@ -13,12 +13,11 @@
 <!---------------------EditForm-------------------------->
 
       <button (click)="showEditForm()"
-              [routerLink]="'/admin/update-Product'"
-              [queryParams]="{}">edit
+              [routerLink]="'/admin/update-Product'">edit
       </button>
 
       <form *ngIf="isShow" #update="ngForm"
-            (ngSubmit)="updateProduct(update)">
+            (ngSubmit)="updateProduct(update, product._id)">
 
        <p>Category: <input type="text"
                            name="category"
