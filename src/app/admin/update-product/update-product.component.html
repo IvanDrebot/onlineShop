@@ -9,8 +9,17 @@
       Brand: {{product.brand}}</a>
     </span>
     <div class="control">
-      <button (click)="showEditForm()">edit</button>
-      <form *ngIf="isShow" #update="ngForm" (ngSubmit)="updateProduct(update)">
+
+<!---------------------EditForm-------------------------->
+
+      <button (click)="showEditForm()"
+              [routerLink]="'/admin/update-Product'"
+              [queryParams]="{}">edit
+      </button>
+
+      <form *ngIf="isShow" #update="ngForm"
+            (ngSubmit)="updateProduct(update)">
+
        <p>Category: <input type="text"
                            name="category"
                            ngModel>
@@ -31,7 +40,6 @@
                       name="imgUrl"
                       ngModel>
        </p>
-        <p name="id">{{product._id}}</p>
         <input type="submit" value="Change Product">
       </form>
       <button (click)="deleteProduct(product._id)">delete</button>
@@ -40,7 +48,8 @@
 
 <div class="pagination">
   <a routerLink="">&laquo;</a>
-  <a class="active" routerLink="/update-Product" *ngFor="let page of arrayOfPages"
+  <a class="active" routerLink="/update-Product"
+     *ngFor="let page of arrayOfPages"
      (click)="changePage(page)">{{page}}</a>
   <a routerLink="">&raquo;</a>
 </div>

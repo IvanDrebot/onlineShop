@@ -45,7 +45,7 @@ export class AdminService {
   }
 
   updateProduct(id: string, product: Product): Observable<Product> {
-    return this.http.put<Product>(this.adminUrl + '/' + id, product);
+    return this.http.put<Product>(`${this.adminUrl}/${id}`, product);
   }
 
   getCountOfProduct() {

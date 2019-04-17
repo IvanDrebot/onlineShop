@@ -75,6 +75,8 @@ export class UpdateProductComponent implements OnInit {
     this.getAllProduct(this.query);
   }
 
+// PAGINATION--------------------------------
+
   updateProduct(update: NgForm) {
     const updatedProduct = update.value;
     console.log(updatedProduct);
