@@ -1,25 +1,22 @@
 <div>
   <form #Product="ngForm" (ngSubmit)="createProduct(Product)">
     <p>Введіть категорію продукту:
-    <input list="category"
-           type="text"
-           name="category"
-           ngModel required>
-    <datalist id="category">
-      <option value="5cb35a43e616aa0984af8715">Phones</option>
-      <option value="5cb35a4ce616aa0984af8716">Laptops</option>
-    </datalist>
+      <select name="category" ngModel style="width: 30%">
+        <option *ngFor="let category of allCategory"
+                value="{{category._id}}">{{category.name}}
+        </option>
+      </select>
   </p>
 
-  <p>Введіть назву виробника:
-    <input type="text" name="producer"
-           ngModel required list="producer"
-           style="margin-left: 18px">
-    <datalist id="producer">
-      <option value="5cb35ae3e616aa0984af8718">Xiaomi</option>
-      <option value="5cb35adce616aa0984af8717">Asus</option>
-      <option value="5cb35aece616aa0984af8719">Iphone</option>
-    </datalist>
+  <p class="producer">Введіть назву виробника:
+    <select name="producer"
+            ngModel
+            style="width: 30%">
+      <option *ngFor="let producer of allProducer"
+              value="{{producer._id}}">
+              {{producer.name}}
+      </option>
+    </select>
   </p>
 
   <p>Ціна продукту:

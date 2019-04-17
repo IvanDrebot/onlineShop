@@ -2,6 +2,8 @@ import {Component, OnInit} from '@angular/core';
 import {ProductService} from '../../../services/product.service';
 import {NgForm} from '@angular/forms';
 import {AdminService} from '../../../services/admin.service';
+import {Category} from '../../../models/Category';
+import {Producer} from '../../../models/Producer';
 
 @Component({
   selector: 'app-add-product',
@@ -13,6 +15,8 @@ export class AddProductComponent implements OnInit {
   product: any;
   category: any;
   producer: any;
+  allCategory: Category[] = [];
+  allProducer: Producer[] = [];
 
   constructor(
     private adminService: AdminService,
@@ -21,6 +25,12 @@ export class AddProductComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.productService.getAllCategory().subscribe((res) => {
+      this.allCategory = res;
+    });
+    this.productService.getProducer().subscribe((res) => {
+      this.allProducer = res;
+    });
   }
 
   createProduct(form: NgForm) {

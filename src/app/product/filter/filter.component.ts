@@ -30,15 +30,22 @@ export class FilterComponent implements OnInit {
     this.Productservice.getProducer().subscribe((producer) => {
       this.producer = producer;
     });
+    this.getCategoryId();
+    this.getProducerId();
   }
 
-  returnProducer(producer) {
-    this.objQuery.producer = producer._id;
-    this.filterService.subject.next(this.objQuery);
+  getProducerId() {
+    this.router.queryParams.subscribe((id) => {
+      this.objQuery = id;
+      this.filterService.subject.next(this.objQuery);
+    });
   }
 
-  returnCategory(category) {
-    this.objQuery.category = category._id;
-    this.filterService.subject.next(this.objQuery);
+  getCategoryId() {
+    this.router.queryParams.subscribe((id) => {
+      this.objQuery = id;
+      console.log(id);
+      this.filterService.subject.next(this.objQuery);
+    });
   }
 }
