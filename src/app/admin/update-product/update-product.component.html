@@ -13,7 +13,7 @@
 <!---------------------EditForm-------------------------->
 
       <button (click)="showEditForm()"
-              [routerLink]="'/admin/update-Product'">edit
+              routerLink="/admin/update-Product">edit
       </button>
 
       <form *ngIf="isShow" #update="ngForm"
@@ -47,7 +47,7 @@
 
 <div class="pagination">
   <a routerLink="">&laquo;</a>
-  <a class="active" routerLink="/update-Product"
+  <a class="active" routerLink="/admin/update-Product"
      *ngFor="let page of arrayOfPages"
      (click)="changePage(page)">{{page}}</a>
   <a routerLink="">&raquo;</a>
