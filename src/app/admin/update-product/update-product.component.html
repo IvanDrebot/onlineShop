@@ -55,9 +55,7 @@
 </div>
 
 <div class="pagination">
-  <a routerLink="">&laquo;</a>
   <a class="active" routerLink="/admin/update-Product"
      *ngFor="let page of arrayOfPages"
      (click)="changePage(page)">{{page}}</a>
-  <a routerLink="">&raquo;</a>
 </div>
