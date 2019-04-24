@@ -14,38 +14,47 @@ export class ProductGridComponent implements OnInit {
   @ViewChild('filterCompn') filterCompn: FilterComponent;
 
   products: Product[] = [];
+
+  count = 0;
+
   query: any = {};
   limit = 4;
   skip: any;
-  countOfProducts: any;
+
+  filter: any = {};
+  price: any = {};
+
   arrayOfPages: any = [];
 
   constructor(
     private productService: ProductService,
     private router: ActivatedRoute,
-    private filterService: FilterServiceService) {}
+    private filterService: FilterServiceService) {
+  }
 
   ngOnInit() {
-    this.filterService.subject.subscribe((res) => {
-      this.query = res;
-      this.getAllProduct(this.query);
-    });
-    this.getCountOfProduct();
     this.query.limit = this.limit;
     this.query.skip = 0;
+    this.getFilterQuery();
     this.getAllProduct(this.query);
+    this.getCountOfPages(this.count);
   }
 
   getAllProduct(query) {
-    this.productService.getAllProduct(this.query).subscribe((product) => {
-      this.products = product;
+    this.productService.getAllProduct(this.filter).subscribe(res => {
+      // @ts-ignore
+      this.products = res.products;
+      // @ts-ignore
+      this.count = res.count;
+      console.log(this.count);
     });
   }
 
-  getCountOfProduct() {
-    this.productService.getAllProduct(this.query).subscribe((products) => {
-      this.countOfProducts = products.length;
-      this.getCountOfPages(products.length);
+  getFilterQuery() {
+    this.filterService.subject.subscribe((res) => {
+      this.filter = res;
+      console.log(this.price);
+      this.getAllProduct(this.query);
     });
   }
 
@@ -61,4 +70,5 @@ export class ProductGridComponent implements OnInit {
     this.query.skip = this.limit * page;
     this.getAllProduct(this.query);
   }
+
 }

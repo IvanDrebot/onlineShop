@@ -10,11 +10,11 @@
 
   <p class="producer">Введіть назву виробника:
     <select name="producer"
-            ngModel
-            style="width: 30%">
+                       ngModel
+                       style="width: 30%">
       <option *ngFor="let producer of allProducer"
               value="{{producer._id}}">
-              {{producer.name}}
+        {{producer.name}}
       </option>
     </select>
   </p>

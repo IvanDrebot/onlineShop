@@ -20,6 +20,8 @@ export class UpdateProductComponent implements OnInit {
   deleteInfo;
   isShow = false;
   countOfProducts: any;
+  category: any = [];
+  producer: any = [];
 
 
   constructor(
@@ -29,6 +31,8 @@ export class UpdateProductComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    this.getCategory();
+    this.getProducer();
     this.getCountOfProduct();
     this.query.skip = 0;
     this.query.limit = this.limit;
@@ -39,9 +43,23 @@ export class UpdateProductComponent implements OnInit {
     this.isShow = !this.isShow;
   }
 
+  getCategory() {
+    this.productService.getAllCategory().subscribe((res) => {
+      this.category = res;
+    })
+  }
+
+  getProducer() {
+    this.productService.getProducer().subscribe((res) => {
+      this.producer = res;
+    });
+  }
+
   getAllProduct(query) {
     this.productService.getAllProduct(this.query).subscribe((res) => {
-      this.product = res;
+      // @ts-ignore
+      this.product = res.products;
+      console.log(this.product);
     });
   }
 
