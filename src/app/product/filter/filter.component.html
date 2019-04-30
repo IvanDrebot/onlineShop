@@ -1,11 +1,6 @@
 <div class="filters">
   <form>
     <h6>Відфільтрувати товари:</h6>
-    <button *ngFor="let category of category"
-            [routerLink]="['/products']"
-            [queryParams]="{ category: category._id}">{{category.name}}</button>
-    <br><br>
-
     <h6>Brand:</h6>
     <p *ngFor="let producer of producer">
       <input type="radio" name=""

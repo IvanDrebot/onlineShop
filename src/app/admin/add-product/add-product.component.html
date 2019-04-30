@@ -21,7 +21,8 @@
 
   <p>Ціна продукту:
     <input type="text" name="price"
-           ngModel required
+           ngModel
+           required
            style="margin-left: 97px">
   </p>
 
@@ -36,7 +37,99 @@
            ngModel value=""
            style="margin-left: 13px">
   </p>
-  <input type="submit" value="Add product">
+
+    <p>Діагональ екрану:
+      <input type="text"
+             name="diagonalScreen"
+             ngModel
+             value="">
+    </p>
+
+<!--    <p>Додати аксесуари:-->
+<!--      <input type="text"-->
+<!--             name="accessories"-->
+<!--             ngModel-->
+<!--             value="">-->
+<!--    </p>-->
+
+    <p>Роздільна здатність екрану:
+      <input type="text"
+             name="resolutionScreen"
+             ngModel
+             value="">
+    </p>
+
+    <p>Тип дисплею:
+      <input type="text"
+             name="displayType"
+             ngModel
+             value="">
+    </p>
+
+    <p>Внутрішня пам"ять:
+      <input type="text"
+             name="internalMemory"
+             ngModel
+             value="">
+    </p>
+
+    <p>Оперативна пам"ять:
+      <input type="text"
+             name="RAM"
+             ngModel
+             value="">
+    </p>
+
+    <p>Камера:
+      <input type="text"
+             name="camera"
+             ngModel
+             value="">
+    </p>
+
+    <p>Фронтальна камера:
+      <input type="text"
+             name="frontCamera"
+             ngModel
+             value="">
+    </p>
+
+    <p>Ємність батареї:
+      <input type="text"
+             name="battery"
+             ngModel
+             value="">
+    </p>
+
+    <p>Кількість сім-карт:
+      <input type="text"
+             name="countOfSimCard"
+             ngModel
+             value="">
+    </p>
+
+    <p>Кількість ядер:
+      <input type="text"
+             name="countOfCores"
+             ngModel
+             value="">
+    </p>
+
+    <p>Колір:
+      <input type="text"
+             name="color"
+             ngModel
+             value="">
+    </p>
+
+    <p>Рік випуску:
+      <input type="text"
+             name="graduationYear"
+             ngModel
+             value="">
+    </p>
+
+    <input type="submit" value="Add product">
   </form>
 
   <p *ngIf="product">{{product | json}}</p>

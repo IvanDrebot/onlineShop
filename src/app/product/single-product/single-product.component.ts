@@ -30,7 +30,7 @@ export class SingleProductComponent implements OnInit {
     });
   }
 
-  AddProductToCart(id: any) {
-      this.filterService.subject.next(id);
-  }
+  // AddProductToCart(id: any) {
+  //     this.filterService.subject.next(id);
+  // }
 }

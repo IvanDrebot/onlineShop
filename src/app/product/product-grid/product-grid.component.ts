@@ -26,6 +26,8 @@ export class ProductGridComponent implements OnInit {
 
   arrayOfPages: any = [];
 
+  filters;
+
   constructor(
     private productService: ProductService,
     private router: ActivatedRoute,
@@ -44,6 +46,8 @@ export class ProductGridComponent implements OnInit {
     this.productService.getAllProduct(this.filter).subscribe(res => {
       // @ts-ignore
       this.products = res.products;
+      this.filters = Object.keys(this.products[0]);
+      console.log(this.filters);
       // @ts-ignore
       this.count = res.count;
       console.log(this.count);

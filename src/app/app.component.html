@@ -1,21 +1,19 @@
 <div class="main">
   <ul id='menu'>
-    <li><a class='prett' routerLink="" (click)="closeMenu()">&#9776;  Категорії</a>
-      <!--------------------------Menu----------------------------->
+    <li>
+      <a class='prett' routerLink="" (click)="closeMenu()">&#9776;  Категорії</a>
       <ul class='menus' *ngIf="isOpen" (click)="closeMenu()">
-        <!---------------------------SubMenu1---------------------------->
-        <!---------------------------SubMenu2---------------------------->
-        <li class='has-submenu'><a class='prett' routerLink="">Смартфони</a>
+       <li class='has-submenu'>
+         <a class='prett'
+            *ngFor="let category of category"
+            [routerLink]="['/products']"
+            [queryParams]="{ category: category._id}">{{category.name}}</a>
           <ul class='submenu'>
-            <li><a routerLink="/products">Asus</a></li>
-            <li><a routerLink="/products">Lenovo</a></li>
-            <li><a routerLink="/products">Apple</a></li>
+            <li><a routerLink="/products"></a></li>
           </ul>
         </li>
-
-        <!----------------------SubMenu3--------------------------->
       </ul>
-      <!--DropDownMenu-->
+
 
     <li>
       <form #search="ngForm" (ngSubmit)="searchAllProduct(search)">
@@ -33,11 +31,6 @@
 
     <li>
       <a routerLink="">Послуги</a>
-    </li>
-
-
-    <li>
-      <a routerLink="/selected-products" *ngIf="corbOfProduct">Корзина {{corbOfProduct.length}}</a>
     </li>
 
     <li>

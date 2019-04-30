@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {ProductService} from '../../../services/product.service';
 import {FilterServiceService} from '../filter/filter-service.service';
-import {Product} from '../../../models/Product';
+
 
 @Component({
   selector: 'app-selected-prdocuts',
@@ -10,7 +10,6 @@ import {Product} from '../../../models/Product';
 })
 export class SelectedProductsComponent implements OnInit {
 
-  selectedProducts: Product[] = [];
 
   constructor(
     private productService: ProductService,
@@ -18,12 +17,6 @@ export class SelectedProductsComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    // this.selectedService.subject.subscribe((id) => {
-    //     this.productService.getProductById(id).subscribe((product) => {
-    //       this.selectedProducts.push(product);
-    //       console.log(this.selectedProducts);
-    //     });
-    // });
   }
 
 }

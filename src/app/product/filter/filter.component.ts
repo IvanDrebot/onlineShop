@@ -15,7 +15,6 @@ import {NgForm} from '@angular/forms';
 export class FilterComponent implements OnInit {
   @ViewChild('filterCompn') filterCompn: ElementRef;
 
-  category: Category[] = [];
   producer: Producer[] = [];
 
   constructor(
@@ -26,23 +25,13 @@ export class FilterComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.Productservice.getAllCategory().subscribe((category) => {
-      this.category = category;
-    });
     this.Productservice.getProducer().subscribe((producer) => {
       this.producer = producer;
     });
-    this.getCategoryId();
     this.getProducerId();
   }
 
   getProducerId() {
-    this.router.queryParams.subscribe((id) => {
-      this.filterService.subject.next(id);
-    });
-  }
-
-  getCategoryId() {
     this.router.queryParams.subscribe((id) => {
       this.filterService.subject.next(id);
     });
