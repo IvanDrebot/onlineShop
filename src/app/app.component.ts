@@ -31,39 +31,19 @@ export class AppComponent implements OnInit {
     this.productService.getAllCategory().subscribe((category) => {
       this.category = category;
     });
-    this.productService.getProducer().subscribe((producer) => {
-      this.producer = producer;
-    });
     // this.filterService.subject.subscribe((res) => {
     //   this.corbOfProduct.push(res);
     // });
-    this.getCategoryId();
-    this.getProducerId();
   }
-
-  getProducerId() {
-    this.router.queryParams.subscribe((id) => {
-      this.filterService.subject.next(id);
-    });
-  }
-
-  getCategoryId() {
-    this.router.queryParams.subscribe((id) => {
-      this.filterService.subject.next(id);
-    });
-  }
-
 
   closeMenu() {
     this.isOpen = !this.isOpen;
   }
 
-
   searchAllProduct(form: NgForm) {
     const product = form.value;
     this.productService.getProductById(product).subscribe((res) => {
       this.selectedProduct = res;
-      console.log(this.selectedProduct);
     });
   }
 

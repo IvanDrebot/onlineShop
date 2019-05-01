@@ -1,7 +1,7 @@
 <div class="main">
   <ul id='menu'>
     <li>
-      <a class='prett' routerLink="" (click)="closeMenu()">&#9776;  Категорії</a>
+      <a class='prett' (click)="closeMenu()">&#9776;  Категорії</a>
       <ul class='menus' *ngIf="isOpen" (click)="closeMenu()">
        <li class='has-submenu'>
          <a *ngFor="let category of category"
