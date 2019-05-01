@@ -14,7 +14,6 @@ export class ProductGridComponent implements OnInit {
   @ViewChild('filterCompn') filterCompn: FilterComponent;
 
   products: Product[] = [];
-
   count = 0;
 
   query: any = {};
@@ -47,17 +46,15 @@ export class ProductGridComponent implements OnInit {
       // @ts-ignore
       this.products = res.products;
       this.filters = Object.keys(this.products[0]);
-      console.log(this.filters);
       // @ts-ignore
       this.count = res.count;
-      console.log(this.count);
+      console.log(this.products);
     });
   }
 
   getFilterQuery() {
     this.filterService.subject.subscribe((res) => {
       this.filter = res;
-      console.log(this.price);
       this.getAllProduct(this.query);
     });
   }

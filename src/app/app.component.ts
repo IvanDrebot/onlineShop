@@ -15,6 +15,7 @@ export class AppComponent implements OnInit {
 
   category: Category[] = [];
   producer: Producer[] = [];
+
   isOpen = true;
   selectedProduct: any = [];
   corbOfProduct: any = [];
@@ -30,10 +31,20 @@ export class AppComponent implements OnInit {
     this.productService.getAllCategory().subscribe((category) => {
       this.category = category;
     });
-    this.filterService.subject.subscribe((res) => {
-      this.corbOfProduct.push(res);
+    this.productService.getProducer().subscribe((producer) => {
+      this.producer = producer;
     });
+    // this.filterService.subject.subscribe((res) => {
+    //   this.corbOfProduct.push(res);
+    // });
     this.getCategoryId();
+    this.getProducerId();
+  }
+
+  getProducerId() {
+    this.router.queryParams.subscribe((id) => {
+      this.filterService.subject.next(id);
+    });
   }
 
   getCategoryId() {

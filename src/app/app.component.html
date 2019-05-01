@@ -4,13 +4,9 @@
       <a class='prett' routerLink="" (click)="closeMenu()">&#9776;  Категорії</a>
       <ul class='menus' *ngIf="isOpen" (click)="closeMenu()">
        <li class='has-submenu'>
-         <a class='prett'
-            *ngFor="let category of category"
+         <a *ngFor="let category of category"
             [routerLink]="['/products']"
-            [queryParams]="{ category: category._id}">{{category.name}}</a>
-          <ul class='submenu'>
-            <li><a routerLink="/products"></a></li>
-          </ul>
+            [queryParams]="{category: category._id}">{{category.name}}</a>
         </li>
       </ul>
 
