@@ -1,4 +1,4 @@
-import {Component, OnInit, ViewChild, OnDestroy} from '@angular/core';
+import {Component, OnInit, ViewChild, OnDestroy, Input} from '@angular/core';
 import {ProductService} from '../../../services/product.service';
 import {Product} from '../../../models/Product';
 import {ActivatedRoute} from '@angular/router';
@@ -12,7 +12,7 @@ import {Subscription} from 'rxjs';
   styleUrls: ['./product-grid.component.css']
 })
 export class ProductGridComponent implements OnInit, OnDestroy {
-  @ViewChild('filterCompn') filterCompn: FilterComponent;
+  @ViewChild('filterCom') filterCom: FilterComponent;
 
   oSub: Subscription;
   products: Product[] = [];
@@ -20,10 +20,11 @@ export class ProductGridComponent implements OnInit, OnDestroy {
 
   query: any = {
     skip: 0,
-    limit: 3,
+    limit: 2,
   };
 
-  filter: any = {};
+  reloading = false;
+
   price: any = {};
   arrayOfPages: any = [];
   filters;
@@ -35,9 +36,10 @@ export class ProductGridComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
+    this.reloading = true;
+    // this.getPrice();
     this.getCategoryId();
     this.getProducerId();
-    this.getAllProduct();
   }
 
   ngOnDestroy() {
@@ -45,29 +47,35 @@ export class ProductGridComponent implements OnInit, OnDestroy {
   }
 
   getAllProduct() {
-      this.oSub = this.productService.getAllProduct(this.filter).subscribe(res => {
+      this.oSub = this.productService.getAllProduct(this.query).subscribe(res => {
       // @ts-ignore
       this.products = res.products;
       this.filters = Object.keys(this.products[0]);
       // @ts-ignore
       this.count = res.count;
-      console.log(this.count, this.products);
+      this.reloading = false;
     });
   }
 
   getCategoryId() {
     this.router.queryParams.subscribe((id) => {
-      this.filter = id;
+      this.query.category = id.category;
       this.getAllProduct();
     });
   }
 
   getProducerId() {
     this.router.queryParams.subscribe((id) => {
-      this.filter = id;
+      this.query.producer = id.producer;
       this.getAllProduct();
     });
   }
+
+  // getPrice() {
+  //   this.price = this.filterCom.getPrice();
+  //   console.log(this.price);
+  // }
+
 
   // getCountOfPages(quntityProduct) {
   //   const countOfPages = quntityProduct / this.limit;
@@ -82,8 +90,4 @@ export class ProductGridComponent implements OnInit, OnDestroy {
   //   this.getAllProduct(this.query);
   // }
 
-  // loadMore() {
-  //   this.query.skip += 2;
-  //   this.getAllProduct();
-  // }
 }

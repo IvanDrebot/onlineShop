@@ -4,6 +4,7 @@ import {ActivatedRoute} from '@angular/router';
 import {Producer} from '../../../models/Producer';
 import {FilterServiceService} from './filter-service.service';
 import {NgForm} from '@angular/forms';
+import construct = Reflect.construct;
 
 @Component({
   selector: 'app-filter',
@@ -32,7 +33,7 @@ export class FilterComponent implements OnInit {
 
   getPrice(form: NgForm) {
     const price = form.value;
-    this.filterService.subject.next(price);
+    // this.filterService.subject.next(price);
   }
 
 }
