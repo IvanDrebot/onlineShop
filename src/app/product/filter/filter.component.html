@@ -1,6 +1,21 @@
 <div class="filters">
-  <form>
     <h6>Відфільтрувати товари:</h6>
+    <p>Price:</p>
+    <form #price="ngForm" (ngSubmit)="getPrice(price)">
+      <input type="text"
+             ngModel
+             name="min"
+             placeholder=" from"
+             style="width: 30%">
+
+      <input type="text"
+             ngModel
+             name="max"
+             placeholder=" to"
+             style="width: 30%">
+      <input type="submit" value="OK">
+    </form>
+
     <h6>Brand:</h6>
     <p *ngFor="let producer of producer">
       <input type="radio" name=""
@@ -9,23 +24,9 @@
              queryParamsHandling="merge">{{producer.name}}
     </p>
 
-    <h6>Price:
-      <form #price="ngForm" (ngSubmit)="getPrice(price)">
-        <input type="text"
-               ngModel
-               name="min"
-               placeholder=" from"
-               style="width: 30%">
-
-        <input type="text"
-               ngModel
-               name="max"
-               placeholder=" to"
-               style="width: 30%">
-        <input type="submit" value="OK">
-      </form>
-    </h6>
+      <p *ngFor="let filter of filters">
+        <a routerLink="">{{filter}}</a>
+      </p>
 
     <button type="reset" class="btn btn-secondary">Скасувати</button>
-  </form>
 </div>

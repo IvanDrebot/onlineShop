@@ -37,7 +37,6 @@ export class ProductGridComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.reloading = true;
-    // this.getPrice();
     this.getCategoryId();
     this.getProducerId();
   }
@@ -50,11 +49,18 @@ export class ProductGridComponent implements OnInit, OnDestroy {
       this.oSub = this.productService.getAllProduct(this.query).subscribe(res => {
       // @ts-ignore
       this.products = res.products;
-      this.filters = Object.keys(this.products[0]);
-      // @ts-ignore
+      this.getFilterKey(this.products);
+        // @ts-ignore
       this.count = res.count;
       this.reloading = false;
     });
+  }
+
+  getFilterKey(products) {
+    const filters = Object.keys(products[0]);
+    filters.splice(0, 4);
+    filters.pop();
+    this.filterService.subject.next(filters);
   }
 
   getCategoryId() {

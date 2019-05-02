@@ -1,10 +1,9 @@
-import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
+import {Component, ElementRef, Input, OnInit, ViewChild} from '@angular/core';
 import {ProductService} from '../../../services/product.service';
 import {ActivatedRoute} from '@angular/router';
 import {Producer} from '../../../models/Producer';
 import {FilterServiceService} from './filter-service.service';
 import {NgForm} from '@angular/forms';
-import construct = Reflect.construct;
 
 @Component({
   selector: 'app-filter',
@@ -13,9 +12,9 @@ import construct = Reflect.construct;
 })
 
 export class FilterComponent implements OnInit {
-  @ViewChild('filterCompn') filterCompn: ElementRef;
 
   producer: Producer[] = [];
+  filters: any;
 
   constructor(
     private Productservice: ProductService,
@@ -25,15 +24,18 @@ export class FilterComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.filterService.subject.subscribe(res => {
+      this.filters = res;
+    });
     this.Productservice.getProducer().subscribe((producer) => {
       this.producer = producer;
     });
   }
 
 
-  getPrice(form: NgForm) {
-    const price = form.value;
-    // this.filterService.subject.next(price);
-  }
+  // getPrice(form: NgForm) {
+  //   const price = form.value;
+  //   this.filterService.subject.next(price);
+  // }
 
 }
