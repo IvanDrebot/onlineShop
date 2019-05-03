@@ -5,6 +5,7 @@ import {ActivatedRoute} from '@angular/router';
 import {FilterComponent} from '../filter/filter.component';
 import {FilterServiceService} from '../filter/filter-service.service';
 import {Subscription} from 'rxjs';
+import {iteratorToArray} from '@angular/animations/browser/src/util';
 
 @Component({
   selector: 'app-product-grid',
@@ -20,14 +21,14 @@ export class ProductGridComponent implements OnInit, OnDestroy {
 
   query: any = {
     skip: 0,
-    limit: 2,
+    limit: 3,
   };
 
   reloading = false;
 
   price: any = {};
   arrayOfPages: any = [];
-  filters;
+  filtersKey: any;
 
   constructor(
     private productService: ProductService,
@@ -49,18 +50,24 @@ export class ProductGridComponent implements OnInit, OnDestroy {
       this.oSub = this.productService.getAllProduct(this.query).subscribe(res => {
       // @ts-ignore
       this.products = res.products;
-      this.getFilterKey(this.products);
-        // @ts-ignore
+      // @ts-ignore
       this.count = res.count;
       this.reloading = false;
+      this.getFilterKey(this.products[0]);
     });
   }
 
-  getFilterKey(products) {
-    const filters = Object.keys(products[0]);
-    filters.splice(0, 4);
-    filters.pop();
-    this.filterService.subject.next(filters);
+  getFilterKey(product) {
+    const filters = product;
+    for (const f in filters) {
+        if (filters[f] === null || filters[f] === '') {
+          delete filters[f];
+        }
+      }
+    this.filtersKey = Object.keys(filters);
+    this.filtersKey.splice(0, 4);
+    this.filtersKey.pop();
+    this.filterService.subject.next(this.filtersKey);
   }
 
   getCategoryId() {
