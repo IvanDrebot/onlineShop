@@ -5,8 +5,12 @@ import {Subject} from 'rxjs';
   providedIn: 'root'
 })
 export class FilterServiceService {
-
+  arrOfProducts: any[] = [];
   subject = new Subject<any>();
   wishList = new Subject<any>();
-  constructor() {}
+  constructor() {
+    this.wishList.subscribe(res => {
+      this.arrOfProducts.push(res);
+    });
+  }
 }

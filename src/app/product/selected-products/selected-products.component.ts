@@ -18,10 +18,11 @@ export class SelectedProductsComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.filterService.wishList.subscribe(res => {
-      this.wishList.push(res);
-      console.log(this.wishList);
-    });
+    this.wishList = this.filterService.arrOfProducts;
+    // this.filterService.wishList.subscribe(res => {
+    //   this.wishList.push(res);
+    //   console.log(this.wishList);
+    // });
   }
 
 }

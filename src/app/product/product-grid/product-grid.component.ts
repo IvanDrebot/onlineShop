@@ -18,7 +18,7 @@ export class ProductGridComponent implements OnInit {
 
   query: any = {
     skip: 0,
-    limit: 6,
+    limit: 4,
   };
 
   price: any = {};
@@ -48,7 +48,8 @@ export class ProductGridComponent implements OnInit {
       console.log(res);
       // @ts-ignore
       this.count = res.count;
-      this.getFilterKey(this.products[0]);
+        this.getFilterKey(this.products[0]);
+      // this.getFilterKey(this.products[0]);
     });
   }
 
