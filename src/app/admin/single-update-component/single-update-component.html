@@ -1,0 +1,36 @@
+<div>
+<form #update="ngForm"
+      (ngSubmit)="updateProduct(update, id)">
+
+  <p>Category:
+    <select name="category" ngModel style="width: 30%">
+      <option *ngFor="let category of category"
+              value="{{category._id}}">{{category.name}}
+      </option>
+    </select>
+  </p>
+
+  <p>Producer:
+    <select name="producer" ngModel style="width: 30%">
+      <option *ngFor="let producer of producer"
+              value="{{producer._id}}">{{producer.name}}
+      </option>
+    </select>
+  </p>
+
+  <p>Brand: <input type="text"
+                   name="brand"
+                   ngModel>
+  </p>
+
+  <p>Price: <input type="text"
+                   name="price"
+                   ngModel>
+  </p>
+  <p>Img: <input type="file"
+                 name="imgUrl"
+                 ngModel>
+  </p>
+  <input type="submit" value="Change Product">
+</form>
+</div>

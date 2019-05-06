@@ -15,7 +15,7 @@ import {UpdateProductComponent} from '../app/admin/update-product/update-product
 import {StatisticComponent} from '../app/admin/statistic/statistic.component';
 import {SelectedProductsComponent} from '../app/product/selected-products/selected-products.component';
 import {SearchProductsComponent} from '../app/product/search-product/search-products.component';
-import {ChangeCategoryComponent} from '../app/admin/change-category/change-category.component';
+import {SingleUpdateComponent} from '../app/admin/single-update-component/single-update-component';
 import {ChangeProducerComponent} from '../app/admin/change-producer/change-producer.component';
 import {AddCategoryComponent} from '../app/admin/add-category/add-category.component';
 import {AddProducerComponent} from '../app/admin/add-producer/add-producer.component';
@@ -37,7 +37,7 @@ const routes: Routes = [
       {path: 'add-Product', component: AddProductComponent},
       {path: 'update-Product', component: UpdateProductComponent},
       {path: 'statistics', component: StatisticComponent},
-      {path: 'change-category', component: ChangeCategoryComponent},
+      {path: 'single-update-component', component: SingleUpdateComponent},
       {path: 'change-producer', component: ChangeProducerComponent},
       {path: 'add-category', component: AddCategoryComponent},
       {path: 'add-producer', component: AddProducerComponent},

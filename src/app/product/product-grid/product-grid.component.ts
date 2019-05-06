@@ -3,67 +3,53 @@ import {ProductService} from '../../../services/product.service';
 import {Product} from '../../../models/Product';
 import {ActivatedRoute} from '@angular/router';
 import {FilterComponent} from '../filter/filter.component';
-import {FilterServiceService} from '../filter/filter-service.service';
+import {FilterServiceService} from '../../../services/filter-service.service';
+import {Subscription} from 'rxjs';
 
 @Component({
   selector: 'app-product-grid',
   templateUrl: './product-grid.component.html',
   styleUrls: ['./product-grid.component.css']
 })
-export class ProductGridComponent implements OnInit {
+export class ProductGridComponent implements OnInit, OnDestroy {
   @ViewChild('filterCom') filterCom: FilterComponent;
+  oSub: Subscription;
 
   products: Product[] = [];
   count = 0;
 
   query: any = {
     skip: 0,
-    limit: 4,
+    limit: 2,
   };
 
-  price: any = {};
   arrayOfPages: any = [];
-  filtersKey: any;
+  loading = true;
 
   constructor(
     private productService: ProductService,
-    private router: ActivatedRoute,
-    private filterService: FilterServiceService) {
-  }
+    private filterService: FilterServiceService,
+    private router: ActivatedRoute
+  ) { }
 
   ngOnInit() {
     this.getCategoryId();
-    this.getProducerId();
-    this.getAllProduct();
   }
 
-  // ngOnDestroy() {
-  //   this.oSub.unsubscribe();
-  // }
+  ngOnDestroy() {
+    this.oSub.unsubscribe();
+  }
+
 
   getAllProduct() {
-      this.productService.getAllProduct(this.query).subscribe(res => {
+    this.oSub = this.productService.getAllProduct(this.query).subscribe((res) => {
       // @ts-ignore
       this.products = res.products;
-      console.log(res);
+      this.loading = false;
       // @ts-ignore
       this.count = res.count;
-        this.getFilterKey(this.products[0]);
-      // this.getFilterKey(this.products[0]);
+      this.filterService.subject.next(this.products[0]);
     });
-  }
-
-  getFilterKey(product) {
-    for (const f in product) {
-        if (product[f] === null || product[f] === '') {
-          delete product[f];
-        }
-      }
-    this.filtersKey = Object.keys(product);
-    this.filtersKey.splice(0, 4);
-    this.filtersKey.pop();
-    this.filterService.subject.next(this.filtersKey);
-    console.log(this.filtersKey);
   }
 
   getCategoryId() {
@@ -73,30 +59,22 @@ export class ProductGridComponent implements OnInit {
     });
   }
 
-  getProducerId() {
-    this.router.queryParams.subscribe((id) => {
-      this.query.producer = id.producer;
-      this.getAllProduct();
-    });
+  loadMore() {
+    this.query.skip += 2;
+    this.loading = true;
+    this.getAllProduct();
   }
 
-  // getPrice() {
-  //   this.price = this.filterCom.getPrice();
-  //   console.log(this.price);
-  // }
-
-
-  // getCountOfPages(quntityProduct) {
-  //   const countOfPages = quntityProduct / this.limit;
-  //   for (let i = 1; i <= countOfPages; i++) {
-  //     this.arrayOfPages.push(i);
-  //   }
-  // }
+  getCountOfPages(quntityProduct) {
+    const countOfPages = quntityProduct / this.query.limit;
+    for (let i = 1; i <= countOfPages; i++) {
+      this.arrayOfPages.push(i);
+    }
+  }
 
   // changePage(page) {
-  //   this.query.limit = this.limit;
-  //   this.query.skip = this.limit * page;
-  //   this.getAllProduct(this.query);
+  //   this.query.skip = this.query.limit * page;
+  //   this.getAllProduct();
   // }
 
 }

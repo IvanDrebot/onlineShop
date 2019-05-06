@@ -1,22 +1,124 @@
 <div class="filters">
     <h6>Відфільтрувати товари:</h6>
-<!--    <h6>Producer:</h6>-->
-<!--    <p *ngFor="let producer of producer">-->
-<!--      <input type="radio" name=""-->
-<!--             [routerLink]="['/products']"-->
-<!--             [queryParams]="{ producer: producer._id}"-->
-<!--             queryParamsHandling="merge">{{producer.name}}-->
-<!--    </p>-->
-<form>
-  <div *ngFor="let type of inputTypeFilters">
-    {{type.name}}
-    <div *ngFor="let value of type.value">
-       <input type="{{type.type}}"
-         class="{{type.className}}"
-         placeholder="{{type.placeholderName}}"
-         value="{{value}}">{{value}}
-    </div>
+  <div *ngIf="laptops">
+        <h6>Producer:</h6>
+        <p *ngFor="let producer of producer">
+          <input type="radio" name=""
+                 [routerLink]="['/products']"
+                 [queryParams]="{ producer: producer._id}"
+                 queryParamsHandling="merge">{{producer.name}}
+        </p>
+
+    <h6>Price:
+      <form #price="ngForm" (ngSubmit)="getPrice(price)">
+        <input type="text"
+               ngModel
+               name="start"
+               placeholder=" from"
+               style="width: 30%">
+
+        <input type="text"
+               ngModel
+               name="end"
+               placeholder=" to"
+               style="width: 30%">
+        <input type="submit" value="OK">
+      </form>
+    </h6>
+
+    <p>diagonalScreen:<br>
+      <input type="radio"> 50 px<br>
+      <input type="radio"> 60 px<br>
+      <input type="radio"> 70 px<br>
+    </p>
+
+    <p>resolutionScreen:<br>
+      <input type="radio"> test1<br>
+      <input type="radio"> test2<br>
+      <input type="radio"> test3<br>
+    </p>
   </div>
-    <button type="reset" class="btn btn-secondary">Скасувати</button>
-</form>
+
+
+
+
+  <div *ngIf="tv">
+    <h6>Producer:</h6>
+    <p *ngFor="let producer of producer">
+      <input type="radio" name=""
+             [routerLink]="['/products']"
+             [queryParams]="{ producer: producer._id}"
+             queryParamsHandling="merge">{{producer.name}}
+    </p>
+
+    <h6>Price:
+      <form #price="ngForm" (ngSubmit)="getPrice(price)">
+        <input type="text"
+               ngModel
+               name="start"
+               placeholder=" from"
+               style="width: 30%">
+
+        <input type="text"
+               ngModel
+               name="end"
+               placeholder=" to"
+               style="width: 30%">
+        <input type="submit" value="OK">
+      </form>
+    </h6>
+
+    <p>diagonalScreen:<br>
+      <input type="radio"> 50 px<br>
+      <input type="radio"> 60 px<br>
+      <input type="radio"> 70 px<br>
+    </p>
+  </div>
+
+
+ <div *ngIf="Phones">
+  <h6>Producer:</h6>
+    <p *ngFor="let producer of producer">
+      <input type="radio" name=""
+           [routerLink]="['/products']"
+           [queryParams]="{ producer: producer._id}"
+           queryParamsHandling="merge">{{producer.name}}
+  </p>
+
+  <h6>Price:
+    <form #price="ngForm" (ngSubmit)="getPrice(price)">
+      <input type="text"
+             ngModel
+             name="start"
+             placeholder=" from"
+             style="width: 30%">
+
+      <input type="text"
+             ngModel
+             name="end"
+             placeholder=" to"
+             style="width: 30%">
+      <input type="submit" value="OK">
+    </form>
+  </h6>
+
+  <p>diagonalScreen:<br>
+    <input type="radio"> 50 px<br>
+    <input type="radio"> 60 px<br>
+    <input type="radio"> 70 px<br>
+  </p>
+
+  <p>countOfSimCard:<br>
+    <input type="checkbox"> 1 <br>
+    <input type="checkbox"> 2 <br>
+    <input type="checkbox"> 3 <br>
+  </p>
+
+  <p>graduationYear:<br>
+    <input type="button" value="2017"><br>
+    <input type="button" value="2018"><br>
+    <input type="button" value="2019"><br>
+  </p>
+</div>
+
 </div>

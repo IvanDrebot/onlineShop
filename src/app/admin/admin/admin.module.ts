@@ -6,7 +6,7 @@ import { UpdateProductComponent } from '../update-product/update-product.compone
 import {MainRoutingModule} from '../../../routing/mainRouting.module';
 import {FormsModule} from '@angular/forms';
 import {StatisticComponent} from '../statistic/statistic.component';
-import {ChangeCategoryComponent} from '../change-category/change-category.component';
+import {SingleUpdateComponent} from '../single-update-component/single-update-component';
 import {ChangeProducerComponent} from '../change-producer/change-producer.component';
 import {AddProducerComponent} from '../add-producer/add-producer.component';
 import {AddCategoryComponent} from '../add-category/add-category.component';
@@ -18,7 +18,7 @@ import {OrdersComponent} from '../orders/orders.component';
     AddProductComponent,
     UpdateProductComponent,
     StatisticComponent,
-    ChangeCategoryComponent,
+    SingleUpdateComponent,
     ChangeProducerComponent,
     AddProducerComponent,
     AddCategoryComponent,
@@ -34,7 +34,7 @@ import {OrdersComponent} from '../orders/orders.component';
     AddProductComponent,
     UpdateProductComponent,
     StatisticComponent,
-    ChangeCategoryComponent,
+    SingleUpdateComponent,
     ChangeProducerComponent,
     AddProducerComponent,
     AddCategoryComponent,

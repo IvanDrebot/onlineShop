@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {NgForm} from '@angular/forms';
 import {ProductService} from '../services/product.service';
-import {FilterServiceService} from './product/filter/filter-service.service';
+import {FilterServiceService} from '../services/filter-service.service';
 import {Category} from '../models/Category';
 import {Producer} from '../models/Producer';
 import {ActivatedRoute} from '@angular/router';

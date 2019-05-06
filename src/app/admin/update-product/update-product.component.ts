@@ -4,6 +4,7 @@ import {Product} from '../../../models/Product';
 import {AdminService} from '../../../services/admin.service';
 import {NgForm} from '@angular/forms';
 import {ActivatedRoute} from '@angular/router';
+import {FilterServiceService} from '../../../services/filter-service.service';
 
 @Component({
   selector: 'app-update-product',
@@ -18,7 +19,6 @@ export class UpdateProductComponent implements OnInit {
   limit = 5;
   skip: any;
   deleteInfo;
-  isShow = false;
   countOfProducts: any;
   category: any = [];
   producer: any = [];
@@ -27,7 +27,8 @@ export class UpdateProductComponent implements OnInit {
   constructor(
     private productService: ProductService,
     private adminService: AdminService,
-    private activatedRoute: ActivatedRoute
+    private activatedRoute: ActivatedRoute,
+    private filterService: FilterServiceService
   ) { }
 
   ngOnInit() {
@@ -39,9 +40,6 @@ export class UpdateProductComponent implements OnInit {
     this.getAllProduct(this.query);
   }
 
-  showEditForm() {
-    this.isShow = !this.isShow;
-  }
 
   getCategory() {
     this.productService.getAllCategory().subscribe((res) => {
@@ -90,13 +88,7 @@ export class UpdateProductComponent implements OnInit {
     this.getAllProduct(this.query);
   }
 
-// PAGINATION--------------------------------
-
-  updateProduct(update: NgForm, id) {
-    const updatedProduct = update.value;
-    const newId = id;
-    this.adminService.updateProduct(newId, updatedProduct).subscribe((res) => {
-      console.log(res);
-    });
+  getId(id: any) {
+    this.filterService.updateProduct.next(id);
   }
 }

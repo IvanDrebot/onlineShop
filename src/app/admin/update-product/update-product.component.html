@@ -12,44 +12,10 @@
 
     <!---------------------EditForm-------------------------->
 
-    <button (click)="showEditForm()"
-            routerLink="/admin/update-Product">edit
+    <button routerLink="/admin/single-update-component"
+            (click)="getId(product._id)">edit
     </button>
 
-    <form *ngIf="isShow" #update="ngForm"
-          (ngSubmit)="updateProduct(update, product._id)">
-
-      <p>Category:
-        <select name="category" ngModel style="width: 30%">
-          <option *ngFor="let category of category"
-                  value="{{category._id}}">{{category.name}}
-          </option>
-        </select>
-      </p>
-
-      <p>Producer:
-        <select name="producer" ngModel style="width: 30%">
-          <option *ngFor="let producer of producer"
-                  value="{{producer._id}}">{{producer.name}}
-          </option>
-        </select>
-      </p>
-
-      <p>Brand: <input type="text"
-                       name="brand"
-                       ngModel>
-      </p>
-
-      <p>Price: <input type="text"
-                       name="price"
-                       ngModel>
-      </p>
-      <p>Img: <input type="file"
-                     name="imgUrl"
-                     ngModel>
-      </p>
-      <input type="submit" value="Change Product">
-    </form>
     <button (click)="deleteProduct(product._id)">delete</button>
   </div>
 </div>

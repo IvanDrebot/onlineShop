@@ -2,7 +2,8 @@ import {Component, ElementRef, Input, OnInit, ViewChild} from '@angular/core';
 import {ProductService} from '../../../services/product.service';
 import {ActivatedRoute} from '@angular/router';
 import {Producer} from '../../../models/Producer';
-import {FilterServiceService} from './filter-service.service';
+import {FilterServiceService} from '../../../services/filter-service.service';
+import {NgForm} from '@angular/forms';
 
 @Component({
   selector: 'app-filter',
@@ -13,62 +14,10 @@ import {FilterServiceService} from './filter-service.service';
 export class FilterComponent implements OnInit {
 
   producer: Producer[] = [];
-
-  inputTypeFilters: any = [
-    {
-      name: 'price', type: 'number', className: 'price',
-      placeholderName: ' min', value: ['']
-    },
-    {
-      name: '', type: 'number', className: 'price1',
-      placeholderName: ' max', value: ['']
-    },
-    {
-      name: 'producer', type: 'radio', value:
-     ['Asus', 'Xiaomi', 'Iphone', 'Lenovo']
-    },
-    {
-      name: 'diagonalScreen', type: 'checkbox', value:
-      ['50 px', '70 px', '100 px']
-    },
-    {
-      name: 'resolutionScreen', type: 'checkbox', value:
-      [10, 30, 40]
-    },
-    {
-      name: 'displayType', type: 'radio', value:
-      ['LCD', 'TFT', 'IPS']
-    },
-    {
-      name: 'internalMemory', type: 'radio',
-      value: ['50 GB', '60 GB']
-    },
-    {
-      name: 'RAM', type: 'radio',
-      value: [4, 6, 10]
-    },
-    {
-      name: 'camera', type: 'radio',
-      value: ['7 MP', '12 MP', '15 MP']
-    },
-    {
-      name: 'frontCamera', type: 'radio',
-      value: ['3 MP', '5 MP', '7 MP']
-    },
-    {
-      name: 'battery', type: 'checkbox',
-      value : ['5 MP', '7 MP', '10 MP']
-    },
-    {
-      name: 'countOfCores', type: 'radio',
-      value: [3, 5, 7]
-    },
-    {
-      name: 'graduationYear', type: 'button',
-      value: [2017, 2018, 2019]
-    }
-  ];
-
+  laptops = false;
+  tv = false;
+  Phones = false;
+  reloading = false;
 
   constructor(
     private productService: ProductService,
@@ -78,23 +27,33 @@ export class FilterComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.filterService.subject.subscribe(res => {
-      this.generateFiltersKey(res);
-    });
     this.productService.getProducer().subscribe((producer) => {
       this.producer = producer;
     });
+    this.reloading = true;
+    this.getFilters();
   }
 
-  generateFiltersKey(filtersKey) {
-    for (const key of filtersKey) {
-      const types = this.inputTypeFilters.filter(type => type.name === key);
-    }
+  getFilters() {
+    this.filterService.subject.subscribe(res => {
+      if (res.category.name === 'Phones') {
+        this.Phones = true;
+        this.laptops = false;
+        this.tv = false;
+      } else if (res.category.name === 'Tv') {
+        this.Phones = false;
+        this.laptops = false;
+        this.tv = true;
+      } else {
+        this.laptops = true;
+        this.Phones = false;
+        this.tv = false;
+      }
+    });
   }
 
-  // getPrice(form: NgForm) {
-  //   const price = form.value;
-  //   this.filterService.subject.next(price);
-  // }
-
+  getPrice(form: NgForm) {
+    const price = form.value;
+    console.log(price);
+  }
 }
