@@ -4,27 +4,22 @@ import {Product} from '../../../models/Product';
 import {ActivatedRoute} from '@angular/router';
 import {FilterComponent} from '../filter/filter.component';
 import {FilterServiceService} from '../filter/filter-service.service';
-import {Subscription} from 'rxjs';
-import {iteratorToArray} from '@angular/animations/browser/src/util';
 
 @Component({
   selector: 'app-product-grid',
   templateUrl: './product-grid.component.html',
   styleUrls: ['./product-grid.component.css']
 })
-export class ProductGridComponent implements OnInit, OnDestroy {
+export class ProductGridComponent implements OnInit {
   @ViewChild('filterCom') filterCom: FilterComponent;
 
-  oSub: Subscription;
   products: Product[] = [];
   count = 0;
 
   query: any = {
     skip: 0,
-    limit: 3,
+    limit: 6,
   };
-
-  reloading = false;
 
   price: any = {};
   arrayOfPages: any = [];
@@ -37,37 +32,37 @@ export class ProductGridComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
-    this.reloading = true;
     this.getCategoryId();
     this.getProducerId();
+    this.getAllProduct();
   }
 
-  ngOnDestroy() {
-    this.oSub.unsubscribe();
-  }
+  // ngOnDestroy() {
+  //   this.oSub.unsubscribe();
+  // }
 
   getAllProduct() {
-      this.oSub = this.productService.getAllProduct(this.query).subscribe(res => {
+      this.productService.getAllProduct(this.query).subscribe(res => {
       // @ts-ignore
       this.products = res.products;
+      console.log(res);
       // @ts-ignore
       this.count = res.count;
-      this.reloading = false;
       this.getFilterKey(this.products[0]);
     });
   }
 
   getFilterKey(product) {
-    const filters = product;
-    for (const f in filters) {
-        if (filters[f] === null || filters[f] === '') {
-          delete filters[f];
+    for (const f in product) {
+        if (product[f] === null || product[f] === '') {
+          delete product[f];
         }
       }
-    this.filtersKey = Object.keys(filters);
+    this.filtersKey = Object.keys(product);
     this.filtersKey.splice(0, 4);
     this.filtersKey.pop();
     this.filterService.subject.next(this.filtersKey);
+    console.log(this.filtersKey);
   }
 
   getCategoryId() {

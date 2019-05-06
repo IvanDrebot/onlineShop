@@ -12,10 +12,14 @@ import {FilterComponent} from '../app/product/filter/filter.component';
 import {AdminComponent} from '../app/admin/admin/admin.component';
 import {AddProductComponent} from '../app/admin/add-product/add-product.component';
 import {UpdateProductComponent} from '../app/admin/update-product/update-product.component';
-import {DeleteProductComponent} from '../app/admin/delete-product/delete-product.component';
 import {StatisticComponent} from '../app/admin/statistic/statistic.component';
 import {SelectedProductsComponent} from '../app/product/selected-products/selected-products.component';
 import {SearchProductsComponent} from '../app/product/search-product/search-products.component';
+import {ChangeCategoryComponent} from '../app/admin/change-category/change-category.component';
+import {ChangeProducerComponent} from '../app/admin/change-producer/change-producer.component';
+import {AddCategoryComponent} from '../app/admin/add-category/add-category.component';
+import {AddProducerComponent} from '../app/admin/add-producer/add-producer.component';
+import {OrdersComponent} from '../app/admin/orders/orders.component';
 
 const routes: Routes = [
   {path: 'register', component: RegisterComponent},
@@ -32,8 +36,12 @@ const routes: Routes = [
   {path: 'admin', component: AdminComponent, children: [
       {path: 'add-Product', component: AddProductComponent},
       {path: 'update-Product', component: UpdateProductComponent},
-      {path: 'delete-Product', component: DeleteProductComponent},
-      {path: 'statistics', component: StatisticComponent}
+      {path: 'statistics', component: StatisticComponent},
+      {path: 'change-category', component: ChangeCategoryComponent},
+      {path: 'change-producer', component: ChangeProducerComponent},
+      {path: 'add-category', component: AddCategoryComponent},
+      {path: 'add-producer', component: AddProducerComponent},
+      {path: 'orders', component: OrdersComponent},
     ]},
 ];
 

@@ -1,0 +1,13 @@
+<div>
+<form #Producer="ngForm" (ngSubmit)="addProducer(Producer)">
+  <p>Додати нового виробника:
+    <input type="text"
+           name="name"
+           placeholder="  producer"
+           ngModel required
+           style="margin-left: 27px">
+    <input type="submit" value="Add producer">
+  </p>
+</form><hr>
+<p *ngIf="producer">{{producer | json}}</p>
+</div>

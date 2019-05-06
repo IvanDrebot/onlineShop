@@ -7,5 +7,6 @@ import {Subject} from 'rxjs';
 export class FilterServiceService {
 
   subject = new Subject<any>();
+  wishList = new Subject<any>();
   constructor() {}
 }

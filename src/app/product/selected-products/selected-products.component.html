@@ -1,9 +1,20 @@
-<p *ngFor="let product of selectedProducts">
-  {{product.id}}
-  {{product.category}}
-  {{product.brand}}
-  {{product.imgUrl}}
-  {{product.price}}
-  {{product.producer}}
-</p>
-<p>testtesttesttesttesttesttesttesttesttesttesttesttest</p>
+<div *ngFor="let singleProduct of wishList">
+  <p>Category: {{singleProduct.category.name}}</p>
+  <p>Producer: {{singleProduct.producer.name}}</p>
+  <p>Price: {{singleProduct.price}}</p>
+  <p>Brand: {{singleProduct.brand}}</p>
+  <p>DiagonalScreen: {{singleProduct.diagonalScreen}}</p>
+  <p>ResolutionScreen: {{singleProduct.resolutionScreen}}</p>
+  <p>DisplayType: {{singleProduct.displayType}}</p>
+  <p>InternalMemory: {{singleProduct.internalMemory}}</p>
+  <p>RAM: {{singleProduct.RAM}}</p>
+  <p>Camera: {{singleProduct.camera}}</p>
+  <p>FrontCamera: {{singleProduct.frontCamera}}</p>
+  <p>Battery: {{singleProduct.battery}}</p>
+  <p>CountOfSimCard: {{singleProduct.countOfSimCard}}</p>
+  <p>CountOfCores: {{singleProduct.countOfCores}}</p>
+  <p>Color: {{singleProduct.color}}</p>
+  <p>OperatingSystem: {{singleProduct.operatingSystem}}</p>
+  <p>GraduationYear: {{singleProduct.graduationYear}}</p>
+</div>
+<p>teesttttt</p>

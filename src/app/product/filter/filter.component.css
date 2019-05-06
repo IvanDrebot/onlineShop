@@ -1,6 +1,6 @@
 .filters{
   width: 20%;
-  margin-left: 10px;
+  margin-left: 30px;
   margin-top: 20px;
   float: left;
   box-sizing: border-box;
@@ -9,4 +9,17 @@ button{
   width: 50%;
   display: block;
 
+}
+
+.price{
+  width: 30%;
+}
+.price1{
+  width: 30%;
+  float: right;
+  margin-top: -15%;
+  margin-right: 16%;
+}
+.price, .price1{
+  display: inline
 }

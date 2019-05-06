@@ -46,7 +46,7 @@ export class UpdateProductComponent implements OnInit {
   getCategory() {
     this.productService.getAllCategory().subscribe((res) => {
       this.category = res;
-    })
+    });
   }
 
   getProducer() {

@@ -13,8 +13,6 @@ import {Producer} from '../../../models/Producer';
 export class AddProductComponent implements OnInit {
 
   product: any;
-  category: any;
-  producer: any;
   allCategory: Category[] = [];
   allProducer: Producer[] = [];
 
@@ -37,20 +35,6 @@ export class AddProductComponent implements OnInit {
     const product = form.value;
     this.adminService.createProduct(product).subscribe((res) => {
       this.product = res;
-    });
-  }
-
-  addCategory(form: NgForm) {
-    const category = form.value;
-    this.adminService.createCategory(category).subscribe((res) => {
-      this.category = res;
-    });
-  }
-
-  addProducer(form: NgForm) {
-    const producer = form.value;
-    this.adminService.createProducer(producer).subscribe((res) => {
-      this.producer = res;
     });
   }
 

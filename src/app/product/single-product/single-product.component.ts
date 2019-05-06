@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {ProductService} from '../../../services/product.service';
 import {ActivatedRoute} from '@angular/router';
 import {FilterServiceService} from '../filter/filter-service.service';
+import {Product} from '../../../models/Product';
 
 @Component({
   selector: 'app-single-product',
@@ -30,7 +31,7 @@ export class SingleProductComponent implements OnInit {
     });
   }
 
-  // AddProductToCart(id: any) {
-  //     this.filterService.subject.next(id);
-  // }
+  AddProductToCart(product: Product) {
+      this.filterService.wishList.next(product);
+  }
 }

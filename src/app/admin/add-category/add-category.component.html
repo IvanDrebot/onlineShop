@@ -1,0 +1,12 @@
+<div>
+<form #Category="ngForm" (ngSubmit)="addCategory(Category)">
+  <p>Додати нову категорію товару:
+    <input type="text"
+           name="name"
+           placeholder="  category"
+           ngModel required>
+    <input type="submit" value="Add category">
+  </p>
+</form>
+<p *ngIf="category">{{category | json}}</p>
+</div>

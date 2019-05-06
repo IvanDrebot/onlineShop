@@ -17,8 +17,7 @@ export class AppComponent implements OnInit {
   producer: Producer[] = [];
 
   isOpen = true;
-  selectedProduct: any = [];
-  corbOfProduct: any = [];
+  selectedProduct: any;
 
   constructor(
     private productService: ProductService,
@@ -31,9 +30,6 @@ export class AppComponent implements OnInit {
     this.productService.getAllCategory().subscribe((category) => {
       this.category = category;
     });
-    // this.filterService.subject.subscribe((res) => {
-    //   this.corbOfProduct.push(res);
-    // });
   }
 
   closeMenu() {
@@ -42,9 +38,6 @@ export class AppComponent implements OnInit {
 
   searchAllProduct(form: NgForm) {
     const product = form.value;
-    this.productService.getProductById(product).subscribe((res) => {
-      this.selectedProduct = res;
-    });
+    this.selectedProduct = product.brand;
   }
-
 }

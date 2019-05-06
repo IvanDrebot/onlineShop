@@ -12,11 +12,13 @@
 
 
     <li>
-      <form #search="ngForm" (ngSubmit)="searchAllProduct(search)">
-        <input type="search" name="producer"
-               placeholder="Введіть товар"
+      <form #product="ngForm" (ngSubmit)="searchAllProduct(product)">
+        <input type="search" name="brand"
+               placeholder="Введіть марку продукту"
                ngModel>
-        <input type="submit" value="Шукати" routerLink="/search-product">
+        <input type="submit" value="Шукати"
+               [routerLink]="['/search-product']"
+               [queryParams]="{brand: this.selectedProduct}">
       </form>
     </li>
 
@@ -27,6 +29,10 @@
 
     <li>
       <a routerLink="">Послуги</a>
+    </li>
+
+    <li>
+      <a routerLink="/selected-products">Корзина</a>
     </li>
 
     <li>
