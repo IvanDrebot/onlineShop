@@ -31,11 +31,11 @@ div.desc {
 /*  border-radius: 5px;*/
 /*}*/
 
-.test-div {
-  background: red;
-  width: 300px;
-  height: 300px;
-}
+/*.test-div {*/
+/*  background: red;*/
+/*  width: 300px;*/
+/*  height: 300px;*/
+/*}*/
 
 .pagination a:hover:not(.active) {
   background-color: #ddd;

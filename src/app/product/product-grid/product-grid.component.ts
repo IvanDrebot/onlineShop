@@ -4,27 +4,27 @@ import {Product} from '../../../models/Product';
 import {ActivatedRoute} from '@angular/router';
 import {FilterComponent} from '../filter/filter.component';
 import {FilterServiceService} from '../../../services/filter-service.service';
-import {Subscription} from 'rxjs';
 
 @Component({
   selector: 'app-product-grid',
   templateUrl: './product-grid.component.html',
   styleUrls: ['./product-grid.component.css']
 })
-export class ProductGridComponent implements OnInit, OnDestroy {
+
+export class ProductGridComponent implements OnInit {
   @ViewChild('filterCom') filterCom: FilterComponent;
-  oSub: Subscription;
 
   products: Product[] = [];
-  count = 0;
+  count: any;
 
   query: any = {
     skip: 0,
     limit: 2,
   };
 
+  // filter: any = {};
+
   arrayOfPages: any = [];
-  loading = true;
 
   constructor(
     private productService: ProductService,
@@ -34,31 +34,18 @@ export class ProductGridComponent implements OnInit, OnDestroy {
   ) { }
 
   ngOnInit() {
+    this.getAllProduct(this.query);
     this.getCategoryId();
-    const div = this.renderer.createElement('div');
-    this.renderer.addClass(div, 'test-div');
-    const newDiv = this.renderer.createElement('div');
-    this.renderer.appendChild(div, newDiv);
-    this.renderer.appendChild(document.body, div);
-    this.renderer.listen(div, 'click', (event) => {
-      console.log(event);
-    });
-  }
-
-  ngOnDestroy() {
-    this.oSub.unsubscribe();
+    this.getCountOfProduct();
   }
 
 
-  getAllProduct() {
-    this.oSub = this.productService.getAllProduct(this.query).subscribe((res) => {
+  getAllProduct(query) {
+    this.productService.getAllProduct(query).subscribe((res) => {
       // @ts-ignore
       this.products = res.products;
-      this.loading = false;
       // @ts-ignore
-      this.count = res.count;
-      console.log(this.count);
-
+      // this.count = res.count;
       this.filterService.subject.next(this.products[0]);
     });
   }
@@ -66,7 +53,16 @@ export class ProductGridComponent implements OnInit, OnDestroy {
   getCategoryId() {
     this.router.queryParams.subscribe((id) => {
       this.query.category = id.category;
-      this.getAllProduct();
+      this.getAllProduct(this.query);
+    });
+  }
+
+  getCountOfProduct() {
+    this.getCategoryId();
+    this.productService.getAllProduct(this.query).subscribe(res => {
+      // @ts-ignore
+      this.count = res.products.length;
+      this.getCountOfPages(this.count);
     });
   }
 
@@ -75,20 +71,22 @@ export class ProductGridComponent implements OnInit, OnDestroy {
     for (let i = 1; i <= countOfPages; i++) {
       this.arrayOfPages.push(i);
     }
-    console.log(this.arrayOfPages);
   }
 
   changePage(page) {
+    this.query.limit = 2;
     this.query.skip = this.query.limit * page;
-    this.getAllProduct();
+    this.getAllProduct(this.query);
   }
 
-
-
-  // loadMore() {
-  //   this.query.skip += 2;
-  //   this.loading = true;
-  //   this.getAllProduct();
-  // }
-
 }
+
+
+// const div = this.renderer.createElement('div');
+// this.renderer.addClass(div, 'test-div');
+// const newDiv = this.renderer.createElement('div');
+// this.renderer.appendChild(div, newDiv);
+// this.renderer.appendChild(document.body, div);
+// this.renderer.listen(div, 'click', (event) => {
+//   console.log(event);
+// });
