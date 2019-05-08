@@ -41,7 +41,6 @@ export class ProductGridComponent implements OnInit {
       // @ts-ignore
       const {products, count} = res;
       this.products = products;
-      this.count = count;
       this.filterService.subject.next(this.products[0]);
     });
   }
@@ -49,16 +48,32 @@ export class ProductGridComponent implements OnInit {
   getCategoryId() {
     this.router.queryParams.subscribe((id) => {
       this.query.q = id;
+      this.getCountOfProduct();
       this.getAllProduct(this.query);
     });
   }
 
-  // getCountOfPages(count) {
-  //   const countOfPages = count / this.limit;
-  //   for (let i = 1; i <= countOfPages; i++) {
-  //     this.arrayOfPages.push(i);
-  //   }
-  // }
+  getCountOfProduct() {
+    this.productService.getAllProduct(this.query).subscribe(res => {
+      this.count = 0;
+      // @ts-ignore
+      this.count = res.count;
+      this.getCountOfPages(this.count);
+    });
+  }
+
+  getCountOfPages(quantityProducts) {
+    const countOfPages = quantityProducts / this.query.limit;
+    for (let i = 1; i <= countOfPages; i++) {
+      this.arrayOfPages.push(i);
+    }
+  }
+
+  changePage(page) {
+    this.query.skip = this.query.limit * page;
+    this.getAllProduct(this.query);
+  }
+
 
 
 }

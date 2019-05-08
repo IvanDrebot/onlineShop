@@ -32,7 +32,6 @@ export class ProductService {
 
   getAllProduct(query = {}): Observable<Product[]> {
     const url = addParams(this.productUrl, query);
-    console.log(url);
     return this.http.get<Product[]>(url);
   }
 
