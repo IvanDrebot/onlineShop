@@ -1,12 +1,11 @@
 export function addParams(url = '?', query = {}) {
   url += '?';
   for (const key in query) {
+    const element = query[key];
+    console.log(element);
     if (query[key]) {
-      if (key === 'category' || key === 'producer') {
-        const arrOfCat = query[key].split(`"`);
-        url += `${key}=${arrOfCat[0]}&`;
-      } else {
-        url += `${key}=${(query[key])}&`;
+      for (const q in element) {
+        url += `${q}=${(element[q])}&`;
       }
     }
   }

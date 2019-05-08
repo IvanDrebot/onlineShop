@@ -18,11 +18,9 @@ export class ProductGridComponent implements OnInit {
   count: any;
 
   query: any = {
-    skip: 0,
     limit: 2,
+    skip: 0
   };
-
-  // filter: any = {};
 
   arrayOfPages: any = [];
 
@@ -34,52 +32,38 @@ export class ProductGridComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.getAllProduct(this.query);
     this.getCategoryId();
-    this.getCountOfProduct();
   }
 
 
   getAllProduct(query) {
     this.productService.getAllProduct(query).subscribe((res) => {
       // @ts-ignore
-      this.products = res.products;
-      // @ts-ignore
-      // this.count = res.count;
+      const {products, count} = res;
+      this.products = products;
+      this.count = count;
       this.filterService.subject.next(this.products[0]);
     });
   }
 
   getCategoryId() {
     this.router.queryParams.subscribe((id) => {
-      this.query.category = id.category;
+      this.query.q = id;
       this.getAllProduct(this.query);
     });
   }
 
-  getCountOfProduct() {
-    this.getCategoryId();
-    this.productService.getAllProduct(this.query).subscribe(res => {
-      // @ts-ignore
-      this.count = res.products.length;
-      this.getCountOfPages(this.count);
-    });
-  }
+  // getCountOfPages(count) {
+  //   const countOfPages = count / this.limit;
+  //   for (let i = 1; i <= countOfPages; i++) {
+  //     this.arrayOfPages.push(i);
+  //   }
+  // }
 
-  getCountOfPages(quntityProduct) {
-    const countOfPages = quntityProduct / this.query.limit;
-    for (let i = 1; i <= countOfPages; i++) {
-      this.arrayOfPages.push(i);
-    }
-  }
-
-  changePage(page) {
-    this.query.limit = 2;
-    this.query.skip = this.query.limit * page;
-    this.getAllProduct(this.query);
-  }
 
 }
+
+
 
 
 // const div = this.renderer.createElement('div');
