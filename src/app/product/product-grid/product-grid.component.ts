@@ -15,14 +15,14 @@ export class ProductGridComponent implements OnInit {
   @ViewChild('filterCom') filterCom: FilterComponent;
 
   products: Product[] = [];
-  count: any;
 
   query: any = {
     limit: 2,
     skip: 0
   };
 
-  arrayOfPages: any = [];
+  indexPage: any = null;
+
 
   constructor(
     private productService: ProductService,
@@ -47,35 +47,22 @@ export class ProductGridComponent implements OnInit {
 
   getCategoryId() {
     this.router.queryParams.subscribe((id) => {
-      this.query.q = id;
-      this.getCountOfProduct();
-      this.getAllProduct(this.query);
+      if (id) {
+        this.query.q = id;
+        this.getAllProduct(this.query);
+      }
     });
   }
 
-  getCountOfProduct() {
-    this.productService.getAllProduct(this.query).subscribe(res => {
-      this.count = 0;
-      // @ts-ignore
-      this.count = res.count;
-      this.getCountOfPages(this.count);
-    });
-  }
-
-  getCountOfPages(quantityProducts) {
-    const countOfPages = quantityProducts / this.query.limit;
-    for (let i = 1; i <= countOfPages; i++) {
-      this.arrayOfPages.push(i);
-    }
-  }
-
-  changePage(page) {
-    this.query.skip = this.query.limit * page;
+  nextPage(number) {
+    this.query.skip += number;
     this.getAllProduct(this.query);
   }
 
-
-
+  previosPage(number) {
+    this.query.skip += number;
+    this.getAllProduct(this.query);
+  }
 }
 
 

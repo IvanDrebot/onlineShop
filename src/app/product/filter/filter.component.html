@@ -102,10 +102,20 @@
 <!--    </form>-->
 <!--  </h6>-->
 
-  <p>diagonalScreen:<br>
-    <input type="radio"> 50 px<br>
-    <input type="radio"> 60 px<br>
-    <input type="radio"> 70 px<br>
+  <p>
+    diagonalScreen:<br>
+    <input type="radio"
+           [routerLink]="['/products']"
+           [queryParams]="{diagonalScreen: 50}"
+           queryParamsHandling = 'merge'> 50 px<br>
+    <input type="radio"
+           [routerLink]="['/products']"
+           [queryParams]="{diagonalScreen: 60}"
+           queryParamsHandling = 'merge'> 60 px<br>
+    <input type="radio"
+           [routerLink]="['/products']"
+           [queryParams]="{diagonalScreen: 70}"
+           queryParamsHandling = 'merge'> 70 px<br>
   </p>
 
   <p>countOfSimCard:<br>

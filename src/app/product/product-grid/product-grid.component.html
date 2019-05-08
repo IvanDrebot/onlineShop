@@ -12,8 +12,9 @@
   </div>
 </div>
 
-<!--<button (click)="loadMore()" *ngIf="!loading">Load more</button>-->
-<div class="pagination">
-  <a class="active" *ngFor="let page of arrayOfPages"
-     (click)="changePage(page)">{{page}}</a>
-</div>
+<button (click)="previosPage(-2)">Previous page</button>
+<button (click)="nextPage(2)">Next page</button>
+<!--<div class="pagination">-->
+<!--  <a class="active" *ngFor="let page of arrayOfPages"-->
+<!--     (click)="changePage(page)">{{page}}</a>-->
+<!--</div>-->
