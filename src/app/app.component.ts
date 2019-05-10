@@ -5,6 +5,7 @@ import {FilterServiceService} from '../services/filter-service.service';
 import {Category} from '../models/Category';
 import {Producer} from '../models/Producer';
 import {ActivatedRoute} from '@angular/router';
+import {typeIsOrHasBaseType} from 'tslint/lib/language/typeUtils';
 
 @Component({
   selector: 'app-root',
@@ -15,7 +16,7 @@ export class AppComponent implements OnInit {
 
   category: Category[] = [];
   producer: Producer[] = [];
-
+  wishList: any = [];
   isOpen = true;
   selectedProduct: any;
 
@@ -30,6 +31,7 @@ export class AppComponent implements OnInit {
     this.productService.getAllCategory().subscribe((category) => {
       this.category = category;
     });
+    this.wishList = JSON.parse(localStorage.getItem('wishList'));
   }
 
   closeMenu() {

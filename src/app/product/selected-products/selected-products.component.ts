@@ -11,7 +11,7 @@ import {Product} from '../../../models/Product';
 export class SelectedProductsComponent implements OnInit {
 
   wishList: Product[] = [];
-  emptyList: true;
+  emptyList = true;
 
   constructor(
     private productService: ProductService,
@@ -19,8 +19,11 @@ export class SelectedProductsComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.wishList = this.filterService.arrOfProducts;
-    console.log(this.wishList);
+    this.wishList = JSON.parse(localStorage.getItem('wishList'));
   }
 
+  deleteItem(singleProduct: Product) {
+    localStorage.removeItem('wishList');
+    console.log(singleProduct);
+  }
 }

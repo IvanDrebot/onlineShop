@@ -15,6 +15,7 @@ export class FilterServiceService {
   constructor() {
     this.wishList.subscribe(res => {
       this.arrOfProducts.push(res);
+      localStorage.setItem('wishList', JSON.stringify(this.arrOfProducts));
     });
   }
 }
