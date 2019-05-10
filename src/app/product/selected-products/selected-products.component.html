@@ -1,22 +1,11 @@
 <div *ngIf="wishList.length > 0">
 <div *ngFor="let singleProduct of wishList">
-  <p>Category: {{singleProduct.category.name}}</p>
-  <p>Producer: {{singleProduct.producer.name}}</p>
-  <p>Price: {{singleProduct.price}}</p>
-  <p>Brand: {{singleProduct.brand}}</p>
-  <p>DiagonalScreen: {{singleProduct.diagonalScreen}}</p>
-  <p>ResolutionScreen: {{singleProduct.resolutionScreen}}</p>
-  <p>DisplayType: {{singleProduct.displayType}}</p>
-  <p>InternalMemory: {{singleProduct.internalMemory}}</p>
-  <p>RAM: {{singleProduct.RAM}}</p>
-  <p>Camera: {{singleProduct.camera}}</p>
-  <p>FrontCamera: {{singleProduct.frontCamera}}</p>
-  <p>Battery: {{singleProduct.battery}}</p>
-  <p>CountOfSimCard: {{singleProduct.countOfSimCard}}</p>
-  <p>CountOfCores: {{singleProduct.countOfCores}}</p>
-  <p>Color: {{singleProduct.color}}</p>
-  <p>OperatingSystem: {{singleProduct.operatingSystem}}</p>
-  <p>GraduationYear: {{singleProduct.graduationYear}}</p>
+  Category: {{singleProduct.category.name}}<br>
+  Producer: {{singleProduct.producer.name}}<br>
+  Price: {{singleProduct.price}}<br>
+  Brand: {{singleProduct.brand}}<br>
+  <br><hr><br>
 </div>
 </div>
-<p>teesttttt</p>
+
+<div *ngIf="emptyList">Корзина пустує</div>

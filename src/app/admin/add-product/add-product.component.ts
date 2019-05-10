@@ -15,6 +15,8 @@ export class AddProductComponent implements OnInit {
   product: any;
   allCategory: Category[] = [];
   allProducer: Producer[] = [];
+  imagePreview: any;
+  image: File;
 
   constructor(
     private adminService: AdminService,
@@ -33,9 +35,20 @@ export class AddProductComponent implements OnInit {
 
   createProduct(form: NgForm) {
     const product = form.value;
-    this.adminService.createProduct(product).subscribe((res) => {
+    const {imgUrl, ...others} = product;
+    this.adminService.createProduct(others, this.image).subscribe((res) => {
       this.product = res;
     });
   }
 
+  fileUpload($event: any) {
+   // @ts-ignore
+    const file = event.target.files[0];
+   this.image = file;
+   const reader = new FileReader();
+   reader.onload = () => {
+     this.imagePreview = reader.result;
+   };
+   reader.readAsDataURL(file);
+  }
 }

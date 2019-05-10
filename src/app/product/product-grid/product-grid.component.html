@@ -12,8 +12,13 @@
   </div>
 </div>
 
-<button (click)="previosPage(-2)">Previous page</button>
-<button (click)="nextPage(2)">Next page</button>
+
+<!--<a class="previous round" >&#8249;</a>-->
+<!--<a class="next round" >&#8250;</a>-->
+
+
+<a class="previous" (click)="previosPage(-2)">&laquo; Previous</a>
+<a class="next" (click)="nextPage(2)">Next &raquo;</a>
 <!--<div class="pagination">-->
 <!--  <a class="active" *ngFor="let page of arrayOfPages"-->
 <!--     (click)="changePage(page)">{{page}}</a>-->

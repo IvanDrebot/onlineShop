@@ -11,6 +11,7 @@ import {Product} from '../../../models/Product';
 export class SelectedProductsComponent implements OnInit {
 
   wishList: Product[] = [];
+  emptyList: true;
 
   constructor(
     private productService: ProductService,
@@ -19,10 +20,7 @@ export class SelectedProductsComponent implements OnInit {
 
   ngOnInit() {
     this.wishList = this.filterService.arrOfProducts;
-    // this.filterService.wishList.subscribe(res => {
-    //   this.wishList.push(res);
-    //   console.log(this.wishList);
-    // });
+    console.log(this.wishList);
   }
 
 }

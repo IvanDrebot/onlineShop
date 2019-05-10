@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {HttpClient} from '@angular/common/http';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {ActivatedRoute} from '@angular/router';
 import {Product} from '../models/Product';
 import {Category} from '../models/Category';
@@ -9,6 +9,7 @@ import {Observable} from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
+
 export class AdminService {
 
   categoryUrl = 'http://localhost:3000/api/category';
@@ -20,8 +21,22 @@ export class AdminService {
     private router: ActivatedRoute) {
   }
 
-  createProduct(product: Product) {
-    return this.http.post(this.adminUrl, product);
+  createProduct(product, image: File) {
+    const fd = new FormData();
+    if (image) {
+      fd.append('image', image, 'imgUrl');
+    }
+    fd.append('category', product.category);
+    fd.append('price', product.price);
+    fd.append('brand', product.brand);
+    fd.append('producer', product.producer);
+
+    const headers = new HttpHeaders();
+    headers.append('Content-Type', 'multipart/form-data');
+    headers.append('Accept', 'application/json');
+    console.log(product);
+    console.log(image);
+    return this.http.post(this.adminUrl,  product);
   }
 
   createCategory(category: Category) {
@@ -51,4 +66,5 @@ export class AdminService {
   getCountOfProduct() {
     return this.http.get(this.adminUrl);
   }
+
 }
