@@ -36,7 +36,7 @@ export class AddProductComponent implements OnInit {
   createProduct(form: NgForm) {
     const product = form.value;
     const {imgUrl, ...others} = product;
-    this.adminService.createProduct(others, this.image).subscribe((res) => {
+    this.adminService.createProduct(product).subscribe((res) => {
       this.product = res;
     });
   }

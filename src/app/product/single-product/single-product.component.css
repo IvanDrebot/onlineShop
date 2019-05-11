@@ -1,3 +1,40 @@
-div{
-  margin-top: 20px;
+.main{
+  max-width: border-box;
+  box-sizing: border-box;
+  padding-top: 10px;
+}
+
+h2{
+  margin-left: 15px;
+}
+
+.navbar{
+  width: 55% !important;
+  border-radius: 10px;
+}
+
+.image{
+  width: 500px;
+}
+
+.image img{
+  float: left;
+  width: 250px;
+  height: 250px;
+  margin-left: 35%;
+}
+
+.short-description{
+  float: right;
+  width: border-box;
+  height: border-box;
+  margin-right: 35%;
+}
+
+.full-description{
+  clear: bottom;
+  width: border-box;
+  height: border-box;
+  margin-top: 25%;
+  padding-left: 20px;
 }

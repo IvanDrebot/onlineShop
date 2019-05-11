@@ -33,15 +33,15 @@
   </p>
 
   <p>Завантажити фотографію:
-    <input type="file" name="imgUrl"
+    <input type="text" name="imgUrl"
            ngModel value=""
            (change)="fileUpload($event)"
            style="margin-left: 13px">
   </p>
 
-    <div class="col s12 14 center">
-      <img class="responsive-img h-200" [src]="imagePreview" *ngIf="imagePreview">
-    </div>
+<!--    <div class="col s12 14 center">-->
+<!--      <img class="responsive-img h-200" [src]="imagePreview" *ngIf="imagePreview">-->
+<!--    </div>-->
 
     <p>Діагональ екрану:
       <input type="text"

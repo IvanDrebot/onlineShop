@@ -17,7 +17,7 @@ export class ProductGridComponent implements OnInit {
   products: Product[] = [];
 
   query: any = {
-    limit: 2,
+    limit: 5,
     skip: 0
   };
 
@@ -63,6 +63,7 @@ export class ProductGridComponent implements OnInit {
     this.query.skip += number;
     this.getAllProduct(this.query);
   }
+
 }
 
 

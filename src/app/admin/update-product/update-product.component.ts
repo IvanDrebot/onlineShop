@@ -14,15 +14,12 @@ import {FilterServiceService} from '../../../services/filter-service.service';
 export class UpdateProductComponent implements OnInit {
 
   product: Product[] = [];
-  arrayOfPages: any = [];
-  query: any = {};
-  limit = 5;
-  skip: any;
+  query: any = {
+    limit: 5,
+    skip: 0};
   deleteInfo;
-  countOfProducts: any;
   category: any = [];
   producer: any = [];
-
 
   constructor(
     private productService: ProductService,
@@ -34,9 +31,6 @@ export class UpdateProductComponent implements OnInit {
   ngOnInit() {
     this.getCategory();
     this.getProducer();
-    this.getCountOfProduct();
-    this.query.skip = 0;
-    this.query.limit = this.limit;
     this.getAllProduct(this.query);
   }
 
@@ -54,10 +48,9 @@ export class UpdateProductComponent implements OnInit {
   }
 
   getAllProduct(query) {
-    this.productService.getAllProduct(this.query).subscribe((res) => {
+    this.productService.getAllProduct(query).subscribe((res) => {
       // @ts-ignore
       this.product = res.products;
-      console.log(this.product);
     });
   }
 
@@ -68,25 +61,16 @@ export class UpdateProductComponent implements OnInit {
     });
   }
 
-  getCountOfProduct() {
-    this.productService.getAllProduct(this.query).subscribe((products) => {
-      this.countOfProducts = products.length;
-      this.getCountOfPages(products.length);
-    });
-  }
-
-  getCountOfPages(quntityProduct) {
-    const countOfPages = quntityProduct / this.limit;
-    for (let i = 0; i <= countOfPages; i++) {
-      this.arrayOfPages.push(i);
-    }
-  }
-
-  changePage(page) {
-    this.query.limit = this.limit;
-    this.query.skip = this.limit * page;
+  nextPage(number) {
+    this.query.skip += number;
     this.getAllProduct(this.query);
   }
+
+  previosPage(number) {
+    this.query.skip += number;
+    this.getAllProduct(this.query);
+  }
+
 
   getId(id: any) {
     this.filterService.updateProduct.next(id);
