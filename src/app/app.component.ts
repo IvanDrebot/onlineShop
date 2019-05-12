@@ -16,9 +16,9 @@ export class AppComponent implements OnInit {
 
   category: Category[] = [];
   producer: Producer[] = [];
-  // wishList: any = [];
   isOpen = true;
   selectedProduct: any;
+  countOfProduct: any = null;
 
   constructor(
     private productService: ProductService,
@@ -28,10 +28,18 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.getWishList();
     this.productService.getAllCategory().subscribe((category) => {
       this.category = category;
     });
-    // this.wishList = JSON.parse(localStorage.getItem('wishList'));
+  }
+
+  getWishList() {
+    this.countOfProduct = JSON.parse(localStorage.getItem('wishList')).length;
+    this.filterService.wishList.subscribe(res => {
+      this.countOfProduct += res;
+      console.log(this.countOfProduct);
+    });
   }
 
   closeMenu() {

@@ -33,3 +33,43 @@ img{
   height: 100px;
   padding-top: 20px;
 }
+
+.count{
+  position: relative;
+  left: 50%;
+  bottom: 305px;
+  width: 20%;
+  height: 100px;
+  padding-top: 30px;
+  padding-left: 40px;
+}
+
+
+.count input {
+  border-radius: 10px;
+  width: 40%;
+}
+
+.price{
+  position: relative;
+  left: 75%;
+  width: 15%;
+  bottom: 390px;
+  height: 100px;
+}
+
+.count button{
+  font-size: 15px;
+  border-radius: 5px;
+  margin-right: 5px;
+  margin-left: 5px;
+}
+
+.total{
+  position: relative;
+  top: 10px;
+  left: 70%;
+  width: 30%;
+  font-size: 15px;
+}
+

@@ -12,7 +12,26 @@
       <button (click)="deleteItem(singleProduct)">Delete</button>
     </div>
 
+    <div class="count">
+      <button (click)="minusNumber(singleProduct.price)">-</button>
+        <input id="price" type="text" value="1">
+      <button (click)="addNumber(singleProduct.price)">+</button>
+    </div>
+
+    <div class="price">
+      <p>Price: </p>
+      <p id="res">{{singleProduct.price}}</p>
+    </div>
+
   </div>
+
+
+  <div class="total">
+    <p>Total price: </p>
+    <span id="total"></span><br>
+    <button type="button" class="btn btn-success">Оформити замовлення</button>
+  </div>
+
 </div>
 
 <!--<div *ngIf="emptyList">Корзина пустує</div>-->

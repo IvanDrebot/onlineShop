@@ -8,7 +8,7 @@ import {Subject} from 'rxjs';
 export class FilterServiceService {
 
   // arrOfProducts: any[] = [];
-  // wishList = new Subject<any>();
+  wishList = new Subject<any>();
   subject = new Subject<any>();
   updateProduct = new Subject<any>();
 

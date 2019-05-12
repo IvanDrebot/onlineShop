@@ -14,6 +14,7 @@ export class SingleProductComponent implements OnInit {
   id = this.router.snapshot.params.id;
   singleProduct;
   wishList: any = [];
+  count: any = [];
 
   constructor(
     private productService: ProductService,
@@ -36,5 +37,7 @@ export class SingleProductComponent implements OnInit {
     this.wishList = JSON.parse(localStorage.getItem('wishList'));
     this.wishList.push(product);
     localStorage.setItem('wishList', JSON.stringify(this.wishList));
+    this.count.push(product);
+    this.filterService.wishList.next(this.count.length);
   }
 }
