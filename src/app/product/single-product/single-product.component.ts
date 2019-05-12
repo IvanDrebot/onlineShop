@@ -33,6 +33,7 @@ export class SingleProductComponent implements OnInit {
   }
 
   AddProductToCart(product: Product) {
+    this.wishList = JSON.parse(localStorage.getItem('wishList'));
     this.wishList.push(product);
     localStorage.setItem('wishList', JSON.stringify(this.wishList));
   }

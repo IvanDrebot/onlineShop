@@ -1,12 +1,18 @@
 <div *ngIf="wishList.length > 0">
-<div *ngFor="let singleProduct of wishList">
-  Category: {{singleProduct.category.name}}<br>
-  Producer: {{singleProduct.producer.name}}<br>
-  Price: {{singleProduct.price}}<br>
-  Brand: {{singleProduct.brand}}<br>
-  <button (click)="deleteItem(singleProduct)">Delete</button>
-  <br><hr><br>
-</div>
+  <div class="listItem" *ngFor="let singleProduct of wishList">
+    <div class="img">
+      <img src="{{singleProduct.imgUrl}}">
+    </div>
+    <div class="desc">
+      Price: {{singleProduct.price}}<br>
+      Brand: {{singleProduct.brand}}<br>
+    </div>
+
+    <div class="submit">
+      <button (click)="deleteItem(singleProduct)">Delete</button>
+    </div>
+
+  </div>
 </div>
 
-<div *ngIf="emptyList">Корзина пустує</div>
+<!--<div *ngIf="emptyList">Корзина пустує</div>-->
