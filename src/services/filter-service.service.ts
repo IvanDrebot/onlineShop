@@ -7,15 +7,15 @@ import {Subject} from 'rxjs';
 
 export class FilterServiceService {
 
-  arrOfProducts: any[] = [];
+  // arrOfProducts: any[] = [];
+  // wishList = new Subject<any>();
   subject = new Subject<any>();
-  wishList = new Subject<any>();
   updateProduct = new Subject<any>();
 
   constructor() {
-    this.wishList.subscribe(res => {
-      this.arrOfProducts.push(res);
-      localStorage.setItem('wishList', JSON.stringify(this.arrOfProducts));
-    });
+    // this.wishList.subscribe(res => {
+    //   this.arrOfProducts.push(res);
+    //   localStorage.setItem('wishList', JSON.stringify(this.arrOfProducts));
+    // });
   }
 }

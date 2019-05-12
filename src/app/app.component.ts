@@ -16,7 +16,7 @@ export class AppComponent implements OnInit {
 
   category: Category[] = [];
   producer: Producer[] = [];
-  wishList: any = [];
+  // wishList: any = [];
   isOpen = true;
   selectedProduct: any;
 
@@ -31,7 +31,7 @@ export class AppComponent implements OnInit {
     this.productService.getAllCategory().subscribe((category) => {
       this.category = category;
     });
-    this.wishList = JSON.parse(localStorage.getItem('wishList'));
+    // this.wishList = JSON.parse(localStorage.getItem('wishList'));
   }
 
   closeMenu() {

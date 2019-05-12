@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {ProductService} from '../../../services/product.service';
 import {FilterServiceService} from '../../../services/filter-service.service';
 import {Product} from '../../../models/Product';
@@ -16,14 +16,17 @@ export class SelectedProductsComponent implements OnInit {
   constructor(
     private productService: ProductService,
     private filterService: FilterServiceService,
-  ) { }
+  ) {
+  }
 
   ngOnInit() {
     this.wishList = JSON.parse(localStorage.getItem('wishList'));
   }
 
-  deleteItem(singleProduct: Product) {
-    localStorage.removeItem('wishList');
-    console.log(singleProduct);
+  deleteItem(singleProduct) {
+    this.wishList = JSON.parse(localStorage.getItem('wishList'));
+    const index = this.wishList.indexOf(singleProduct);
+    this.wishList.splice(index, 1);
+    localStorage.setItem('wishList', JSON.stringify(this.wishList));
   }
 }
