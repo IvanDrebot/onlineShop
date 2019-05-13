@@ -33,23 +33,23 @@
   </p>
 
   <p>Завантажити фотографію:
-    <input type="text" name="imgUrl"
+    <input type="file" name="image"
            ngModel value=""
            (change)="fileUpload($event)"
            style="margin-left: 13px">
   </p>
 
-<!--    <div class="col s12 14 center">-->
-<!--      <img class="responsive-img h-200" [src]="imagePreview" *ngIf="imagePreview">-->
-<!--    </div>-->
+    <div class="col s12 14 center">
+      <img class="responsive-img h-200" [src]="imagePreview" *ngIf="imagePreview">
+    </div>
 
-    <p>Діагональ екрану:
-      <input type="text"
-             name="diagonalScreen"
-             ngModel
-             value="">
-    </p>
-
+<!--    <p>Діагональ екрану:-->
+<!--      <input type="text"-->
+<!--             name="diagonalScreen"-->
+<!--             ngModel-->
+<!--             value="">-->
+<!--    </p>-->
+<!---->
 <!--    <p>Додати аксесуари:-->
 <!--      <input type="text"-->
 <!--             name="accessories"-->
@@ -57,82 +57,83 @@
 <!--             value="">-->
 <!--    </p>-->
 
-    <p>Роздільна здатність екрану:
-      <input type="text"
-             name="resolutionScreen"
-             ngModel
-             value="">
-    </p>
+<!--    <p>Роздільна здатність екрану:-->
+<!--      <input type="text"-->
+<!--             name="resolutionScreen"-->
+<!--             ngModel-->
+<!--             value="">-->
+<!--    </p>-->
+<!---->
+<!--    <p>Тип дисплею:-->
+<!--      <input type="text"-->
+<!--             name="displayType"-->
+<!--             ngModel-->
+<!--             value="">-->
+<!--    </p>-->
+<!---->
+<!--    <p>Внутрішня пам"ять:-->
+<!--      <input type="text"-->
+<!--             name="internalMemory"-->
+<!--             ngModel-->
+<!--             value="">-->
+<!--    </p>-->
+<!---->
+<!--    <p>Оперативна пам"ять:-->
+<!--      <input type="text"-->
+<!--             name="RAM"-->
+<!--             ngModel-->
+<!--             value="">-->
+<!--    </p>-->
+<!---->
+<!--    <p>Камера:-->
+<!--      <input type="text"-->
+<!--             name="camera"-->
+<!--             ngModel-->
+<!--             value="">-->
+<!--    </p>-->
+<!---->
+<!--    <p>Фронтальна камера:-->
+<!--      <input type="text"-->
+<!--             name="frontCamera"-->
+<!--             ngModel-->
+<!--             value="">-->
+<!--    </p>-->
+<!---->
+<!--    <p>Ємність батареї:-->
+<!--      <input type="text"-->
+<!--             name="battery"-->
+<!--             ngModel-->
+<!--             value="">-->
+<!--    </p>-->
+<!---->
+<!--    <p>Кількість сім-карт:-->
+<!--      <input type="text"-->
+<!--             name="countOfSimCard"-->
+<!--             ngModel-->
+<!--             value="">-->
+<!--    </p>-->
+<!---->
+<!--    <p>Кількість ядер:-->
+<!--      <input type="text"-->
+<!--             name="countOfCores"-->
+<!--             ngModel-->
+<!--             value="">-->
+<!--    </p>-->
+<!---->
+<!--    <p>Колір:-->
+<!--      <input type="text"-->
+<!--             name="color"-->
+<!--             ngModel-->
+<!--             value="">-->
+<!--    </p>-->
+<!---->
+<!--    <p>Рік випуску:-->
+<!--      <input type="text"-->
+<!--             name="graduationYear"-->
+<!--             ngModel-->
+<!--             value="">-->
+<!--    </p>-->
 
-    <p>Тип дисплею:
-      <input type="text"
-             name="displayType"
-             ngModel
-             value="">
-    </p>
-
-    <p>Внутрішня пам"ять:
-      <input type="text"
-             name="internalMemory"
-             ngModel
-             value="">
-    </p>
-
-    <p>Оперативна пам"ять:
-      <input type="text"
-             name="RAM"
-             ngModel
-             value="">
-    </p>
-
-    <p>Камера:
-      <input type="text"
-             name="camera"
-             ngModel
-             value="">
-    </p>
-
-    <p>Фронтальна камера:
-      <input type="text"
-             name="frontCamera"
-             ngModel
-             value="">
-    </p>
-
-    <p>Ємність батареї:
-      <input type="text"
-             name="battery"
-             ngModel
-             value="">
-    </p>
-
-    <p>Кількість сім-карт:
-      <input type="text"
-             name="countOfSimCard"
-             ngModel
-             value="">
-    </p>
-
-    <p>Кількість ядер:
-      <input type="text"
-             name="countOfCores"
-             ngModel
-             value="">
-    </p>
-
-    <p>Колір:
-      <input type="text"
-             name="color"
-             ngModel
-             value="">
-    </p>
-
-    <p>Рік випуску:
-      <input type="text"
-             name="graduationYear"
-             ngModel
-             value="">
-    </p>
     <input type="submit" value="Add product">
   </form>
   <p *ngIf="product">{{product | json}}</p>

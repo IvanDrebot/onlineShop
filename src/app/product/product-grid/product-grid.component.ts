@@ -40,6 +40,7 @@ export class ProductGridComponent implements OnInit {
     this.productService.getAllProduct(query).subscribe((res) => {
       // @ts-ignore
       const {products, count} = res;
+      console.log(res);
       this.products = products;
       this.filterService.subject.next(this.products[0]);
     });

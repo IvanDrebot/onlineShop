@@ -21,22 +21,20 @@ export class AdminService {
     private router: ActivatedRoute) {
   }
 
-  createProduct(product) {
-    // const fd = new FormData();
-    // if (image) {
-    //   fd.append('image', image, 'imgUrl');
-    // }
-    // fd.append('category', product.category);
-    // fd.append('price', product.price);
-    // fd.append('brand', product.brand);
-    // fd.append('producer', product.producer);
-    //
-    // const headers = new HttpHeaders();
-    // headers.append('Content-Type', 'multipart/form-data');
-    // headers.append('Accept', 'application/json');
-    // console.log(product);
-    // console.log(image);
-    return this.http.post(this.adminUrl,  product);
+  createProduct(product, image: File) {
+    const fd = new FormData();
+    if (image) {
+      fd.append('image', image, image.name);
+    }
+    fd.append('category', product.category);
+    fd.append('price', product.price);
+    fd.append('brand', product.brand);
+    fd.append('producer', product.producer);
+
+    const headers = new HttpHeaders();
+    headers.append('Content-Type', 'multipart/form-data');
+    headers.append('Accept', 'application/json');
+    return this.http.post(this.adminUrl,  fd, {headers: headers});
   }
 
   createCategory(category: Category) {
