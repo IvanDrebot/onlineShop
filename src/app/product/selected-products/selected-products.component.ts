@@ -11,9 +11,9 @@ import {Product} from '../../../models/Product';
 export class SelectedProductsComponent implements OnInit {
 
   wishList: Product[] = [];
+  corb: any = '';
   emptyList = true;
   count: any = null;
-  input: any = '';
   price: any = null;
 
   constructor(
@@ -31,31 +31,37 @@ export class SelectedProductsComponent implements OnInit {
     const index = this.wishList.findIndex(x => x.id === singleProduct.id);
     this.wishList.splice(index, 1);
     localStorage.setItem('wishList', JSON.stringify(this.wishList));
+    this.corb = document.getElementById('count');
+    this.corb.innerText -= 1;
   }
 
-  addNumber(price) {
-    const res = document.getElementById('res');
-    this.input = document.getElementById('price');
+  addNumber(product) {
+    const index = this.wishList.findIndex(x => x === product);
+    const input = document.getElementsByClassName('price');
     this.count++;
-    this.input.value = this.count;
-    this.price = price * this.count;
-    res.innerText = this.price;
-    this.calcTotalPrice();
+    // @ts-ignore
+    input.item(index).value = this.count;
+    const res = document.getElementsByClassName('res');
+    this.price = product.price * this.count;
+    res.item(index).innerHTML = this.price;
+    this.calcTotalPrice(this.price);
   }
 
-  minusNumber(price) {
-    const res = document.getElementById('res');
-    this.input = document.getElementById('price');
+  minusNumber(product) {
+    const index = this.wishList.findIndex(x => x === product);
+    const res = document.getElementsByClassName('res');
+    const input = document.getElementsByClassName('price');
     this.count--;
-    this.price -= price;
-    this.input.value = this.count;
-    res.innerText = this.price;
-    this.calcTotalPrice();
+    this.price -= product.price;
+    // @ts-ignore
+    input.item(index).value = this.count;
+    res.item(index).innerHTML = this.price;
+    this.calcTotalPrice(this.price);
   }
 
-  calcTotalPrice() {
+  calcTotalPrice(price) {
     const total = document.getElementById('total');
-    total.innerText = this.price;
+    // total.innerText =
   }
 
 }
