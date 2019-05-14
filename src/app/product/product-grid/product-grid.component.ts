@@ -4,6 +4,7 @@ import {Product} from '../../../models/Product';
 import {ActivatedRoute} from '@angular/router';
 import {FilterComponent} from '../filter/filter.component';
 import {FilterServiceService} from '../../../services/filter-service.service';
+import {ConfigService} from '../../../services/config.service';
 
 @Component({
   selector: 'app-product-grid',
@@ -21,12 +22,15 @@ export class ProductGridComponent implements OnInit {
     skip: 0
   };
 
+  image: any;
+
   indexPage: any = null;
 
 
   constructor(
     private productService: ProductService,
     private filterService: FilterServiceService,
+    private configService: ConfigService,
     private router: ActivatedRoute,
     private renderer: Renderer2
   ) { }
@@ -39,11 +43,15 @@ export class ProductGridComponent implements OnInit {
   getAllProduct(query) {
     this.productService.getAllProduct(query).subscribe((res) => {
       // @ts-ignore
-      const {products, count} = res;
-      console.log(res);
+      const {products, image, count} = res;
       this.products = products;
+      console.log(res);
       this.filterService.subject.next(this.products[0]);
     });
+  }
+
+  showImage(file) {
+    window.open(`${this.configService.public}/${file.path}`);
   }
 
   getCategoryId() {
@@ -60,7 +68,7 @@ export class ProductGridComponent implements OnInit {
     this.getAllProduct(this.query);
   }
 
-  previosPage(number) {
+  previousPage(number) {
     this.query.skip += number;
     this.getAllProduct(this.query);
   }

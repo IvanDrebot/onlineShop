@@ -37,7 +37,7 @@ export class SelectedProductsComponent implements OnInit {
 
   addNumber(product) {
     const index = this.wishList.findIndex(x => x === product);
-    const input = document.getElementsByClassName('price');
+    const input = document.getElementsByClassName('input');
     this.count++;
     // @ts-ignore
     input.item(index).value = this.count;
@@ -50,7 +50,7 @@ export class SelectedProductsComponent implements OnInit {
   minusNumber(product) {
     const index = this.wishList.findIndex(x => x === product);
     const res = document.getElementsByClassName('res');
-    const input = document.getElementsByClassName('price');
+    const input = document.getElementsByClassName('input');
     this.count--;
     this.price -= product.price;
     // @ts-ignore
