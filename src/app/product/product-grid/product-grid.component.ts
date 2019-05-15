@@ -22,8 +22,6 @@ export class ProductGridComponent implements OnInit {
     skip: 0
   };
 
-  image: any;
-
   indexPage: any = null;
 
 
@@ -43,16 +41,12 @@ export class ProductGridComponent implements OnInit {
   getAllProduct(query) {
     this.productService.getAllProduct(query).subscribe((res) => {
       // @ts-ignore
-      const {products, image, count} = res;
+      const {products, count} = res;
       this.products = products;
-      console.log(res);
       this.filterService.subject.next(this.products[0]);
     });
   }
 
-  showImage(file) {
-    window.open(`${this.configService.public}/${file.path}`);
-  }
 
   getCategoryId() {
     this.router.queryParams.subscribe((id) => {

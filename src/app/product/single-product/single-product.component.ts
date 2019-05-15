@@ -3,6 +3,7 @@ import {ProductService} from '../../../services/product.service';
 import {ActivatedRoute} from '@angular/router';
 import {FilterServiceService} from '../../../services/filter-service.service';
 import {Product} from '../../../models/Product';
+import {ConfigService} from '../../../services/config.service';
 
 @Component({
   selector: 'app-single-product',
@@ -19,7 +20,8 @@ export class SingleProductComponent implements OnInit {
   constructor(
     private productService: ProductService,
     private filterService: FilterServiceService,
-    private router: ActivatedRoute
+    private router: ActivatedRoute,
+    private configService: ConfigService
   ) { }
 
   ngOnInit() {

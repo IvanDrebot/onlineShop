@@ -5,8 +5,8 @@ import {Category} from '../models/Category';
 import {Product} from '../models/Product';
 import {Producer} from '../models/Producer';
 import {ActivatedRoute} from '@angular/router';
-import {Filter} from '../models/Filter';
 import {addParams} from './urlParser';
+import {ConfigService} from './config.service';
 
 @Injectable({
   providedIn: 'root'
@@ -19,7 +19,8 @@ export class ProductService {
 
   constructor(
     private http: HttpClient,
-    private router: ActivatedRoute) {
+    private router: ActivatedRoute,
+    private config: ConfigService) {
   }
 
   getAllCategory(): Observable<Category[]> {

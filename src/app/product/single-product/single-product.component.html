@@ -2,7 +2,7 @@
 
   <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
     <a class="navbar-brand">
-      <img src="{{singleProduct.imgUrl}}" style="width:40px">
+      <img src="{{this.configService.host}}/{{singleProduct.image}}" style="width:40px">
     </a>
     <ul class="navbar-nav">
       <li class="nav-item">
@@ -28,7 +28,7 @@
 
 
   <div class="image">
-    <img src="{{singleProduct.imgUrl}}">
+    <img src="{{this.configService.host}}/{{singleProduct.image}}">
   </div>
 
   <div class="short-description">
@@ -38,21 +38,21 @@
             (click)="AddProductToCart(singleProduct)">Додати в корзину</button>
   </div>
 
-  <div class="full-description">
-    <b>Характеристики: </b><br>
-  DiagonalScreen: {{singleProduct.diagonalScreen}}
-  ResolutionScreen: {{singleProduct.resolutionScreen}}<br>
-  DisplayType: {{singleProduct.displayType}}
-  InternalMemory: {{singleProduct.internalMemory}}
-  RAM: {{singleProduct.RAM}}<br>
-  Camera: {{singleProduct.camera}}
-  FrontCamera: {{singleProduct.frontCamera}}<br>
-  Battery: {{singleProduct.battery}}
-  CountOfSimCard: {{singleProduct.countOfSimCard}}
-  CountOfCores: {{singleProduct.countOfCores}}<br>
-  Color: {{singleProduct.color}}
-  OperatingSystem: {{singleProduct.operatingSystem}}
-  GraduationYear: {{singleProduct.graduationYear}}
-</div>
+<!--  <div class="full-description">-->
+<!--    <b>Характеристики: </b><br>-->
+<!--  DiagonalScreen: {{singleProduct.diagonalScreen}}-->
+<!--  ResolutionScreen: {{singleProduct.resolutionScreen}}<br>-->
+<!--  DisplayType: {{singleProduct.displayType}}-->
+<!--  InternalMemory: {{singleProduct.internalMemory}}-->
+<!--  RAM: {{singleProduct.RAM}}<br>-->
+<!--  Camera: {{singleProduct.camera}}-->
+<!--  FrontCamera: {{singleProduct.frontCamera}}<br>-->
+<!--  Battery: {{singleProduct.battery}}-->
+<!--  CountOfSimCard: {{singleProduct.countOfSimCard}}-->
+<!--  CountOfCores: {{singleProduct.countOfCores}}<br>-->
+<!--  Color: {{singleProduct.color}}-->
+<!--  OperatingSystem: {{singleProduct.operatingSystem}}-->
+<!--  GraduationYear: {{singleProduct.graduationYear}}-->
+<!--</div>-->
 
 </div>
