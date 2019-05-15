@@ -12,19 +12,10 @@ export class Product {
     public producer: Producer[] = [],
     public comments: Comment[] = [],
     public accessories: Accessorie[] = [],
-    // public diagonalScreen: Number = null,
-    // public resolutionScreen: String = '',
-    // public displayType: String = '',
-    // public internalMemory: Number = null,
-    // public RAM: Number = null,
-    // public camera: Number = null,
-    // public frontCamera: Number = null,
-    // public battery: Number = null,
-    // public countOfSimCard: Number = null,
-    // public countOfCores: Number = null,
-    // public operatingSystem: String = '',
-    // public color: String = '',
-    // public graduationYear: Number = null
+    public description: Object = {},
+    public colors: [] = [],
+    public date: Date = new Date(),
+    public sale: Boolean = false
   ) {
   }
 }

@@ -1,12 +1,36 @@
 <div>
 <form #Category="ngForm" (ngSubmit)="addCategory(Category)">
-  <p>Додати нову категорію товару:
+  <p>Назва категорії:
     <input type="text"
            name="name"
-           placeholder="  category"
-           ngModel required>
-    <input type="submit" value="Add category">
+           placeholder="  name"
+           ngModel required
+           style="margin-left: 30px">
   </p>
+
+  <p>Опис товару:
+    <input type="text"
+           name="description"
+           placeholder="  description"
+           ngModel required
+           style="margin-left: 50px">
+
+  </p>
+
+  <p>Фотографія категорії:
+    <input type="file"
+           name="img"
+           (change)="fileUpload($event)"
+           placeholder="  image"
+           ngModel required>
+  </p>
+
+  <div class="col s12 14 center">
+    <img class="responsive-img h-200" [src]="imagePreview" *ngIf="imagePreview">
+  </div>
+
+    <input type="submit" value="Add category">
+
 </form>
 <p *ngIf="category">{{category | json}}</p>
 </div>

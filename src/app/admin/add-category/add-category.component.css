@@ -5,3 +5,7 @@ div {
   margin-top: 20px;
   float: left;
 }
+
+.h-200 {
+  height: 200px;
+}

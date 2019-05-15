@@ -37,8 +37,18 @@ export class AdminService {
     return this.http.post(this.adminUrl,  fd, {headers: headers});
   }
 
-  createCategory(category: Category) {
-    return this.http.post(this.categoryUrl, category);
+  createCategory(category, image: File) {
+    const fd = new FormData();
+    if (image) {
+      fd.append('image', image, image.name);
+    }
+    fd.append('name', category.name);
+    fd.append('description', category.description);
+
+    const headers = new HttpHeaders();
+    headers.append('Content-Type', 'multipart/form-data');
+    headers.append('Accept', 'application/json');
+    return this.http.post(this.categoryUrl,  fd, {headers: headers});
   }
 
   createProducer(producer: Producer) {

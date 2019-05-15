@@ -10,6 +10,8 @@ import {AdminService} from '../../../services/admin.service';
 export class AddCategoryComponent implements OnInit {
 
   category: any;
+  imagePreview: any;
+  image: File;
 
   constructor(
     private adminService: AdminService
@@ -20,9 +22,21 @@ export class AddCategoryComponent implements OnInit {
 
   addCategory(form: NgForm) {
     const category = form.value;
-    this.adminService.createCategory(category).subscribe((res) => {
+    const {image, ...others} = category;
+    this.adminService.createCategory(others, this.image).subscribe((res) => {
       this.category = res;
     });
+  }
+
+  fileUpload($event: any) {
+    // @ts-ignore
+    const file = event.target.files[0];
+    this.image = file;
+    const reader = new FileReader();
+    reader.onload = () => {
+      this.imagePreview = reader.result;
+    };
+    reader.readAsDataURL(file);
   }
 
 }
