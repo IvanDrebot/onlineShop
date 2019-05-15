@@ -31,7 +31,6 @@ export class SelectedProductsComponent implements OnInit {
   deleteItem(singleProduct: Product) {
     this.wishList = JSON.parse(localStorage.getItem('wishList'));
     const index = this.wishList.findIndex(x => x.brand === singleProduct.brand);
-    console.log(index);
     this.wishList.splice(index, 1);
     localStorage.setItem('wishList', JSON.stringify(this.wishList));
   }
