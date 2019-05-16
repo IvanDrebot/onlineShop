@@ -7,6 +7,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AdminComponent implements OnInit {
 
+  links = [
+    {url: '/admin/category-list', name: 'Category'},
+    {url: '/admin/add-producer', name: 'Producer'},
+    {url: '/admin/add-Product', name: 'Product'},
+    {url: '/admin/statistics', name: 'Statistic'},
+    {url: '/admin/orders', name: 'Orders'},
+  ];
+
   constructor() { }
 
 

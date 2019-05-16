@@ -9,10 +9,9 @@ import {StatisticComponent} from '../statistic/statistic.component';
 import {SingleUpdateComponent} from '../single-update-component/single-update-component';
 import {ChangeProducerComponent} from '../change-producer/change-producer.component';
 import {AddProducerComponent} from '../add-producer/add-producer.component';
-import {AddCategoryComponent} from '../add-category/add-category.component';
 import {OrdersComponent} from '../orders/orders.component';
 import {CategoryListComponent} from '../category-list/category-list.component';
-import {ChangeCategoryComponent} from '../change-category/change-category.component';
+import {EditCategoryComponent} from '../edit-category/edit-category.component';
 
 @NgModule({
   declarations: [
@@ -23,10 +22,9 @@ import {ChangeCategoryComponent} from '../change-category/change-category.compon
     SingleUpdateComponent,
     ChangeProducerComponent,
     AddProducerComponent,
-    AddCategoryComponent,
     OrdersComponent,
     CategoryListComponent,
-    ChangeCategoryComponent
+    EditCategoryComponent
   ],
   imports: [
     CommonModule,
@@ -41,10 +39,9 @@ import {ChangeCategoryComponent} from '../change-category/change-category.compon
     SingleUpdateComponent,
     ChangeProducerComponent,
     AddProducerComponent,
-    AddCategoryComponent,
     OrdersComponent,
     CategoryListComponent,
-    ChangeCategoryComponent
+    EditCategoryComponent
   ]
 })
 export class AdminModule { }

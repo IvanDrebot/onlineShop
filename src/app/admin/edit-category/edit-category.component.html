@@ -1,7 +1,11 @@
 <div>
-  <a routerLink="/admin/category-list">Category </a>-
-  <a routerLink="">   Add new</a>
-  <br><hr>
+  <nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a routerLink="/admin">Admin</a></li>
+    <li class="breadcrumb-item"><a routerLink="/admin/category-list">Category</a></li>
+    <li class="breadcrumb-item active" aria-current="page">Add new</li>
+  </ol>
+</nav>
 <form #Category="ngForm" (ngSubmit)="addCategory(Category)">
   <p>Назва категорії:
     <input type="text"

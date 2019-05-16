@@ -33,6 +33,6 @@ export class CategoryListComponent implements OnInit {
   }
 
   addCategory() {
-    this.router.navigate(['admin/add-category']);
+    this.router.navigate(['admin/edit-category']);
   }
 }

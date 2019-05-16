@@ -17,10 +17,9 @@ import {SelectedProductsComponent} from '../app/product/selected-products/select
 import {SearchProductsComponent} from '../app/product/search-product/search-products.component';
 import {SingleUpdateComponent} from '../app/admin/single-update-component/single-update-component';
 import {ChangeProducerComponent} from '../app/admin/change-producer/change-producer.component';
-import {AddCategoryComponent} from '../app/admin/add-category/add-category.component';
+import {EditCategoryComponent} from '../app/admin/edit-category/edit-category.component';
 import {AddProducerComponent} from '../app/admin/add-producer/add-producer.component';
 import {OrdersComponent} from '../app/admin/orders/orders.component';
-import {ChangeCategoryComponent} from '../app/admin/change-category/change-category.component';
 import {CategoryListComponent} from '../app/admin/category-list/category-list.component';
 
 const routes: Routes = [
@@ -41,11 +40,11 @@ const routes: Routes = [
       {path: 'statistics', component: StatisticComponent},
       {path: 'single-update-component', component: SingleUpdateComponent},
       {path: 'change-producer', component: ChangeProducerComponent},
-      {path: 'add-category', component: AddCategoryComponent},
       {path: 'add-producer', component: AddProducerComponent},
       {path: 'orders', component: OrdersComponent},
-      {path: 'change-category', component: ChangeCategoryComponent},
       {path: 'category-list', component: CategoryListComponent},
+      {path: 'new', component: EditCategoryComponent},
+      {path: 'edit', component: EditCategoryComponent}
     ]},
 ];
 

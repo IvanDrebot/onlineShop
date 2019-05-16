@@ -4,10 +4,10 @@ import {AdminService} from '../../../services/admin.service';
 
 @Component({
   selector: 'app-add-category',
-  templateUrl: './add-category.component.html',
-  styleUrls: ['./add-category.component.css']
+  templateUrl: './edit-category.component.html',
+  styleUrls: ['./edit-category.component.css']
 })
-export class AddCategoryComponent implements OnInit {
+export class EditCategoryComponent implements OnInit {
 
   category: any;
   imagePreview: any;

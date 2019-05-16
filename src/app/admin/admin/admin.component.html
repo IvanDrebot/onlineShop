@@ -1,35 +1,12 @@
 <div class="admin">
-  <h2>Personal Cabinet</h2>
-  <ul style="list-style: none">
-
-    <li>
-      <a routerLink="/admin/category-list">Category</a><br>
-    </li>
-
-    <li>
-      <a routerLink="/admin/add-Product">Add new product</a><br>
-    </li>
-
-    <li>
-      <a routerLink="/admin/add-producer">Add new producer</a><br>
-    </li>
-
-    <li>
-      <a routerLink="/admin/update-Product">Change product</a><br>
-    </li>
-
-    <li>
-      <a routerLink="/admin/change-producer">Change producer</a><br>
-    </li>
-
-    <li>
-      <a routerLink="/admin/statistics">Statistics</a><br>
-    </li>
-
-    <li>
-      <a routerLink="/admin/orders">Orders</a><br>
-    </li>
-  </ul>
+  <h3>Admin</h3><br>
+  <a *ngFor="let link of links"
+     [routerLink]="[link.url]"
+     routerLinkActive="active">
+    {{link.name}}
+  </a>
+  <br><hr>
+  <a routerLink="">Logout</a>
 </div>
 
 <router-outlet></router-outlet>
