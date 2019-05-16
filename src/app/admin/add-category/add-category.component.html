@@ -1,4 +1,7 @@
 <div>
+  <a routerLink="/admin/category-list">Category </a>-
+  <a routerLink="">   Add new</a>
+  <br><hr>
 <form #Category="ngForm" (ngSubmit)="addCategory(Category)">
   <p>Назва категорії:
     <input type="text"
@@ -19,7 +22,7 @@
 
   <p>Фотографія категорії:
     <input type="file"
-           name="img"
+           name="image"
            (change)="fileUpload($event)"
            placeholder="  image"
            ngModel required>

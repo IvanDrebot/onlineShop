@@ -1,0 +1,22 @@
+p{
+  margin-top: 10px;
+  text-align: center;
+}
+
+.item {
+  display: flex;
+  justify-content: space-between;
+  padding: 5px 10px;
+  margin: 5px 0;
+  border-radius: 3px;
+  background: lightgray;
+}
+
+.pagination{
+  display: inline;
+  margin-left: 30%;
+}
+
+.active{
+  margin: 10px;
+}

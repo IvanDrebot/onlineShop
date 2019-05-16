@@ -11,6 +11,8 @@ import {ChangeProducerComponent} from '../change-producer/change-producer.compon
 import {AddProducerComponent} from '../add-producer/add-producer.component';
 import {AddCategoryComponent} from '../add-category/add-category.component';
 import {OrdersComponent} from '../orders/orders.component';
+import {CategoryListComponent} from '../category-list/category-list.component';
+import {ChangeCategoryComponent} from '../change-category/change-category.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +24,9 @@ import {OrdersComponent} from '../orders/orders.component';
     ChangeProducerComponent,
     AddProducerComponent,
     AddCategoryComponent,
-    OrdersComponent
+    OrdersComponent,
+    CategoryListComponent,
+    ChangeCategoryComponent
   ],
   imports: [
     CommonModule,
@@ -38,7 +42,9 @@ import {OrdersComponent} from '../orders/orders.component';
     ChangeProducerComponent,
     AddProducerComponent,
     AddCategoryComponent,
-    OrdersComponent
+    OrdersComponent,
+    CategoryListComponent,
+    ChangeCategoryComponent
   ]
 })
 export class AdminModule { }

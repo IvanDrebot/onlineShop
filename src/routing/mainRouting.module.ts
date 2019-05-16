@@ -20,6 +20,8 @@ import {ChangeProducerComponent} from '../app/admin/change-producer/change-produ
 import {AddCategoryComponent} from '../app/admin/add-category/add-category.component';
 import {AddProducerComponent} from '../app/admin/add-producer/add-producer.component';
 import {OrdersComponent} from '../app/admin/orders/orders.component';
+import {ChangeCategoryComponent} from '../app/admin/change-category/change-category.component';
+import {CategoryListComponent} from '../app/admin/category-list/category-list.component';
 
 const routes: Routes = [
   {path: 'register', component: RegisterComponent},
@@ -42,6 +44,8 @@ const routes: Routes = [
       {path: 'add-category', component: AddCategoryComponent},
       {path: 'add-producer', component: AddProducerComponent},
       {path: 'orders', component: OrdersComponent},
+      {path: 'change-category', component: ChangeCategoryComponent},
+      {path: 'category-list', component: CategoryListComponent},
     ]},
 ];
 
