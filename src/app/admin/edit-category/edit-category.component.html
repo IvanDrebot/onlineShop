@@ -3,7 +3,8 @@
   <ol class="breadcrumb">
     <li class="breadcrumb-item"><a routerLink="/admin">Admin</a></li>
     <li class="breadcrumb-item"><a routerLink="/admin/category-list">Category</a></li>
-    <li class="breadcrumb-item active" aria-current="page">Add new</li>
+    <li *ngIf="urlParams.length" class="breadcrumb-item active" aria-current="page">Edit</li>
+    <li *ngIf="urlParams.length === 0" class="breadcrumb-item active" aria-current="page">Add</li>
   </ol>
 </nav>
 <form #Category="ngForm" (ngSubmit)="addCategory(Category)">

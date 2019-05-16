@@ -4,7 +4,7 @@
   <div>
     <div class="item" *ngFor="let item of category">
   <span>
-    <a [routerLink]="['/admin/category-list', item._id]">
+    <a [routerLink]="['/admin/category-list/', item._id]">
       {{item.name}}
     </a>
     </span>

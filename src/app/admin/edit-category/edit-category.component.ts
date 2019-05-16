@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {NgForm} from '@angular/forms';
 import {AdminService} from '../../../services/admin.service';
+import {ActivatedRoute} from '@angular/router';
 
 @Component({
   selector: 'app-add-category',
@@ -12,12 +13,17 @@ export class EditCategoryComponent implements OnInit {
   category: any;
   imagePreview: any;
   image: File;
+  urlParams: any = '';
 
   constructor(
-    private adminService: AdminService
+    private adminService: AdminService,
+    private router: ActivatedRoute
   ) { }
 
   ngOnInit() {
+   this.router.params.subscribe(res => {
+     this.urlParams = res;
+   });
   }
 
   addCategory(form: NgForm) {

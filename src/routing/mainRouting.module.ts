@@ -43,8 +43,8 @@ const routes: Routes = [
       {path: 'add-producer', component: AddProducerComponent},
       {path: 'orders', component: OrdersComponent},
       {path: 'category-list', component: CategoryListComponent},
-      {path: 'new', component: EditCategoryComponent},
-      {path: 'edit', component: EditCategoryComponent}
+      {path: 'category-list/new', component: EditCategoryComponent},
+      {path: 'category-list/:id', component: EditCategoryComponent}
     ]},
 ];
 
