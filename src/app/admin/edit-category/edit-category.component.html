@@ -3,42 +3,55 @@
   <ol class="breadcrumb">
     <li class="breadcrumb-item"><a routerLink="/admin">Admin</a></li>
     <li class="breadcrumb-item"><a routerLink="/admin/category-list">Category</a></li>
-    <li *ngIf="urlParams.length" class="breadcrumb-item active" aria-current="page">Edit</li>
-    <li *ngIf="urlParams.length === 0" class="breadcrumb-item active" aria-current="page">Add</li>
+    <li *ngIf="isEdit" class="breadcrumb-item active" aria-current="page">Edit</li>
+    <li *ngIf="!isEdit" class="breadcrumb-item active" aria-current="page">Add</li>
   </ol>
 </nav>
+
+  <div *ngIf="isEdit" class="item">
+    <span>{{singleCategory.name}}</span>
+    <img src="{{this.config.host}}/{{singleCategory.image}}">
+    <button type="button"
+            class="btn btn-danger"
+            (click)="deleteCategory(singleCategory._id)">
+      Delete category
+    </button>
+  </div>
+  <div>
+    <hr>
 <form #Category="ngForm" (ngSubmit)="addCategory(Category)">
-  <p>Назва категорії:
+  <p>Name:
     <input type="text"
            name="name"
            placeholder="  name"
            ngModel required
-           style="margin-left: 30px">
+           style="margin-left: 10%">
   </p>
 
-  <p>Опис товару:
+  <p>Options:
     <input type="text"
            name="description"
            placeholder="  description"
            ngModel required
-           style="margin-left: 50px">
+           style="margin-left: 6%">
 
   </p>
 
-  <p>Фотографія категорії:
+  <p>Upload image:<br>
     <input type="file"
            name="image"
            (change)="fileUpload($event)"
-           placeholder="  image"
+           value=""
            ngModel required>
   </p>
 
-  <div class="col s12 14 center">
-    <img class="responsive-img h-200" [src]="imagePreview" *ngIf="imagePreview">
+  <div class="preview">
+    <img [src]="imagePreview" *ngIf="imagePreview">
   </div>
 
-    <input type="submit" value="Add category">
+    <input type="submit" value="Submit">
 
 </form>
-<p *ngIf="category">{{category | json}}</p>
+  </div>
+<p *ngIf="info">{{info | json}}</p>
 </div>

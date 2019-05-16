@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import {NgForm} from '@angular/forms';
 import {AdminService} from '../../../services/admin.service';
-import {ActivatedRoute} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
+import {Category} from '../../../models/Category';
+import {ConfigService} from '../../../services/config.service';
 
 @Component({
   selector: 'app-add-category',
@@ -10,27 +12,41 @@ import {ActivatedRoute} from '@angular/router';
 })
 export class EditCategoryComponent implements OnInit {
 
-  category: any;
+  info: any;
   imagePreview: any;
   image: File;
-  urlParams: any = '';
+  urlParams: {} = {};
+  isEdit: Boolean = false;
+  singleCategory: any = {};
 
   constructor(
     private adminService: AdminService,
-    private router: ActivatedRoute
+    private router: ActivatedRoute,
+    private config: ConfigService,
+    private route: Router
   ) { }
 
   ngOnInit() {
    this.router.params.subscribe(res => {
+     this.getSingleCategory(res.id);
      this.urlParams = res;
+     if (res.id) {
+       this.isEdit = true;
+     }
    });
+  }
+
+  getSingleCategory(id) {
+    this.adminService.getCategoryById(id).subscribe(res => {
+      this.singleCategory = res;
+    });
   }
 
   addCategory(form: NgForm) {
     const category = form.value;
     const {image, ...others} = category;
     this.adminService.createCategory(others, this.image).subscribe((res) => {
-      this.category = res;
+      this.info = res;
     });
   }
 
@@ -45,4 +61,9 @@ export class EditCategoryComponent implements OnInit {
     reader.readAsDataURL(file);
   }
 
+  deleteCategory(_id: any) {
+    this.adminService.deleteCategory(_id).subscribe(res => {
+      this.route.navigate(['/admin/category-list']);
+    });
+  }
 }

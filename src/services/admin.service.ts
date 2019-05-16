@@ -55,6 +55,10 @@ export class AdminService {
     return this.http.post(this.producerUrl, producer);
   }
 
+  getCategoryById(id) {
+    return this.http.get(this.categoryUrl + '/' + id);
+  }
+
   deleteProducer(id: any) {
     return this.http.delete(this.producerUrl + '/' + id);
   }
