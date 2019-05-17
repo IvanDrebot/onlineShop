@@ -3,6 +3,7 @@ import {NgForm} from '@angular/forms';
 import {AdminService} from '../../../services/admin.service';
 import {ProductService} from '../../../services/product.service';
 import {FilterServiceService} from '../../../services/filter-service.service';
+import {CategoryService} from '../../../services/category.service';
 
 @Component({
   selector: 'app-change-category',
@@ -16,6 +17,7 @@ export class SingleUpdateComponent implements OnInit {
   id: any;
 
   constructor(
+    private categoryService: CategoryService,
     private adminService: AdminService,
     private productService: ProductService,
     private filterService: FilterServiceService
@@ -42,7 +44,7 @@ export class SingleUpdateComponent implements OnInit {
   }
 
   getCategory() {
-    this.productService.getAllCategory().subscribe((res) => {
+    this.categoryService.getAllCategory().subscribe((res) => {
       this.category = res;
     });
   }

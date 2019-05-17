@@ -1,8 +1,7 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {ActivatedRoute} from '@angular/router';
 import {Product} from '../models/Product';
-import {Category} from '../models/Category';
 import {Producer} from '../models/Producer';
 import {Observable} from 'rxjs';
 
@@ -12,7 +11,6 @@ import {Observable} from 'rxjs';
 
 export class AdminService {
 
-  categoryUrl = 'http://localhost:3000/api/category';
   producerUrl = 'http://localhost:3000/api/producer';
   adminUrl = 'http://localhost:3000/api/admin';
 
@@ -34,38 +32,17 @@ export class AdminService {
     const headers = new HttpHeaders();
     headers.append('Content-Type', 'multipart/form-data');
     headers.append('Accept', 'application/json');
-    return this.http.post(this.adminUrl,  fd, {headers: headers});
-  }
-
-  createCategory(category, image: File) {
-    const fd = new FormData();
-    if (image) {
-      fd.append('image', image, image.name);
-    }
-    fd.append('name', category.name);
-    fd.append('description', category.description);
-
-    const headers = new HttpHeaders();
-    headers.append('Content-Type', 'multipart/form-data');
-    headers.append('Accept', 'application/json');
-    return this.http.post(this.categoryUrl,  fd, {headers: headers});
+    return this.http.post(this.adminUrl, fd, {headers: headers});
   }
 
   createProducer(producer: Producer) {
     return this.http.post(this.producerUrl, producer);
   }
 
-  getCategoryById(id) {
-    return this.http.get(this.categoryUrl + '/' + id);
-  }
-
   deleteProducer(id: any) {
     return this.http.delete(this.producerUrl + '/' + id);
   }
 
-  deleteCategory(url: any) {
-    return this.http.delete(this.categoryUrl, url);
-  }
 
   deleteProduct(id: any) {
     return this.http.delete(this.adminUrl + '/' + id);

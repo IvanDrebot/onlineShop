@@ -5,6 +5,7 @@ import {AdminService} from '../../../services/admin.service';
 import {Category} from '../../../models/Category';
 import {FilterServiceService} from '../../../services/filter-service.service';
 import {Router} from '@angular/router';
+import {CategoryService} from '../../../services/category.service';
 
 @Component({
   selector: 'app-category-list',
@@ -16,9 +17,8 @@ export class CategoryListComponent implements OnInit {
   category: Category[] = [];
 
   constructor(
-    private productService: ProductService,
+    private categoryService: CategoryService,
     private config: ConfigService,
-    private adminService: AdminService,
     private nextService: FilterServiceService,
     private router: Router) { }
 
@@ -27,7 +27,7 @@ export class CategoryListComponent implements OnInit {
   }
 
   getAllCategory() {
-    this.productService.getAllCategory().subscribe(res => {
+    this.categoryService.getAllCategory().subscribe(res => {
       this.category = res;
     });
   }

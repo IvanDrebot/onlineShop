@@ -5,6 +5,7 @@ import {AdminService} from '../../../services/admin.service';
 import {NgForm} from '@angular/forms';
 import {ActivatedRoute} from '@angular/router';
 import {FilterServiceService} from '../../../services/filter-service.service';
+import {CategoryService} from '../../../services/category.service';
 
 @Component({
   selector: 'app-update-product',
@@ -22,6 +23,7 @@ export class UpdateProductComponent implements OnInit {
   producer: any = [];
 
   constructor(
+    private categoryService: CategoryService,
     private productService: ProductService,
     private adminService: AdminService,
     private activatedRoute: ActivatedRoute,
@@ -36,7 +38,7 @@ export class UpdateProductComponent implements OnInit {
 
 
   getCategory() {
-    this.productService.getAllCategory().subscribe((res) => {
+    this.categoryService.getAllCategory().subscribe((res) => {
       this.category = res;
     });
   }

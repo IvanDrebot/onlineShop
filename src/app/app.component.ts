@@ -1,11 +1,10 @@
 import {Component, OnInit} from '@angular/core';
 import {NgForm} from '@angular/forms';
-import {ProductService} from '../services/product.service';
 import {FilterServiceService} from '../services/filter-service.service';
 import {Category} from '../models/Category';
 import {Producer} from '../models/Producer';
 import {ActivatedRoute} from '@angular/router';
-import {typeIsOrHasBaseType} from 'tslint/lib/language/typeUtils';
+import {CategoryService} from '../services/category.service';
 
 @Component({
   selector: 'app-root',
@@ -21,7 +20,7 @@ export class AppComponent implements OnInit {
   countOfProduct: any = null;
 
   constructor(
-    private productService: ProductService,
+    private categoryService: CategoryService,
     private filterService: FilterServiceService,
     private router: ActivatedRoute,
   ) {
@@ -29,7 +28,7 @@ export class AppComponent implements OnInit {
 
   ngOnInit(): void {
     this.getWishList();
-    this.productService.getAllCategory().subscribe((category) => {
+    this.categoryService.getAllCategory().subscribe((category) => {
       this.category = category;
     });
   }

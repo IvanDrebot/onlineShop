@@ -7,12 +7,10 @@ import {MainRoutingModule} from '../routing/mainRouting.module';
 import {AuthModule} from './user/auth.module';
 import {ProductModule} from './product/product.module';
 import {AdminModule} from './admin/admin/admin.module';
-import { CategoryFieldComponent } from './admin/category-field/category-field.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    CategoryFieldComponent
   ],
   imports: [
     BrowserModule,

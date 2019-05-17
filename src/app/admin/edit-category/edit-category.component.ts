@@ -1,9 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {NgForm} from '@angular/forms';
-import {AdminService} from '../../../services/admin.service';
 import {ActivatedRoute, Router} from '@angular/router';
-import {Category} from '../../../models/Category';
 import {ConfigService} from '../../../services/config.service';
+import {CategoryService} from '../../../services/category.service';
 
 @Component({
   selector: 'app-add-category',
@@ -15,37 +14,52 @@ export class EditCategoryComponent implements OnInit {
   info: any;
   imagePreview: any;
   image: File;
-  urlParams: {} = {};
+  urlParams: any = {};
   isEdit: Boolean = false;
   singleCategory: any = {};
 
   constructor(
-    private adminService: AdminService,
+    private categoryService: CategoryService,
     private router: ActivatedRoute,
     private config: ConfigService,
     private route: Router
-  ) { }
+  ) {
+  }
 
   ngOnInit() {
-   this.router.params.subscribe(res => {
-     this.getSingleCategory(res.id);
-     this.urlParams = res;
-     if (res.id) {
-       this.isEdit = true;
-     }
-   });
+    this.router.params.subscribe(res => {
+      this.getSingleCategory(res.id);
+      this.urlParams = res;
+      if (res.id) {
+        this.isEdit = true;
+      }
+    });
   }
 
   getSingleCategory(id) {
-    this.adminService.getCategoryById(id).subscribe(res => {
+    this.categoryService.getCategoryById(id).subscribe(res => {
       this.singleCategory = res;
     });
   }
 
-  addCategory(form: NgForm) {
+  changeCategory(form: NgForm) {
     const category = form.value;
     const {image, ...others} = category;
-    this.adminService.createCategory(others, this.image).subscribe((res) => {
+    if (this.isEdit) {
+      this.updateCategory(this.urlParams.id, others, this.image);
+    } else {
+      this.addCategory(others, this.image);
+    }
+  }
+
+  addCategory(category, img?) {
+    this.categoryService.createCategory(category, img).subscribe((res) => {
+      this.info = res;
+    });
+  }
+
+  updateCategory(id, category, img) {
+    this.categoryService.updateCategory(id, category, img).subscribe(res => {
       this.info = res;
     });
   }
@@ -62,8 +76,9 @@ export class EditCategoryComponent implements OnInit {
   }
 
   deleteCategory(_id: any) {
-    this.adminService.deleteCategory(_id).subscribe(res => {
+    this.categoryService.deleteCategory(_id).subscribe(res => {
       this.route.navigate(['/admin/category-list']);
     });
   }
+
 }
