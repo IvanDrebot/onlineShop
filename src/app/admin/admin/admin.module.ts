@@ -12,6 +12,7 @@ import {AddProducerComponent} from '../add-producer/add-producer.component';
 import {OrdersComponent} from '../orders/orders.component';
 import {CategoryListComponent} from '../category-list/category-list.component';
 import {EditCategoryComponent} from '../edit-category/edit-category.component';
+import {CategoryPositionComponent} from '../category-position/category-position.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import {EditCategoryComponent} from '../edit-category/edit-category.component';
     AddProducerComponent,
     OrdersComponent,
     CategoryListComponent,
-    EditCategoryComponent
+    EditCategoryComponent,
+    CategoryPositionComponent
   ],
   imports: [
     CommonModule,
@@ -41,7 +43,8 @@ import {EditCategoryComponent} from '../edit-category/edit-category.component';
     AddProducerComponent,
     OrdersComponent,
     CategoryListComponent,
-    EditCategoryComponent
+    EditCategoryComponent,
+    CategoryPositionComponent
   ]
 })
 export class AdminModule { }

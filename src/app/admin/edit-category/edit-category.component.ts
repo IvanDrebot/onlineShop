@@ -76,9 +76,12 @@ export class EditCategoryComponent implements OnInit {
   }
 
   deleteCategory(_id: any) {
-    this.categoryService.deleteCategory(_id).subscribe(res => {
-      this.route.navigate(['/admin/category-list']);
-    });
+    const confirm = window.confirm(`You want to delete ${this.singleCategory.name}`);
+    if (confirm) {
+      this.categoryService.deleteCategory(_id).subscribe(res => {
+        this.route.navigate(['/admin/category-list']);
+      });
+    }
   }
 
 }

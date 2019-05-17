@@ -23,25 +23,16 @@
   <p>Name:
     <input type="text"
            name="name"
-           placeholder="  name"
+           value="{{singleCategory.name}}"
            ngModel required
            style="margin-left: 10%">
   </p>
 
-  <p>Options:
-    <input type="text"
-           name="description"
-           placeholder="  description"
-           ngModel required
-           style="margin-left: 6%">
-
-  </p>
 
   <p>Upload image:<br>
     <input type="file"
            name="image"
            (change)="fileUpload($event)"
-           value=""
            ngModel required>
   </p>
 
@@ -49,9 +40,13 @@
     <img [src]="imagePreview" *ngIf="imagePreview">
   </div>
 
-    <input type="submit" value="Submit">
+
+  <input type="submit" value="Submit">
 
 </form>
   </div>
 <p *ngIf="info">{{info | json}}</p>
 </div>
+
+<app-category-position>
+</app-category-position>

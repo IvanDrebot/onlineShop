@@ -1,0 +1,28 @@
+.main{
+  float: right;
+  width: 72%;
+  height: border-box;
+}
+.row{
+  flex: border-box;
+}
+.row button{
+  float: right;
+  margin-left: 40%;
+  background: goldenrod;
+  border-radius: 10px;
+}
+
+.item {
+  display: flex;
+  justify-content: space-between;
+  padding: 5px 10px;
+  margin-right: 350px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  background: gray;
+  border-radius: 5px;
+}
+.item button{
+
+}
