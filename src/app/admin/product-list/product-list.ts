@@ -9,10 +9,10 @@ import {CategoryService} from '../../../services/category.service';
 
 @Component({
   selector: 'app-update-product',
-  templateUrl: './update-product.component.html',
-  styleUrls: ['./update-product.component.css']
+  templateUrl: './product-list.html',
+  styleUrls: ['./product-list.css']
 })
-export class UpdateProductComponent implements OnInit {
+export class ProductList implements OnInit {
 
   product: Product[] = [];
   query: any = {
@@ -77,4 +77,5 @@ export class UpdateProductComponent implements OnInit {
   getId(id: any) {
     this.filterService.updateProduct.next(id);
   }
+
 }

@@ -14,11 +14,11 @@ import {CategoryService} from '../../../services/category.service';
 export class AddProductComponent implements OnInit {
 
   product: any;
-  category: Category[] = [];
+  category: any = [];
   producer: Producer[] = [];
   imagePreview: any;
   image: File;
-  position: String = '';
+  position: [] = [];
 
   constructor(
     private categoryService: CategoryService,
@@ -38,6 +38,7 @@ export class AddProductComponent implements OnInit {
 
   createProduct(form: NgForm) {
     const product = form.value;
+    product.category = this.category._id;
     const {imgUrl, ...others} = product;
     this.adminService.createProduct(others, this.image).subscribe((res) => {
       this.product = res;
@@ -56,7 +57,7 @@ export class AddProductComponent implements OnInit {
   }
 
   selectCategory(item) {
-    this.position = item.name;
-    this.category = item.description[0].split(',');
+    this.category = item;
+    this.position = item.description[0].split(',');
   }
 }

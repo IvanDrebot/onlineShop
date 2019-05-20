@@ -1,0 +1,42 @@
+<div>
+  <div>
+    <nav aria-label="breadcrumb">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a routerLink="/admin">admin</a></li>
+        <li class="breadcrumb-item active" aria-current="page">product</li>
+      </ol>
+    </nav>
+  </div>
+  <p>Search:
+    <input type="search" placeholder="">
+    <input type="submit" value="Знайти">
+  </p>
+
+  <div class="item" *ngFor="let product of product">
+    <span><a [routerLink]="'/product/' + product._id">
+      Producer: {{product.producer.name}},
+      Brand: {{product.brand}}</a>
+    </span>
+    <div class="control">
+
+      <!---------------------EditForm-------------------------->
+
+      <button routerLink="/admin/single-update-component"
+              (click)="getId(product._id)">edit
+      </button>
+
+      <button (click)="deleteProduct(product._id)">delete</button>
+    </div>
+  </div>
+
+  <div class="pagination">
+    <button (click)="previosPage(-5)">Previous</button>
+    <button (click)="nextPage(5)">Next</button>
+  </div>
+</div>
+
+<button type="button"
+        class="btn btn-danger btn-lg"
+        routerLink="/admin/add-Product">
+  Add new product
+</button>

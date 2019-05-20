@@ -11,12 +11,11 @@ import {ProductGridComponent} from '../app/product/product-grid/product-grid.com
 import {FilterComponent} from '../app/product/filter/filter.component';
 import {AdminComponent} from '../app/admin/admin/admin.component';
 import {AddProductComponent} from '../app/admin/add-product/add-product.component';
-import {UpdateProductComponent} from '../app/admin/update-product/update-product.component';
+import {ProductList} from '../app/admin/product-list/product-list';
 import {StatisticComponent} from '../app/admin/statistic/statistic.component';
 import {SelectedProductsComponent} from '../app/product/selected-products/selected-products.component';
 import {SearchProductsComponent} from '../app/product/search-product/search-products.component';
-import {SingleUpdateComponent} from '../app/admin/single-update-component/single-update-component';
-import {ChangeProducerComponent} from '../app/admin/change-producer/change-producer.component';
+import {SingleUpdateComponent} from '../app/admin/update-singleProduct/single-update-component';
 import {EditCategoryComponent} from '../app/admin/edit-category/edit-category.component';
 import {AddProducerComponent} from '../app/admin/add-producer/add-producer.component';
 import {OrdersComponent} from '../app/admin/orders/orders.component';
@@ -36,10 +35,9 @@ const routes: Routes = [
   {path: 'product/:id', component: SingleProductComponent},
   {path: 'admin', component: AdminComponent, children: [
       {path: 'add-Product', component: AddProductComponent},
-      {path: 'update-Product', component: UpdateProductComponent},
+      {path: 'product-list', component: ProductList},
       {path: 'statistics', component: StatisticComponent},
-      {path: 'single-update-component', component: SingleUpdateComponent},
-      {path: 'change-producer', component: ChangeProducerComponent},
+      {path: 'update-singleProduct', component: SingleUpdateComponent},
       {path: 'add-producer', component: AddProducerComponent},
       {path: 'orders', component: OrdersComponent},
       {path: 'category-list', component: CategoryListComponent},

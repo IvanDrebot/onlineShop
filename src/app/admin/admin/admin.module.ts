@@ -2,31 +2,27 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { AdminComponent } from './admin.component';
 import { AddProductComponent } from '../add-product/add-product.component';
-import { UpdateProductComponent } from '../update-product/update-product.component';
+import { ProductList } from '../product-list/product-list';
 import {MainRoutingModule} from '../../../routing/mainRouting.module';
 import {FormsModule} from '@angular/forms';
 import {StatisticComponent} from '../statistic/statistic.component';
-import {SingleUpdateComponent} from '../single-update-component/single-update-component';
-import {ChangeProducerComponent} from '../change-producer/change-producer.component';
+import {SingleUpdateComponent} from '../update-singleProduct/single-update-component';
 import {AddProducerComponent} from '../add-producer/add-producer.component';
 import {OrdersComponent} from '../orders/orders.component';
 import {CategoryListComponent} from '../category-list/category-list.component';
 import {EditCategoryComponent} from '../edit-category/edit-category.component';
-import {CategoryPositionComponent} from '../category-position/category-position.component';
 
 @NgModule({
   declarations: [
     AdminComponent,
     AddProductComponent,
-    UpdateProductComponent,
+    ProductList,
     StatisticComponent,
     SingleUpdateComponent,
-    ChangeProducerComponent,
     AddProducerComponent,
     OrdersComponent,
     CategoryListComponent,
-    EditCategoryComponent,
-    CategoryPositionComponent
+    EditCategoryComponent
   ],
   imports: [
     CommonModule,
@@ -36,15 +32,13 @@ import {CategoryPositionComponent} from '../category-position/category-position.
   exports: [
     AdminComponent,
     AddProductComponent,
-    UpdateProductComponent,
+    ProductList,
     StatisticComponent,
     SingleUpdateComponent,
-    ChangeProducerComponent,
     AddProducerComponent,
     OrdersComponent,
     CategoryListComponent,
-    EditCategoryComponent,
-    CategoryPositionComponent
+    EditCategoryComponent
   ]
 })
 export class AdminModule { }

@@ -2,7 +2,8 @@
   <nav aria-label="breadcrumb">
     <ol class="breadcrumb">
       <li class="breadcrumb-item"><a routerLink="/admin">admin</a></li>
-      <li class="breadcrumb-item active" aria-current="page">add new product</li>
+      <li class="breadcrumb-item"><a routerLink="/admin/product-list">product</a></li>
+      <li class="breadcrumb-item active" aria-current="page">add new</li>
     </ol>
   </nav>
 
@@ -14,8 +15,8 @@
   </div>
 
 
-  <div *ngIf="position.length > 1">
-    <h4>{{position}}</h4>
+  <div *ngIf="position.length > 0">
+    <h4>{{category.name}}</h4>
     <hr>
 
     <form #Product="ngForm" (ngSubmit)="createProduct(Product)">
@@ -44,7 +45,7 @@
                style="margin-left: 45px">
       </p>
 
-      <p *ngFor="let field of category">
+      <p *ngFor="let field of position">
         {{field}}
         <input type="text">
       </p>
