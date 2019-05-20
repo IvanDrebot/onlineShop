@@ -35,6 +35,7 @@ export class CategoryService {
     const headers = new HttpHeaders();
     headers.append('Content-Type', 'multipart/form-data');
     headers.append('Accept', 'application/json');
+    console.log(category);
     return this.http.post(this.categoryUrl, fd, {headers: headers});
   }
 

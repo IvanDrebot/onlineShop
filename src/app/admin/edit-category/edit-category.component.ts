@@ -3,6 +3,7 @@ import {NgForm} from '@angular/forms';
 import {ActivatedRoute, Router} from '@angular/router';
 import {ConfigService} from '../../../services/config.service';
 import {CategoryService} from '../../../services/category.service';
+import {FilterServiceService} from '../../../services/filter-service.service';
 
 @Component({
   selector: 'app-add-category',
@@ -17,12 +18,15 @@ export class EditCategoryComponent implements OnInit {
   urlParams: any = {};
   isEdit: Boolean = false;
   singleCategory: any = {};
+  field: any = [];
+  position: any = [];
 
   constructor(
     private categoryService: CategoryService,
     private router: ActivatedRoute,
     private config: ConfigService,
-    private route: Router
+    private route: Router,
+    private nextService: FilterServiceService
   ) {
   }
 
@@ -39,6 +43,8 @@ export class EditCategoryComponent implements OnInit {
   getSingleCategory(id) {
     this.categoryService.getCategoryById(id).subscribe(res => {
       this.singleCategory = res;
+      this.singleCategory.description = this.singleCategory.description[0].split(',');
+      console.log(this.singleCategory.description);
     });
   }
 
@@ -53,9 +59,21 @@ export class EditCategoryComponent implements OnInit {
   }
 
   addCategory(category, img?) {
+    category.description = this.field;
     this.categoryService.createCategory(category, img).subscribe((res) => {
       this.info = res;
     });
+  }
+
+  addField() {
+    const res = window.prompt('Add new position:');
+    this.field.push(res);
+    this.nextService.categoryPosition.next(this.field);
+  }
+
+  deleteField(item: any) {
+    const index = this.field.findIndex(i => i === item);
+    this.field.splice(index, 1);
   }
 
   updateCategory(id, category, img) {

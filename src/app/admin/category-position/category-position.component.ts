@@ -1,5 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
+import {FilterServiceService} from '../../../services/filter-service.service';
 
 @Component({
   selector: 'app-category-position',
@@ -10,25 +11,15 @@ export class CategoryPositionComponent implements OnInit {
 
   id: any = {};
   isShow: Boolean = false;
-  field: any = [];
 
   constructor(
-    private router: ActivatedRoute
+    private router: ActivatedRoute,
+    private nextService: FilterServiceService
   ) { }
 
   ngOnInit() {
     this.router.params.subscribe(res => {
       this.id = res;
     });
-  }
-
-  addField() {
-   const res = window.prompt('Add new position:');
-   this.field.push(res);
-  }
-
-  deleteField(item: any) {
-    const index = this.field.findIndex(i => i === item);
-    this.field.splice(index, 1);
   }
 }

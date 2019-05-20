@@ -12,6 +12,7 @@ export class FilterServiceService {
   subject = new Subject<any>();
   updateProduct = new Subject<any>();
   updateCategory = new Subject<any>();
+  categoryPosition = new Subject<any>();
 
   constructor() {
     // this.wishList.subscribe(res => {
