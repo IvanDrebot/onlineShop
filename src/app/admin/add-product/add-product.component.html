@@ -1,140 +1,66 @@
 <div>
-  <form #Product="ngForm" (ngSubmit)="createProduct(Product)">
-    <p>Введіть категорію продукту:
-      <select name="category" ngModel style="width: 30%">
-        <option *ngFor="let category of allCategory"
-                value="{{category._id}}">{{category.name}}
-        </option>
-      </select>
-  </p>
+  <nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a routerLink="/admin">admin</a></li>
+      <li class="breadcrumb-item active" aria-current="page">add new product</li>
+    </ol>
+  </nav>
 
-  <p class="producer">Введіть назву виробника:
-    <select name="producer"
-                       ngModel
-                       style="width: 30%">
-      <option *ngFor="let producer of allProducer"
-              value="{{producer._id}}">
-        {{producer.name}}
-      </option>
-    </select>
-  </p>
-
-  <p>Ціна продукту:
-    <input type="text" name="price"
-           ngModel
-           required
-           style="margin-left: 97px">
-  </p>
-
-  <p>Введіть назву бренду:
-    <input type="text" name="brand"
-           ngModel required
-           style="margin-left: 45px">
-  </p>
-
-  <p>Завантажити фотографію:
-    <input type="file" name="image"
-           ngModel value=""
-           (change)="fileUpload($event)"
-           style="margin-left: 13px">
-  </p>
-
-    <div class="col s12 14 center">
-      <img class="responsive-img h-200" [src]="imagePreview" *ngIf="imagePreview">
+  <div *ngIf="position.length == 0">
+    <h4>Виберіть категорію товару:</h4>
+    <div *ngFor="let item of category">
+      <a routerLink="/admin/add-Product" (click)="selectCategory(item)">{{item.name}}</a>
     </div>
+  </div>
 
-<!--    <p>Діагональ екрану:-->
-<!--      <input type="text"-->
-<!--             name="diagonalScreen"-->
-<!--             ngModel-->
-<!--             value="">-->
-<!--    </p>-->
-<!---->
-<!--    <p>Додати аксесуари:-->
-<!--      <input type="text"-->
-<!--             name="accessories"-->
-<!--             ngModel-->
-<!--             value="">-->
-<!--    </p>-->
 
-<!--    <p>Роздільна здатність екрану:-->
-<!--      <input type="text"-->
-<!--             name="resolutionScreen"-->
-<!--             ngModel-->
-<!--             value="">-->
-<!--    </p>-->
-<!---->
-<!--    <p>Тип дисплею:-->
-<!--      <input type="text"-->
-<!--             name="displayType"-->
-<!--             ngModel-->
-<!--             value="">-->
-<!--    </p>-->
-<!---->
-<!--    <p>Внутрішня пам"ять:-->
-<!--      <input type="text"-->
-<!--             name="internalMemory"-->
-<!--             ngModel-->
-<!--             value="">-->
-<!--    </p>-->
-<!---->
-<!--    <p>Оперативна пам"ять:-->
-<!--      <input type="text"-->
-<!--             name="RAM"-->
-<!--             ngModel-->
-<!--             value="">-->
-<!--    </p>-->
-<!---->
-<!--    <p>Камера:-->
-<!--      <input type="text"-->
-<!--             name="camera"-->
-<!--             ngModel-->
-<!--             value="">-->
-<!--    </p>-->
-<!---->
-<!--    <p>Фронтальна камера:-->
-<!--      <input type="text"-->
-<!--             name="frontCamera"-->
-<!--             ngModel-->
-<!--             value="">-->
-<!--    </p>-->
-<!---->
-<!--    <p>Ємність батареї:-->
-<!--      <input type="text"-->
-<!--             name="battery"-->
-<!--             ngModel-->
-<!--             value="">-->
-<!--    </p>-->
-<!---->
-<!--    <p>Кількість сім-карт:-->
-<!--      <input type="text"-->
-<!--             name="countOfSimCard"-->
-<!--             ngModel-->
-<!--             value="">-->
-<!--    </p>-->
-<!---->
-<!--    <p>Кількість ядер:-->
-<!--      <input type="text"-->
-<!--             name="countOfCores"-->
-<!--             ngModel-->
-<!--             value="">-->
-<!--    </p>-->
-<!---->
-<!--    <p>Колір:-->
-<!--      <input type="text"-->
-<!--             name="color"-->
-<!--             ngModel-->
-<!--             value="">-->
-<!--    </p>-->
-<!---->
-<!--    <p>Рік випуску:-->
-<!--      <input type="text"-->
-<!--             name="graduationYear"-->
-<!--             ngModel-->
-<!--             value="">-->
-<!--    </p>-->
+  <div *ngIf="position.length > 1">
+    <h4>{{position}}</h4>
+    <hr>
 
-    <input type="submit" value="Add product">
-  </form>
-  <p *ngIf="product">{{product | json}}</p>
+    <form #Product="ngForm" (ngSubmit)="createProduct(Product)">
+
+      <p class="producer">Введіть назву виробника:
+        <select name="producer"
+                ngModel
+                style="width: 30%">
+          <option *ngFor="let producer of producer"
+                  value="{{producer._id}}">
+            {{producer.name}}
+          </option>
+        </select>
+      </p>
+
+      <p>Ціна продукту:
+        <input type="text" name="price"
+               ngModel
+               required
+               style="margin-left: 97px">
+      </p>
+
+      <p>Введіть назву бренду:
+        <input type="text" name="brand"
+               ngModel required
+               style="margin-left: 45px">
+      </p>
+
+      <p *ngFor="let field of category">
+        {{field}}
+        <input type="text">
+      </p>
+      <p>Завантажити фотографію:
+        <input type="file" name="image"
+               ngModel value=""
+               (change)="fileUpload($event)"
+               style="margin-left: 13px">
+      </p>
+
+      <div class="col s12 14 center">
+        <img class="responsive-img h-200" [src]="imagePreview" *ngIf="imagePreview">
+      </div>
+
+      <input type="submit" value="Add product">
+    </form>
+    <p *ngIf="product">{{product | json}}</p>
+  </div>
 </div>

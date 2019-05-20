@@ -19,7 +19,6 @@ export class EditCategoryComponent implements OnInit {
   isEdit: Boolean = false;
   singleCategory: any = {};
   field: any = [];
-  position: any = [];
 
   constructor(
     private categoryService: CategoryService,
@@ -43,8 +42,7 @@ export class EditCategoryComponent implements OnInit {
   getSingleCategory(id) {
     this.categoryService.getCategoryById(id).subscribe(res => {
       this.singleCategory = res;
-      this.singleCategory.description = this.singleCategory.description[0].split(',');
-      console.log(this.singleCategory.description);
+      this.field = this.singleCategory.description[0].split(',');
     });
   }
 

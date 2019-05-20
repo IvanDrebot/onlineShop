@@ -14,10 +14,11 @@ import {CategoryService} from '../../../services/category.service';
 export class AddProductComponent implements OnInit {
 
   product: any;
-  allCategory: Category[] = [];
-  allProducer: Producer[] = [];
+  category: Category[] = [];
+  producer: Producer[] = [];
   imagePreview: any;
   image: File;
+  position: String = '';
 
   constructor(
     private categoryService: CategoryService,
@@ -28,10 +29,10 @@ export class AddProductComponent implements OnInit {
 
   ngOnInit() {
     this.categoryService.getAllCategory().subscribe((res) => {
-      this.allCategory = res;
+      this.category = res;
     });
     this.productService.getProducer().subscribe((res) => {
-      this.allProducer = res;
+      this.producer = res;
     });
   }
 
@@ -52,5 +53,10 @@ export class AddProductComponent implements OnInit {
      this.imagePreview = reader.result;
    };
    reader.readAsDataURL(file);
+  }
+
+  selectCategory(item) {
+    this.position = item.name;
+    this.category = item.description[0].split(',');
   }
 }

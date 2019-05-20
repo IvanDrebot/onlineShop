@@ -1,12 +1,12 @@
 <div>
   <nav aria-label="breadcrumb">
-  <ol class="breadcrumb">
-    <li class="breadcrumb-item"><a routerLink="/admin">Admin</a></li>
-    <li class="breadcrumb-item"><a routerLink="/admin/category-list">Category</a></li>
-    <li *ngIf="isEdit" class="breadcrumb-item active" aria-current="page">Edit</li>
-    <li *ngIf="!isEdit" class="breadcrumb-item active" aria-current="page">Add</li>
-  </ol>
-</nav>
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a routerLink="/admin">Admin</a></li>
+      <li class="breadcrumb-item"><a routerLink="/admin/category-list">Category</a></li>
+      <li *ngIf="isEdit" class="breadcrumb-item active" aria-current="page">Edit</li>
+      <li *ngIf="!isEdit" class="breadcrumb-item active" aria-current="page">Add</li>
+    </ol>
+  </nav>
 
   <div *ngIf="isEdit" class="item">
     <span>{{singleCategory.name}}</span>
@@ -19,31 +19,32 @@
   </div>
   <div>
     <hr>
-<form #Category="ngForm" (ngSubmit)="changeCategory(Category)">
-  <p>Name:
-    <input type="text"
-           name="name"
-           value="{{singleCategory.name}}"
-           ngModel required
-           style="margin-left: 10%">
-  </p>
+    <form #Category="ngForm" (ngSubmit)="changeCategory(Category)">
+      <p>Name:
+        <input type="text"
+               name="name"
+               value="{{singleCategory.name}}"
+               ngModel required
+               style="margin-left: 10%">
+      </p>
 
-  <p>Upload image:<br>
-    <input type="file"
-           name="image"
-           (change)="fileUpload($event)"
-           ngModel required>
-  </p>
+      <p>Upload image:<br>
+        <input type="file"
+               name="image"
+               (change)="fileUpload($event)"
+               ngModel required>
+      </p>
 
-  <div class="preview">
-    <img [src]="imagePreview" *ngIf="imagePreview">
-  </div>
+      <div class="preview">
+        <img [src]="imagePreview" *ngIf="imagePreview">
+      </div>
 
 
-  <input type="submit" value="Submit">
+      <input type="submit" value="Submit">
 
-</form>
-    <hr><br>
+    </form>
+    <hr>
+    <br>
   </div>
   <p *ngIf="info">{{info | json}}</p>
 </div>
@@ -56,9 +57,9 @@
   </div>
 
   <div>
-    <div class="item" *ngIf="field">
+    <div class="item" *ngFor="let item of field">
     <span>
-      <a>{{field}}</a>
+      <a>{{item}}</a>
     </span>
       <button (click)="deleteField(item)">Remove</button>
     </div>
