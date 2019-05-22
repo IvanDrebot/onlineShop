@@ -34,15 +34,15 @@ const routes: Routes = [
     ]},
   {path: 'product/:id', component: SingleProductComponent},
   {path: 'admin', component: AdminComponent, children: [
-      {path: 'add-Product', component: AddProductComponent},
       {path: 'product-list', component: ProductList},
-      {path: 'statistics', component: StatisticComponent},
-      {path: 'update-singleProduct', component: SingleUpdateComponent},
+      {path: 'add-Product', component: AddProductComponent},
+      {path: 'update-singleProduct/:id', component: SingleUpdateComponent},
       {path: 'add-producer', component: AddProducerComponent},
       {path: 'orders', component: OrdersComponent},
       {path: 'category-list', component: CategoryListComponent},
       {path: 'category-list/new', component: EditCategoryComponent},
-      {path: 'category-list/:id', component: EditCategoryComponent}
+      {path: 'category-list/:id', component: EditCategoryComponent},
+      {path: 'statistics', component: StatisticComponent}
     ]},
 ];
 

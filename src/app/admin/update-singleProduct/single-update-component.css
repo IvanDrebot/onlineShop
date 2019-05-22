@@ -5,3 +5,9 @@ div {
   margin-top: 20px;
   float: left;
 }
+
+p {
+  /*border-top: 2px solid green;*/
+  display: block;
+  margin-top: 5px;
+}

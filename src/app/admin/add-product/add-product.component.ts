@@ -13,6 +13,7 @@ import {CategoryService} from '../../../services/category.service';
 export class AddProductComponent implements OnInit {
 
   product: any = {};
+  fields: any = [];
   category: any = [];
   producer: Producer[] = [];
   imagePreview: any;
@@ -38,23 +39,29 @@ export class AddProductComponent implements OnInit {
   createProduct(form: NgForm) {
     const {price, producer, category, image, brand, ...others} = form.value;
     const shortDescription = {price, producer, category, image, brand};
+    const keys = Object.keys(others);
+    const values = Object.values(others);
+    for (let i = 0; i < keys.length; i++) {
+      this.fields.push({name: keys[i], values: values[i]});
+    }
     this.product = shortDescription;
-    this.product.description = others;
     this.product.category = this.category._id;
+    this.product.description = this.fields;
     this.adminService.createProduct(this.product, this.image).subscribe((res) => {
       this.product = res;
     });
   }
 
+
   fileUpload($event: any) {
-   // @ts-ignore
+    // @ts-ignore
     const file = event.target.files[0];
-   this.image = file;
-   const reader = new FileReader();
-   reader.onload = () => {
-     this.imagePreview = reader.result;
-   };
-   reader.readAsDataURL(file);
+    this.image = file;
+    const reader = new FileReader();
+    reader.onload = () => {
+      this.imagePreview = reader.result;
+    };
+    reader.readAsDataURL(file);
   }
 
   selectCategory(item) {

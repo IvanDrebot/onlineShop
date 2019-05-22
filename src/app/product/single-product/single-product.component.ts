@@ -14,7 +14,6 @@ export class SingleProductComponent implements OnInit {
 
   id = this.router.snapshot.params.id;
   singleProduct;
-  description: any = [];
   wishList: any = [];
   count: any = [];
 

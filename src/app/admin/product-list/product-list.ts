@@ -17,7 +17,8 @@ export class ProductList implements OnInit {
   product: Product[] = [];
   query: any = {
     limit: 5,
-    skip: 0};
+    skip: 0
+  };
   deleteInfo;
   category: any = [];
   producer: any = [];
@@ -28,7 +29,8 @@ export class ProductList implements OnInit {
     private adminService: AdminService,
     private activatedRoute: ActivatedRoute,
     private filterService: FilterServiceService
-  ) { }
+  ) {
+  }
 
   ngOnInit() {
     this.getCategory();
@@ -56,11 +58,14 @@ export class ProductList implements OnInit {
     });
   }
 
-  deleteProduct(id) {
-    this.adminService.deleteProduct(id).subscribe((res) => {
-      this.deleteInfo = res;
-      this.getAllProduct(this.query);
-    });
+  deleteProduct(product) {
+    const confirm = window.confirm(`${'Do you want to delete'} ${product.brand}`);
+    if (confirm) {
+      this.adminService.deleteProduct(product._id).subscribe((res) => {
+        this.deleteInfo = res;
+        this.getAllProduct(this.query);
+      });
+    }
   }
 
   nextPage(number) {
@@ -68,7 +73,7 @@ export class ProductList implements OnInit {
     this.getAllProduct(this.query);
   }
 
-  previosPage(number) {
+  previousPage(number) {
     this.query.skip += number;
     this.getAllProduct(this.query);
   }

@@ -4,6 +4,8 @@ import {AdminService} from '../../../services/admin.service';
 import {ProductService} from '../../../services/product.service';
 import {FilterServiceService} from '../../../services/filter-service.service';
 import {CategoryService} from '../../../services/category.service';
+import {ActivatedRoute, Router} from '@angular/router';
+import {Product} from '../../../models/Product';
 
 @Component({
   selector: 'app-change-category',
@@ -12,6 +14,7 @@ import {CategoryService} from '../../../services/category.service';
 })
 export class SingleUpdateComponent implements OnInit {
 
+  product: any = [];
   category: any = [];
   producer: any = [];
   id: any;
@@ -20,18 +23,24 @@ export class SingleUpdateComponent implements OnInit {
     private categoryService: CategoryService,
     private adminService: AdminService,
     private productService: ProductService,
-    private filterService: FilterServiceService
+    private filterService: FilterServiceService,
+    private router: ActivatedRoute
   ) { }
 
   ngOnInit() {
-    this.selectedId();
+  this.router.params.subscribe(res => {
+    this.getProduct(res.id);
+    this.id = res;
+  });
     this.getCategory();
     this.getProducer();
   }
 
-  selectedId() {
-    this.filterService.updateProduct.subscribe(id => {
-      this.id = id;
+  getProduct(id) {
+    this.productService.getProductById(id).subscribe(res => {
+      this.product = res;
+      this.product.description = JSON.parse(this.product.description);
+      console.log(this.product);
     });
   }
 
@@ -54,4 +63,6 @@ export class SingleUpdateComponent implements OnInit {
       this.producer = res;
     });
   }
+
+
 }

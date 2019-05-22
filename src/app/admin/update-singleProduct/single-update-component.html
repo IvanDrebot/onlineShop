@@ -1,36 +1,50 @@
 <div>
-<form #update="ngForm"
-      (ngSubmit)="updateProduct(update, id)">
+  <nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a routerLink="/admin">admin</a></li>
+      <li class="breadcrumb-item"><a routerLink="/admin/product-list">product</a></li>
+      <li class="breadcrumb-item active" aria-current="page">edit</li>
+    </ol>
+  </nav>
+</div>
 
-  <p>Category:
+<div>
+  <form #update="ngForm"
+        (ngSubmit)="updateProduct(update, id)">
+
+    <p>Category: </p>
     <select name="category" ngModel style="width: 30%">
       <option *ngFor="let category of category"
               value="{{category._id}}">{{category.name}}
       </option>
     </select>
-  </p>
 
-  <p>Producer:
+
+    <p>Producer: </p>
     <select name="producer" ngModel style="width: 30%">
       <option *ngFor="let producer of producer"
               value="{{producer._id}}">{{producer.name}}
       </option>
     </select>
-  </p>
 
-  <p>Brand: <input type="text"
-                   name="brand"
-                   ngModel>
-  </p>
 
-  <p>Price: <input type="text"
-                   name="price"
-                   ngModel>
-  </p>
-  <p>Img: <input type="file"
-                 name="imgUrl"
-                 ngModel>
-  </p>
-  <input type="submit" value="Change Product">
-</form>
+    <p>Brand: </p>
+    <input type="text" name="brand" value="{{product.brand}}" ngModel>
+
+
+    <p>Price: </p>
+    <input type="text" name="price" value="{{product.price}}" ngModel>
+
+
+    <span *ngFor="let desc of product.description">
+      <p>{{desc.name}}: </p>
+      <input type="text" value="{{desc.values}}">
+    </span>
+
+
+    <p>Img: </p>
+    <input type="file" name="imgUrl" ngModel>
+
+    <input type="submit" value="Change Product">
+  </form>
 </div>

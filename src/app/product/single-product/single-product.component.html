@@ -26,21 +26,24 @@
   <h2>{{singleProduct.brand | uppercase}}</h2>
 
 
-
   <div class="image">
     <img src="{{this.configService.host}}/{{singleProduct.image}}">
   </div>
 
   <div class="short-description">
     <p>Price: {{singleProduct.price}} UA</p>
-    <button type="button" class="btn btn-primary btn-lg">Купити</button><br><br>
+    <button type="button" class="btn btn-primary btn-lg">Купити</button>
+    <br><br>
     <button type="button" class="btn btn-secondary btn-lg"
-            (click)="AddProductToCart(singleProduct)">Додати в корзину</button>
+            (click)="AddProductToCart(singleProduct)">Додати в корзину
+    </button>
   </div>
 
   <div class="full-description">
     <b>Характеристики: </b><br>
-    {{singleProduct.description | json}}
-</div>
+    <div *ngFor="let item of singleProduct.description">
+      <p>{{item.name}} : {{item.values}}</p>
+    </div>
+  </div>
 
 </div>
