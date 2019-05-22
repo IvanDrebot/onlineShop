@@ -1,19 +1,19 @@
 div {
   width: 60%;
   height: border-box;
-  margin-left: 20px;
-  margin-top: 20px;
+  margin: 20px 20px;
   float: left;
-}
-
-.producer select{
-  margin-left: 3%;
-}
-
-h5 a{
-  text-align: center;
 }
 
 .h-200{
   height: 200px;
+}
+select{
+  width: 180px;
+  margin-left: 5px;
+}
+
+span, input{
+  display: block;
+  margin: 5px;
 }

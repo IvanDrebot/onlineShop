@@ -38,21 +38,9 @@
             (click)="AddProductToCart(singleProduct)">Додати в корзину</button>
   </div>
 
-<!--  <div class="full-description">-->
-<!--    <b>Характеристики: </b><br>-->
-<!--  DiagonalScreen: {{singleProduct.diagonalScreen}}-->
-<!--  ResolutionScreen: {{singleProduct.resolutionScreen}}<br>-->
-<!--  DisplayType: {{singleProduct.displayType}}-->
-<!--  InternalMemory: {{singleProduct.internalMemory}}-->
-<!--  RAM: {{singleProduct.RAM}}<br>-->
-<!--  Camera: {{singleProduct.camera}}-->
-<!--  FrontCamera: {{singleProduct.frontCamera}}<br>-->
-<!--  Battery: {{singleProduct.battery}}-->
-<!--  CountOfSimCard: {{singleProduct.countOfSimCard}}-->
-<!--  CountOfCores: {{singleProduct.countOfCores}}<br>-->
-<!--  Color: {{singleProduct.color}}-->
-<!--  OperatingSystem: {{singleProduct.operatingSystem}}-->
-<!--  GraduationYear: {{singleProduct.graduationYear}}-->
-<!--</div>-->
+  <div class="full-description">
+    <b>Характеристики: </b><br>
+    {{singleProduct.description | json}}
+</div>
 
 </div>

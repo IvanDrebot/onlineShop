@@ -21,41 +21,34 @@
 
     <form #Product="ngForm" (ngSubmit)="createProduct(Product)">
 
-      <p class="producer">Введіть назву виробника:
-        <select name="producer"
-                ngModel
-                style="width: 30%">
-          <option *ngFor="let producer of producer"
-                  value="{{producer._id}}">
-            {{producer.name}}
-          </option>
-        </select>
-      </p>
+      <span>Producer:</span>
+      <select name="producer"
+              ngModel>
+        <option *ngFor="let producer of producer"
+                value="{{producer._id}}">
+          {{producer.name}}
+        </option>
+      </select><br>
 
-      <p>Ціна продукту:
-        <input type="text" name="price"
-               ngModel
-               required
-               style="margin-left: 97px">
-      </p>
+      <span>Price:</span>
+      <input type="text" name="price"
+             ngModel required>
 
-      <p>Введіть назву бренду:
-        <input type="text" name="brand"
-               ngModel required
-               style="margin-left: 45px">
-      </p>
+      <span>Brand:</span>
+      <input type="text" name="brand"
+             ngModel required>
 
-      <p *ngFor="let field of position">
+      <span *ngFor="let field of position">
         {{field}}
-        <input type="text">
-      </p>
-      <p>Завантажити фотографію:
+        <input class="descriptionFields" type="text" name="{{field}}" ngModel>
+      </span>
+
+      <span>Upload image:</span>
+      <div>
         <input type="file" name="image"
                ngModel value=""
-               (change)="fileUpload($event)"
-               style="margin-left: 13px">
-      </p>
-
+               (change)="fileUpload($event)">
+      </div>
       <div class="col s12 14 center">
         <img class="responsive-img h-200" [src]="imagePreview" *ngIf="imagePreview">
       </div>

@@ -2,7 +2,6 @@ import {Component, OnInit} from '@angular/core';
 import {ProductService} from '../../../services/product.service';
 import {NgForm} from '@angular/forms';
 import {AdminService} from '../../../services/admin.service';
-import {Category} from '../../../models/Category';
 import {Producer} from '../../../models/Producer';
 import {CategoryService} from '../../../services/category.service';
 
@@ -13,7 +12,7 @@ import {CategoryService} from '../../../services/category.service';
 })
 export class AddProductComponent implements OnInit {
 
-  product: any;
+  product: any = {};
   category: any = [];
   producer: Producer[] = [];
   imagePreview: any;
@@ -37,10 +36,12 @@ export class AddProductComponent implements OnInit {
   }
 
   createProduct(form: NgForm) {
-    const product = form.value;
-    product.category = this.category._id;
-    const {imgUrl, ...others} = product;
-    this.adminService.createProduct(others, this.image).subscribe((res) => {
+    const {price, producer, category, image, brand, ...others} = form.value;
+    const shortDescription = {price, producer, category, image, brand};
+    this.product = shortDescription;
+    this.product.description = others;
+    this.product.category = this.category._id;
+    this.adminService.createProduct(this.product, this.image).subscribe((res) => {
       this.product = res;
     });
   }

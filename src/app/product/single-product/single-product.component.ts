@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {ProductService} from '../../../services/product.service';
 import {ActivatedRoute} from '@angular/router';
 import {FilterServiceService} from '../../../services/filter-service.service';
@@ -14,6 +14,7 @@ export class SingleProductComponent implements OnInit {
 
   id = this.router.snapshot.params.id;
   singleProduct;
+  description: any = [];
   wishList: any = [];
   count: any = [];
 
@@ -22,7 +23,8 @@ export class SingleProductComponent implements OnInit {
     private filterService: FilterServiceService,
     private router: ActivatedRoute,
     private configService: ConfigService
-  ) { }
+  ) {
+  }
 
   ngOnInit() {
     this.getProductById(this.id);
@@ -32,6 +34,7 @@ export class SingleProductComponent implements OnInit {
     id = this.router.snapshot.params.id;
     this.productService.getProductById(id).subscribe((singleProduct) => {
       this.singleProduct = singleProduct;
+      this.singleProduct.description = JSON.parse(this.singleProduct.description);
     });
   }
 
