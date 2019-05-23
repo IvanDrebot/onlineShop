@@ -1,4 +1,4 @@
-<div class="main">
+<div class="main" *ngIf="!isAdmin">
   <ul id='menu'>
     <li>
       <a class='prett' (click)="closeMenu()">&#9776;  Категорії</a>

@@ -18,6 +18,7 @@ export class AppComponent implements OnInit {
   isOpen = true;
   selectedProduct: any;
   countOfProduct: any = null;
+  isAdmin: Boolean = false;
 
   constructor(
     private categoryService: CategoryService,
@@ -27,7 +28,7 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.getWishList();
+    // this.getWishList();
     this.categoryService.getAllCategory().subscribe((category) => {
       this.category = category;
     });
@@ -48,5 +49,9 @@ export class AppComponent implements OnInit {
   searchAllProduct(form: NgForm) {
     const product = form.value;
     this.selectedProduct = product.brand;
+  }
+
+  check() {
+    this.isAdmin = !this.isAdmin;
   }
 }

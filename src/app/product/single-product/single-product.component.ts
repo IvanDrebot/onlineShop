@@ -4,12 +4,15 @@ import {ActivatedRoute} from '@angular/router';
 import {FilterServiceService} from '../../../services/filter-service.service';
 import {Product} from '../../../models/Product';
 import {ConfigService} from '../../../services/config.service';
+import {AdminService} from '../../../services/admin.service';
+import {OrderService} from '../../../services/order.service';
 
 @Component({
   selector: 'app-single-product',
   templateUrl: './single-product.component.html',
   styleUrls: ['./single-product.component.css']
 })
+
 export class SingleProductComponent implements OnInit {
 
   id = this.router.snapshot.params.id;
@@ -19,6 +22,7 @@ export class SingleProductComponent implements OnInit {
 
   constructor(
     private productService: ProductService,
+    private orderService: OrderService,
     private filterService: FilterServiceService,
     private router: ActivatedRoute,
     private configService: ConfigService
@@ -44,4 +48,11 @@ export class SingleProductComponent implements OnInit {
     this.count.push(product);
     this.filterService.wishList.next(this.count.length);
   }
+
+  makeOrder(singleProduct: Product) {
+    this.orderService.addOrder(singleProduct).subscribe(res => {
+      console.log(res);
+    });
+  }
+
 }

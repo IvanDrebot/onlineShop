@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {ActivatedRoute} from '@angular/router';
 import {Observable} from 'rxjs';
@@ -14,7 +14,8 @@ export class CategoryService {
   constructor(
     private http: HttpClient,
     private router: ActivatedRoute
-  ) { }
+  ) {
+  }
 
   getAllCategory(): Observable<Category[]> {
     return this.http.get<Category[]>(this.categoryUrl);
@@ -50,11 +51,12 @@ export class CategoryService {
     const headers = new HttpHeaders();
     headers.append('Content-Type', 'multipart/form-data');
     headers.append('Accept', 'application/json');
-    console.log(this.categoryUrl + '/' + id);
     return this.http.put<Category>(this.categoryUrl + '/' + id, fd, {headers: headers});
   }
 
-  deleteCategory(url: any) {
-    return this.http.delete(this.categoryUrl, url);
+  deleteCategory(id) {
+    console.log(this.categoryUrl + '/' + id);
+    return this.http.delete(this.categoryUrl + '/' + id);
   }
+
 }

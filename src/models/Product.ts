@@ -12,7 +12,7 @@ export class Product {
     public producer: Producer[] = [],
     public comments: Comment[] = [],
     public accessories: Accessorie[] = [],
-    public description: Object = {},
+    public description: [] = [],
     public colors: [] = [],
     public date: Date = new Date(),
     public sale: Boolean = false

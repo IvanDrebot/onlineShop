@@ -10,6 +10,7 @@ import {CategoryService} from '../../../services/category.service';
   templateUrl: './add-product.component.html',
   styleUrls: ['./add-product.component.css']
 })
+
 export class AddProductComponent implements OnInit {
 
   product: any = {};
@@ -37,8 +38,11 @@ export class AddProductComponent implements OnInit {
   }
 
   createProduct(form: NgForm) {
-    const {price, producer, category, image, brand, ...others} = form.value;
-    const shortDescription = {price, producer, category, image, brand};
+    const {
+           price, producer,
+           category, image,
+           brand, sale, ...others} = form.value;
+    const shortDescription = {price, producer, category, image, brand, sale};
     const keys = Object.keys(others);
     const values = Object.values(others);
     for (let i = 0; i < keys.length; i++) {

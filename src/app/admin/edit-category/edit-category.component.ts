@@ -91,13 +91,13 @@ export class EditCategoryComponent implements OnInit {
     reader.readAsDataURL(file);
   }
 
-  deleteCategory(_id: any) {
-    const confirm = window.confirm(`You want to delete ${this.singleCategory.name}`);
+  deleteCategory() {
+    const confirm = window.confirm(`Do you want to delete ${this.singleCategory.name}`);
     if (confirm) {
-      this.categoryService.deleteCategory(_id).subscribe(res => {
+      this.categoryService.deleteCategory(this.urlParams.id).subscribe(res => {
+        console.log(res);
         this.route.navigate(['/admin/category-list']);
       });
     }
   }
-
 }

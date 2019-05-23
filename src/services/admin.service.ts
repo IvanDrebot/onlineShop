@@ -28,6 +28,7 @@ export class AdminService {
     fd.append('price', product.price);
     fd.append('brand', product.brand);
     fd.append('producer', product.producer);
+    fd.append('sale', product.sale);
     fd.append('description', JSON.stringify(product.description));
 
     const headers = new HttpHeaders();
