@@ -18,20 +18,20 @@ export class StatisticComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.getCountOfProduct();
-    this.getCountOfUser();
+  //   this.getCountOfProduct();
+  //   this.getCountOfUser();
   }
 
-  getCountOfProduct() {
-    this.adminService.getCountOfProduct().subscribe((res) => {
-      this.product = res;
-    });
-  }
-
-  getCountOfUser() {
-    this.userService.getCount().subscribe((res) => {
-      this.user = res;
-    });
-  }
-
+  // getCountOfProduct() {
+  //   this.adminService.getCountOfProduct().subscribe((res) => {
+  //     this.product = res;
+  //   });
+  // }
+  //
+  // getCountOfUser() {
+  //   this.userService.getCount().subscribe((res) => {
+  //     this.user = res;
+  //   });
+  // }
+//
 }

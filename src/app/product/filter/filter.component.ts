@@ -1,9 +1,9 @@
 import {Component, ElementRef, Input, OnInit, ViewChild} from '@angular/core';
-import {ProductService} from '../../../services/product.service';
 import {ActivatedRoute} from '@angular/router';
 import {Producer} from '../../../models/Producer';
 import {FilterServiceService} from '../../../services/filter-service.service';
 import {NgForm} from '@angular/forms';
+import {ProducerService} from '../../../services/producer.service';
 
 @Component({
   selector: 'app-filter',
@@ -20,14 +20,14 @@ export class FilterComponent implements OnInit {
   reloading = false;
 
   constructor(
-    private productService: ProductService,
+    private producerService: ProducerService,
     private router: ActivatedRoute,
     private filterService: FilterServiceService
   ) {
   }
 
   ngOnInit() {
-    this.productService.getProducer().subscribe((producer) => {
+    this.producerService.getProducer().subscribe((producer) => {
       this.producer = producer;
     });
     this.reloading = true;

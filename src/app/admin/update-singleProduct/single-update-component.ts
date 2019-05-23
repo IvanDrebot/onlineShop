@@ -6,6 +6,7 @@ import {FilterServiceService} from '../../../services/filter-service.service';
 import {CategoryService} from '../../../services/category.service';
 import {ActivatedRoute, Router} from '@angular/router';
 import {Product} from '../../../models/Product';
+import {ProducerService} from '../../../services/producer.service';
 
 @Component({
   selector: 'app-change-category',
@@ -21,8 +22,8 @@ export class SingleUpdateComponent implements OnInit {
 
   constructor(
     private categoryService: CategoryService,
-    private adminService: AdminService,
     private productService: ProductService,
+    private producerService: ProducerService,
     private filterService: FilterServiceService,
     private router: ActivatedRoute
   ) { }
@@ -47,7 +48,7 @@ export class SingleUpdateComponent implements OnInit {
   updateProduct(update: NgForm, id) {
     const updatedProduct = update.value;
     const newId = id;
-    this.adminService.updateProduct(newId, updatedProduct).subscribe((res) => {
+    this.productService.updateProduct(newId, updatedProduct).subscribe((res) => {
       console.log(res);
     });
   }
@@ -59,7 +60,7 @@ export class SingleUpdateComponent implements OnInit {
   }
 
   getProducer() {
-    this.productService.getProducer().subscribe((res) => {
+    this.producerService.getProducer().subscribe((res) => {
       this.producer = res;
     });
   }

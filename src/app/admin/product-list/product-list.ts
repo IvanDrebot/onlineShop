@@ -6,6 +6,7 @@ import {NgForm} from '@angular/forms';
 import {ActivatedRoute} from '@angular/router';
 import {FilterServiceService} from '../../../services/filter-service.service';
 import {CategoryService} from '../../../services/category.service';
+import {ProducerService} from '../../../services/producer.service';
 
 @Component({
   selector: 'app-update-product',
@@ -26,7 +27,7 @@ export class ProductList implements OnInit {
   constructor(
     private categoryService: CategoryService,
     private productService: ProductService,
-    private adminService: AdminService,
+    private producerService: ProducerService,
     private activatedRoute: ActivatedRoute,
     private filterService: FilterServiceService
   ) {
@@ -46,7 +47,7 @@ export class ProductList implements OnInit {
   }
 
   getProducer() {
-    this.productService.getProducer().subscribe((res) => {
+    this.producerService.getProducer().subscribe((res) => {
       this.producer = res;
     });
   }
@@ -61,7 +62,7 @@ export class ProductList implements OnInit {
   deleteProduct(product) {
     const confirm = window.confirm(`${'Do you want to delete'} ${product.brand}`);
     if (confirm) {
-      this.adminService.deleteProduct(product._id).subscribe((res) => {
+      this.productService.deleteProduct(product._id).subscribe((res) => {
         this.deleteInfo = res;
         this.getAllProduct(this.query);
       });
@@ -76,11 +77,6 @@ export class ProductList implements OnInit {
   previousPage(number) {
     this.query.skip += number;
     this.getAllProduct(this.query);
-  }
-
-
-  getId(id: any) {
-    this.filterService.updateProduct.next(id);
   }
 
 }
