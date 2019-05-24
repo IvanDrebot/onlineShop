@@ -4,7 +4,7 @@ import {Product} from '../../../models/Product';
 import {AdminService} from '../../../services/admin.service';
 import {NgForm} from '@angular/forms';
 import {ActivatedRoute} from '@angular/router';
-import {FilterServiceService} from '../../../services/filter-service.service';
+import {DataService} from '../../../services/dataService';
 import {CategoryService} from '../../../services/category.service';
 import {ProducerService} from '../../../services/producer.service';
 
@@ -29,7 +29,7 @@ export class ProductList implements OnInit {
     private productService: ProductService,
     private producerService: ProducerService,
     private activatedRoute: ActivatedRoute,
-    private filterService: FilterServiceService
+    private filterService: DataService
   ) {
   }
 

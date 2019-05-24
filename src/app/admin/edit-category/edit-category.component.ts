@@ -3,7 +3,7 @@ import {NgForm} from '@angular/forms';
 import {ActivatedRoute, Router} from '@angular/router';
 import {ConfigService} from '../../../services/config.service';
 import {CategoryService} from '../../../services/category.service';
-import {FilterServiceService} from '../../../services/filter-service.service';
+import {DataService} from '../../../services/dataService';
 
 @Component({
   selector: 'app-add-category',
@@ -25,7 +25,7 @@ export class EditCategoryComponent implements OnInit {
     private router: ActivatedRoute,
     private config: ConfigService,
     private route: Router,
-    private nextService: FilterServiceService
+    private nextService: DataService
   ) {
   }
 

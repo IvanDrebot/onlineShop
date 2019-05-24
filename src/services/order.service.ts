@@ -21,8 +21,8 @@ export class OrderService {
     return this.http.get(this.ordersUrl + '/' + id);
   }
 
-  addOrder(product: Product): Observable<Product> {
-    return this.http.post<Product>(this.ordersUrl, product);
+  addOrder(orderData): Observable<Product> {
+    return this.http.post<Product>(this.ordersUrl, orderData);
   }
 
   deleteOrder(id) {

@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {NgForm} from '@angular/forms';
 import {AdminService} from '../../../services/admin.service';
 import {ProductService} from '../../../services/product.service';
-import {FilterServiceService} from '../../../services/filter-service.service';
+import {DataService} from '../../../services/dataService';
 import {CategoryService} from '../../../services/category.service';
 import {ActivatedRoute, Router} from '@angular/router';
 import {Product} from '../../../models/Product';
@@ -24,7 +24,7 @@ export class SingleUpdateComponent implements OnInit {
     private categoryService: CategoryService,
     private productService: ProductService,
     private producerService: ProducerService,
-    private filterService: FilterServiceService,
+    private filterService: DataService,
     private router: ActivatedRoute
   ) { }
 

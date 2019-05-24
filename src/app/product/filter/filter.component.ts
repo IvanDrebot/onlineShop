@@ -1,7 +1,7 @@
 import {Component, ElementRef, Input, OnInit, ViewChild} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 import {Producer} from '../../../models/Producer';
-import {FilterServiceService} from '../../../services/filter-service.service';
+import {DataService} from '../../../services/dataService';
 import {NgForm} from '@angular/forms';
 import {ProducerService} from '../../../services/producer.service';
 
@@ -22,7 +22,7 @@ export class FilterComponent implements OnInit {
   constructor(
     private producerService: ProducerService,
     private router: ActivatedRoute,
-    private filterService: FilterServiceService
+    private filterService: DataService
   ) {
   }
 

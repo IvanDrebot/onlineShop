@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {NgForm} from '@angular/forms';
 import {OrderService} from '../../../services/order.service';
+import {DataService} from '../../../services/dataService';
 import {SingleProductComponent} from '../single-product/single-product.component';
 
 @Component({
@@ -10,18 +11,24 @@ import {SingleProductComponent} from '../single-product/single-product.component
 })
 export class ClientOrderComponent implements OnInit {
 
-  userInfo: any = [];
+  payment: any = null;
+  orderData: any = {};
 
   constructor(
     private orderService: OrderService,
-    private product: SingleProductComponent
-  ) { }
+    private nextService: DataService
+  ) {
+  }
 
   ngOnInit() {
   }
 
   makeOrder(orderData: NgForm) {
-    this.userInfo.push(orderData.value);
+    this.orderData.order = this.nextService.order;
+    this.orderData.userInfo = orderData.value;
+    this.orderService.addOrder(this.orderData).subscribe(res => {
+      console.log(res);
+    });
   }
 
 }

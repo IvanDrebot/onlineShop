@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {ProductService} from '../../../services/product.service';
-import {FilterServiceService} from '../../../services/filter-service.service';
+import {DataService} from '../../../services/dataService';
 import {Product} from '../../../models/Product';
 import {ConfigService} from '../../../services/config.service';
 
@@ -18,7 +18,7 @@ export class SelectedProductsComponent implements OnInit {
 
   constructor(
     private productService: ProductService,
-    private filterService: FilterServiceService,
+    private filterService: DataService,
     private configService: ConfigService
   ) {
   }

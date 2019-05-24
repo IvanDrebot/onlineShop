@@ -3,7 +3,7 @@ import {NgForm} from '@angular/forms';
 import {AdminService} from '../../../services/admin.service';
 import {Router} from '@angular/router';
 import {Response} from '../../../models/Response';
-import {FilterServiceService} from '../../../services/filter-service.service';
+import {DataService} from '../../../services/dataService';
 import {AppComponent} from '../../app.component';
 
 @Component({
@@ -21,7 +21,7 @@ export class AuthComponent implements OnInit {
     private adminService: AdminService,
     private router: Router,
     private appComp: AppComponent,
-    private nextService: FilterServiceService
+    private nextService: DataService
   ) {
   }
 

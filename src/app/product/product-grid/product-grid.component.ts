@@ -3,7 +3,7 @@ import {ProductService} from '../../../services/product.service';
 import {Product} from '../../../models/Product';
 import {ActivatedRoute} from '@angular/router';
 import {FilterComponent} from '../filter/filter.component';
-import {FilterServiceService} from '../../../services/filter-service.service';
+import {DataService} from '../../../services/dataService';
 import {ConfigService} from '../../../services/config.service';
 
 @Component({
@@ -27,7 +27,7 @@ export class ProductGridComponent implements OnInit {
 
   constructor(
     private productService: ProductService,
-    private filterService: FilterServiceService,
+    private filterService: DataService,
     private configService: ConfigService,
     private router: ActivatedRoute,
     private renderer: Renderer2

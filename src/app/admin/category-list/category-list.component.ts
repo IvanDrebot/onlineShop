@@ -3,7 +3,7 @@ import {ProductService} from '../../../services/product.service';
 import {ConfigService} from '../../../services/config.service';
 import {AdminService} from '../../../services/admin.service';
 import {Category} from '../../../models/Category';
-import {FilterServiceService} from '../../../services/filter-service.service';
+import {DataService} from '../../../services/dataService';
 import {Router} from '@angular/router';
 import {CategoryService} from '../../../services/category.service';
 
@@ -19,7 +19,7 @@ export class CategoryListComponent implements OnInit {
   constructor(
     private categoryService: CategoryService,
     private config: ConfigService,
-    private nextService: FilterServiceService,
+    private nextService: DataService,
     private router: Router) { }
 
   ngOnInit() {

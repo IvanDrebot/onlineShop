@@ -1,11 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {ProductService} from '../../../services/product.service';
-import {ActivatedRoute} from '@angular/router';
-import {FilterServiceService} from '../../../services/filter-service.service';
-import {Product} from '../../../models/Product';
+import {ActivatedRoute, Router} from '@angular/router';
+import {DataService} from '../../../services/dataService';
 import {ConfigService} from '../../../services/config.service';
-import {AdminService} from '../../../services/admin.service';
-import {OrderService} from '../../../services/order.service';
 import {AppComponent} from '../../app.component';
 
 @Component({
@@ -25,8 +22,10 @@ export class SingleProductComponent implements OnInit {
   constructor(
     private productService: ProductService,
     private router: ActivatedRoute,
+    private routes: Router,
     private configService: ConfigService,
-    private appComp: AppComponent
+    private appComp: AppComponent,
+    private nextService: DataService
   ) {
   }
 
@@ -60,12 +59,20 @@ export class SingleProductComponent implements OnInit {
     this.input.value = this.count;
   }
 
-  deincrement() {
+  decrement() {
     if (this.count === 1) {
       this.count = 1;
     } else {
       this.count--;
     }
     this.input.value = this.count;
+  }
+
+  makeOrder() {
+    this.singleProduct.count = this.count;
+    const {price, brand, count, category} = this.singleProduct;
+    const order = {price, brand, category, count};
+    this.nextService.product.next(order);
+    this.routes.navigate([`${'/order/'}${this.singleProduct._id}`]);
   }
 }

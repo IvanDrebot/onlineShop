@@ -1,6 +1,6 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
 import {NgForm} from '@angular/forms';
-import {FilterServiceService} from '../services/filter-service.service';
+import {DataService} from '../services/dataService';
 import {Category} from '../models/Category';
 import {Producer} from '../models/Producer';
 import {ActivatedRoute} from '@angular/router';

@@ -9,13 +9,13 @@
     <div class="short-description">
       <p>Price: {{singleProduct.price}} UA</p><br>
       <p>Count:</p>
-      <button (click)="deincrement()">-</button>
+      <button (click)="decrement()">-</button>
       <input id="input" type="text" value="1">
       <button (click)="increment()">+</button>
       <p class="res"></p>
 
       <button type="button" class="btn btn-primary btn-lg"
-              [routerLink]="'/order/' + singleProduct._id">Купити
+              (click)="makeOrder()">Купити
       </button>
 
       <button type="button" class="btn btn-secondary btn-lg"
