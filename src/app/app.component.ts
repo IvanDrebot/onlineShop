@@ -1,10 +1,12 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
 import {NgForm} from '@angular/forms';
 import {FilterServiceService} from '../services/filter-service.service';
 import {Category} from '../models/Category';
 import {Producer} from '../models/Producer';
 import {ActivatedRoute} from '@angular/router';
 import {CategoryService} from '../services/category.service';
+import {AuthComponent} from './admin/auth/auth.component';
+import {SingleProductComponent} from './product/single-product/single-product.component';
 
 @Component({
   selector: 'app-root',
@@ -14,31 +16,17 @@ import {CategoryService} from '../services/category.service';
 export class AppComponent implements OnInit {
 
   category: Category[] = [];
-  producer: Producer[] = [];
   isOpen = true;
-  selectedProduct: any;
-  countOfProduct: any = null;
   isAdmin: Boolean = false;
+  wishList = 0;
 
   constructor(
-    private categoryService: CategoryService,
-    private filterService: FilterServiceService,
-    private router: ActivatedRoute,
-  ) {
-  }
+    private categoryService: CategoryService
+  ) {}
 
   ngOnInit(): void {
-    // this.getWishList();
     this.categoryService.getAllCategory().subscribe((category) => {
       this.category = category;
-    });
-  }
-
-  getWishList() {
-    this.countOfProduct = JSON.parse(localStorage.getItem('wishList')).length;
-    this.filterService.wishList.subscribe(res => {
-      this.countOfProduct += res;
-      console.log(this.countOfProduct);
     });
   }
 
@@ -48,7 +36,6 @@ export class AppComponent implements OnInit {
 
   searchAllProduct(form: NgForm) {
     const product = form.value;
-    this.selectedProduct = product.brand;
   }
 
   check() {

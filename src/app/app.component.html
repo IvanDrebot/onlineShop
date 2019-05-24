@@ -1,12 +1,12 @@
 <div class="main" *ngIf="!isAdmin">
   <ul id='menu'>
     <li>
-      <a class='prett' (click)="closeMenu()">&#9776;  Категорії</a>
+      <a class='prett' (click)="closeMenu()">&#9776; Категорії</a>
       <ul class='menus' *ngIf="isOpen" (click)="closeMenu()">
-       <li class='has-submenu'>
-         <a *ngFor="let category of category"
-            [routerLink]="['/products']"
-            [queryParams]="{category: category._id}">{{category.name}}</a>
+        <li class='has-submenu'>
+          <a *ngFor="let category of category"
+             [routerLink]="['/products']"
+             [queryParams]="{category: category._id}">{{category.name}}</a>
         </li>
       </ul>
 
@@ -32,15 +32,17 @@
     </li>
 
     <li>
-    <a routerLink="/selected-products" id="count">Корзина {{countOfProduct}}</a>
-  </li>
+      <a routerLink="/selected-products">Корзина
+        <span *ngIf="wishList !== 0">{{wishList}}</span>
+      </a>
+    </li>
 
     <li>
       <a routerLink="/register">Аккаунт</a>
     </li>
 
     <li>
-      <a routerLink="/admin">Admin</a>
+      <a routerLink="/admin-register" (click)="check()">Admin</a>
     </li>
 
 

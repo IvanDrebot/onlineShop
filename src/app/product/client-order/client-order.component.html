@@ -1,0 +1,23 @@
+<div>
+  <h2>Оформити замовлення</h2>
+  <div>
+    <span>1. Контактні дані:</span>
+    <form #orderData="ngForm" (ngSubmit)="makeOrder(orderData)">
+      <input type="text" name="name" ngModel placeholder="  name">
+      <input type="text" name="surname" ngModel placeholder="  surname">
+      <input type="select" name="city" ngModel placeholder="  city">
+      <input type="text" name="phone" ngModel placeholder="  phone">
+      <input type="email" name="email" ngModel placeholder="  email">
+      <input type="submit">
+    </form>
+  </div>
+
+
+<!--  <div>-->
+<!--    <span>2. Виберіть спосіб оплати й доставки:</span>-->
+<!--    <form #payment="ngForm">-->
+<!--      <input type="text" name="payment" ngModel placeholder="  ">-->
+<!--      <input type="submit">-->
+<!--    </form>-->
+<!--  </div>-->
+</div>

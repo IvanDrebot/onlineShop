@@ -6,6 +6,7 @@ import {Product} from '../../../models/Product';
 import {ConfigService} from '../../../services/config.service';
 import {AdminService} from '../../../services/admin.service';
 import {OrderService} from '../../../services/order.service';
+import {AppComponent} from '../../app.component';
 
 @Component({
   selector: 'app-single-product',
@@ -18,14 +19,14 @@ export class SingleProductComponent implements OnInit {
   id = this.router.snapshot.params.id;
   singleProduct;
   wishList: any = [];
-  count: any = [];
+  count = 1;
+  input;
 
   constructor(
     private productService: ProductService,
-    private orderService: OrderService,
-    private filterService: FilterServiceService,
     private router: ActivatedRoute,
-    private configService: ConfigService
+    private configService: ConfigService,
+    private appComp: AppComponent
   ) {
   }
 
@@ -41,18 +42,30 @@ export class SingleProductComponent implements OnInit {
     });
   }
 
-  AddProductToCart(product: Product) {
-    this.wishList = JSON.parse(localStorage.getItem('wishList'));
-    this.wishList.push(product);
-    localStorage.setItem('wishList', JSON.stringify(this.wishList));
-    this.count.push(product);
-    this.filterService.wishList.next(this.count.length);
+  addProductToCart() {
+    this.appComp.wishList++;
+    if (localStorage.getItem('wishList')) {
+      this.wishList = JSON.parse(localStorage.getItem('wishList'));
+      this.wishList.push(this.singleProduct);
+      localStorage.setItem('wishList', JSON.stringify(this.wishList));
+    } else {
+      this.wishList.push(this.singleProduct);
+      localStorage.setItem('wishList', JSON.stringify(this.wishList));
+    }
   }
 
-  makeOrder(singleProduct: Product) {
-    this.orderService.addOrder(singleProduct).subscribe(res => {
-      console.log(res);
-    });
+  increment() {
+    this.count++;
+    this.input = document.getElementById('input');
+    this.input.value = this.count;
   }
 
+  deincrement() {
+    if (this.count === 1) {
+      this.count = 1;
+    } else {
+      this.count--;
+    }
+    this.input.value = this.count;
+  }
 }

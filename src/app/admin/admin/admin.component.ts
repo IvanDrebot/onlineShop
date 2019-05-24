@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {AppComponent} from '../../app.component';
 
 @Component({
   selector: 'app-admin',
@@ -15,10 +16,15 @@ export class AdminComponent implements OnInit {
     {url: '/admin/orders', name: 'Orders'},
   ];
 
-  constructor() { }
+  constructor(
+    private appComp: AppComponent
+  ) { }
 
 
   ngOnInit() {
   }
 
+  logout() {
+    this.appComp.isAdmin = false;
+  }
 }

@@ -10,9 +10,8 @@ export class FilterServiceService {
   // arrOfProducts: any[] = [];
   wishList = new Subject<any>();
   subject = new Subject<any>();
-  updateProduct = new Subject<any>();
-  updateCategory = new Subject<any>();
   categoryPosition = new Subject<any>();
+  isAdmin = new Subject<any>();
 
   constructor() {
     // this.wishList.subscribe(res => {

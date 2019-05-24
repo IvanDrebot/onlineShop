@@ -1,3 +1,67 @@
-<p>
-  auth works!
-</p>
+<div *ngIf="isRegister">
+  <div class="title">
+    <h4>Реєстрація
+      <a routerLink="/admin-login" (click)="check()">Вхід</a>
+    </h4>
+  </div>
+
+  <form #admin="ngForm" (ngSubmit)="register(admin)">
+
+    <input type="text"
+           placeholder="name"
+           name="name"
+           ngModel
+           required>
+    <br>
+    <input type="text"
+           placeholder="surname"
+           name="surname"
+           ngModel
+           required>
+    <br>
+    <input type="text"
+           placeholder="phone"
+           name="phone"
+           ngModel
+           required>
+    <br>
+    <input type="text"
+           placeholder="email"
+           name="email"
+           ngModel
+           required>
+    <br>
+    <input type="text"
+           placeholder="password"
+           name="password"
+           ngModel
+           required>
+    <br>
+    <input type="submit" value="Зареєструватися">
+  </form>
+</div>
+
+
+<div *ngIf="!isRegister">
+  <div>
+    <h4>
+      <a routerLink="/admin-register" (click)="check()">Реєстрація</a>
+      Вхід
+    </h4>
+  </div>
+  <form #admin="ngForm" (ngSubmit)="login(admin)">
+    <input type="text"
+           placeholder="  email"
+           name="email"
+           ngModel
+           required>
+    <br>
+    <input type="text"
+           placeholder="  password"
+           name="password"
+           ngModel
+           required>
+    <br>
+    <input type="submit" value="Вхід">
+  </form>
+</div>

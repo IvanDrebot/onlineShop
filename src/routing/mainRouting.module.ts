@@ -20,6 +20,8 @@ import {EditCategoryComponent} from '../app/admin/edit-category/edit-category.co
 import {AddProducerComponent} from '../app/admin/add-producer/add-producer.component';
 import {OrdersComponent} from '../app/admin/orders/orders.component';
 import {CategoryListComponent} from '../app/admin/category-list/category-list.component';
+import {AuthComponent} from '../app/admin/auth/auth.component';
+import {ClientOrderComponent} from '../app/product/client-order/client-order.component';
 
 const routes: Routes = [
   {path: 'register', component: RegisterComponent},
@@ -33,6 +35,9 @@ const routes: Routes = [
       {path: 'category', component: FilterComponent}
     ]},
   {path: 'product/:id', component: SingleProductComponent},
+  {path: 'order/:id', component: ClientOrderComponent},
+  {path: 'admin-register', component: AuthComponent},
+  {path: 'admin-login', component: AuthComponent},
   {path: 'admin', component: AdminComponent, children: [
       {path: 'product-list', component: ProductList},
       {path: 'add-Product', component: AddProductComponent},
