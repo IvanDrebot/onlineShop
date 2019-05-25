@@ -6,10 +6,10 @@ import {ConfigService} from '../../../services/config.service';
 
 @Component({
   selector: 'app-selected-products',
-  templateUrl: './selected-products.component.html',
-  styleUrls: ['./selected-products.component.css']
+  templateUrl: './wishList.component.html',
+  styleUrls: ['./wishList.component.css']
 })
-export class SelectedProductsComponent implements OnInit {
+export class WishListComponent implements OnInit {
 
   wishList: Product[] = [];
   emptyList = true;

@@ -1,3 +1,12 @@
 <div>
-  orders works!
+  <div class="order" *ngFor="let item of orders">
+    <span>Brand: {{item.order.brand}}</span>
+    <span>Price: {{item.order.price}}</span>
+    <span>User:  {{item.userInfo.name}}</span>
+    <span>Phone: {{item.userInfo.phone}}</span>
+    <span>Email: {{item.userInfo.email}}</span>
+    <span>Quantity: {{item.order.count}}</span>
+    <span>Date: {{item.order.date}}</span><hr>
+    <button (click)="deleteOrder(item._id)">Delete</button>
+  </div>
 </div>

@@ -1,0 +1,11 @@
+<div>
+  <div class="product" *ngFor="let product of viewedProducts">
+    <span><img src="{{this.config.host}}/{{product.image}}" width="100%" height="160px"></span>
+    <span>Category: {{product.category.name}}</span>
+    <span>Producer: {{product.producer.name}}</span>
+    <span>Brand: {{product.brand}}</span>
+    <span>Price: {{product.price}}</span>
+    <hr>
+    <button (click)="deleteProduct(product._id)">Delete</button>
+  </div>
+</div>

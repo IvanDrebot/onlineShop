@@ -25,7 +25,7 @@ export class LoginComponent implements OnInit {
     this.userService.loginUser(credentials).subscribe((newUser: Response) => {
       console.log(newUser);
       if (newUser.success) {
-        this.router.navigate(['user-info']);
+        this.router.navigate(['user']);
         localStorage.setItem('token', newUser.message);
       } else {
         console.log(newUser);

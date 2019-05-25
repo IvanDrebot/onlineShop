@@ -4,7 +4,7 @@ import { AppComponent } from './app.component';
 import {FormsModule} from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
 import {MainRoutingModule} from '../routing/mainRouting.module';
-import {AuthModule} from './user/auth.module';
+import {ClientUserModule} from './user/clientUser.module';
 import {ProductModule} from './product/product.module';
 import {AdminModule} from './admin/admin/admin.module';
 
@@ -17,7 +17,7 @@ import {AdminModule} from './admin/admin/admin.module';
     FormsModule,
     HttpClientModule,
     MainRoutingModule,
-    AuthModule,
+    ClientUserModule,
     ProductModule,
     AdminModule
   ],

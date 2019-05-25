@@ -9,6 +9,14 @@ import {InitService} from '../../../services/auth.service';
 })
 export class UserInfoComponent implements OnInit {
 
+  links = [
+    {url: '/user/wishList', name: 'Wish List'},
+    {url: '/user/viewed', name: 'Viewed'},
+    {url: '/user/ordering', name: 'Ordering'},
+    {url: '/user/history', name: 'History'},
+  ];
+
+
   constructor(
     private router: Router,
     private userService: InitService) {

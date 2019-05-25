@@ -13,11 +13,12 @@ import {AppComponent} from '../../app.component';
 
 export class SingleProductComponent implements OnInit {
 
-  id = this.router.snapshot.params.id;
+  id: any = '';
   singleProduct;
   wishList: any = [];
   count = 1;
   input;
+  viewedProducts: any = [];
 
   constructor(
     private productService: ProductService,
@@ -30,12 +31,25 @@ export class SingleProductComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.getProductById(this.id);
+    this.getProductById();
+    this.viewedProduct();
   }
 
-  getProductById(id) {
-    id = this.router.snapshot.params.id;
-    this.productService.getProductById(id).subscribe((singleProduct) => {
+  viewedProduct() {
+    if (localStorage.getItem('viewedProducts')) {
+      this.viewedProducts = JSON.parse(localStorage.getItem('viewedProducts'));
+      this.viewedProducts.push(this.id);
+      localStorage.setItem('viewedProducts', JSON.stringify(this.viewedProducts));
+    } else {
+      this.viewedProducts.push(this.id);
+      localStorage.setItem('viewedProducts', JSON.stringify(this.viewedProducts));
+    }
+    console.log(localStorage);
+  }
+
+  getProductById() {
+    this.id = this.router.snapshot.params.id;
+    this.productService.getProductById(this.id).subscribe((singleProduct) => {
       this.singleProduct = singleProduct;
       this.singleProduct.description = JSON.parse(this.singleProduct.description);
     });

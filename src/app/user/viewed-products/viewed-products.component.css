@@ -9,16 +9,14 @@ div {
 span{
   display: block;
 }
-
 button{
   margin: 0 auto;
 }
-
-.order{
-  width: 200px;
+.product{
+  width: 220px;
   height: border-box;
-  background: blue;
-  color: red;
+  background: orangered;
+  color: white;
   border-radius: 10px;
   text-align: center;
   margin-bottom: 5px;

@@ -1,9 +1,10 @@
 .listItem{
-  width: 90%;
-  height: 110px;
-  margin: 0 auto;
-  background: gray;
+  float: right;
+  margin-right: 20px;
   margin-top: 10px;
+  width: 75%;
+  height: 110px;
+  background: gray;
   border-radius: 10px;
 }
 
@@ -27,7 +28,7 @@ img{
 
 .submit{
   position: relative;
-  left: 92%;
+  left: 90%;
   bottom: 225px;
   width: 20%;
   height: 100px;
@@ -36,7 +37,7 @@ img{
 
 .count{
   position: relative;
-  left: 50%;
+  left: 40%;
   bottom: 305px;
   width: 20%;
   height: 100px;
@@ -68,8 +69,7 @@ img{
 .total{
   position: relative;
   top: 10px;
-  left: 70%;
+  left: 60%;
   width: 30%;
   font-size: 15px;
 }
-

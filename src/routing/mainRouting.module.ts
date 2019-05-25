@@ -13,7 +13,7 @@ import {AdminComponent} from '../app/admin/admin/admin.component';
 import {AddProductComponent} from '../app/admin/add-product/add-product.component';
 import {ProductList} from '../app/admin/product-list/product-list';
 import {StatisticComponent} from '../app/admin/statistic/statistic.component';
-import {SelectedProductsComponent} from '../app/product/selected-products/selected-products.component';
+import {WishListComponent} from '../app/user/wishList/wishList.component';
 import {SearchProductsComponent} from '../app/product/search-product/search-products.component';
 import {SingleUpdateComponent} from '../app/admin/update-singleProduct/single-update-component';
 import {EditCategoryComponent} from '../app/admin/edit-category/edit-category.component';
@@ -22,13 +22,18 @@ import {OrdersComponent} from '../app/admin/orders/orders.component';
 import {CategoryListComponent} from '../app/admin/category-list/category-list.component';
 import {AuthComponent} from '../app/admin/auth/auth.component';
 import {ClientOrderComponent} from '../app/product/client-order/client-order.component';
+import {ViewedProductsComponent} from '../app/user/viewed-products/viewed-products.component';
+import {OrderingComponent} from '../app/user/ordering/ordering.component';
 
 const routes: Routes = [
   {path: 'register', component: RegisterComponent},
   {path: 'login', component: LoginComponent},
-  {path: 'user-info', component: UserInfoComponent},
+  {path: 'user', component: UserInfoComponent, children: [
+      {path: 'viewed', component: ViewedProductsComponent},
+      {path: 'ordering', component: OrderingComponent},
+      {path: 'wishList', component: WishListComponent},
+    ]},
   {path: 'logout', component: LogoutComponent},
-  {path: 'selected-products', component: SelectedProductsComponent},
   {path: 'search-product', component: SearchProductsComponent},
   {path: 'products', component: ProductListComponent, children: [
       {path: 'category', component: ProductGridComponent},

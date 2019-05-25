@@ -6,7 +6,7 @@ import {FilterComponent} from './filter/filter.component';
 import {ProductGridComponent} from './product-grid/product-grid.component';
 import {SingleProductComponent} from './single-product/single-product.component';
 import {FormsModule} from '@angular/forms';
-import {SelectedProductsComponent} from './selected-products/selected-products.component';
+import {WishListComponent} from '../user/wishList/wishList.component';
 import {SearchProductsComponent} from './search-product/search-products.component';
 import {ClientOrderComponent} from './client-order/client-order.component';
 
@@ -16,7 +16,6 @@ import {ClientOrderComponent} from './client-order/client-order.component';
     FilterComponent,
     ProductGridComponent,
     SingleProductComponent,
-    SelectedProductsComponent,
     SearchProductsComponent,
     ClientOrderComponent
   ],
@@ -30,7 +29,6 @@ import {ClientOrderComponent} from './client-order/client-order.component';
     FilterComponent,
     ProductGridComponent,
     SingleProductComponent,
-    SelectedProductsComponent,
     SearchProductsComponent,
     ClientOrderComponent
   ]

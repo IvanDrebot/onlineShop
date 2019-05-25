@@ -1,14 +1,12 @@
-<div>
-  <a routerLink="">Кошик</a>
-  <br>
-  <a routerLink="">Мій список бажань</a>
-  <br>
-  <a routerLink="">Переглянуті товари</a>
-  <br>
-  <a routerLink="">Мої замовлення</a>
-  <br>
-  <a routerLink="/logout" (click)="logout()">Вихід</a>
+<div class="user">
+  <h3>User</h3><br>
+  <a *ngFor="let link of links"
+     [routerLink]="[link.url]"
+     routerLinkActive="active">
+    {{link.name}}
+  </a>
+  <br><hr>
+  <a routerLink="/logout" (click)="logout()">Logout</a>
 </div>
-
 
 <router-outlet></router-outlet>
