@@ -36,15 +36,14 @@ export class SingleProductComponent implements OnInit {
   }
 
   viewedProduct() {
-    if (localStorage.getItem('viewedProducts')) {
-      this.viewedProducts = JSON.parse(localStorage.getItem('viewedProducts'));
+    this.viewedProducts = JSON.parse(localStorage.getItem('viewedProducts'));
+    const isPresent = this.viewedProducts.includes(this.id);
+    if (!isPresent) {
       this.viewedProducts.push(this.id);
       localStorage.setItem('viewedProducts', JSON.stringify(this.viewedProducts));
     } else {
-      this.viewedProducts.push(this.id);
       localStorage.setItem('viewedProducts', JSON.stringify(this.viewedProducts));
     }
-    console.log(localStorage);
   }
 
   getProductById() {
