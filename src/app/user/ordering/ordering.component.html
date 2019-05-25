@@ -1,3 +1,10 @@
-<p>
-  ordering works!
-</p>
+<div>
+  <div class="order" *ngFor="let item of orders">
+    <span>Category: {{item.category.name}}</span>
+    <span>Producer: {{item.producer.name}}</span>
+    <span>Brand: {{item.brand}}</span>
+    <span>Price: {{item.price}}</span>
+    <hr>
+    <button (click)="deleteOrder(item._id)">Delete</button>
+  </div>
+</div>

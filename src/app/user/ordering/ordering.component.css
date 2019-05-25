@@ -1,0 +1,25 @@
+div {
+  width: 60%;
+  height: border-box;
+  margin-left: 20px;
+  margin-top: 20px;
+  float: left;
+}
+
+span{
+  display: block;
+}
+
+button{
+  margin: 0 auto;
+}
+
+.order{
+  width: 200px;
+  height: border-box;
+  color: white;
+  background: cornflowerblue;
+  border-radius: 10px;
+  text-align: center;
+  margin-bottom: 5px;
+}

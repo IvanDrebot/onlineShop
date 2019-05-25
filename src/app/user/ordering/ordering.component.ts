@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {ProductService} from '../../../services/product.service';
 
 @Component({
   selector: 'app-ordering',
@@ -7,9 +8,24 @@ import { Component, OnInit } from '@angular/core';
 })
 export class OrderingComponent implements OnInit {
 
-  constructor() { }
+  orderId: any = [];
+  orders: any = [];
 
-  ngOnInit() {
+  constructor(
+    private productService: ProductService
+  ) {
   }
 
+  ngOnInit() {
+    this.orderId = JSON.parse(localStorage.getItem('orders'));
+    for (const order of this.orderId) {
+      this.productService.getProductById(order).subscribe(res => {
+        this.orders.push(res);
+      });
+    }
+  }
+
+  deleteOrder(_id: any) {
+
+  }
 }

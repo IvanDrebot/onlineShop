@@ -19,6 +19,7 @@ export class SingleProductComponent implements OnInit {
   count = 1;
   input;
   viewedProducts: any = [];
+  userOrders: any = [];
 
   constructor(
     private productService: ProductService,
@@ -82,10 +83,21 @@ export class SingleProductComponent implements OnInit {
   }
 
   makeOrder() {
+    this.userOrder();
     this.singleProduct.count = this.count;
     const {price, brand, count, category} = this.singleProduct;
     const order = {price, brand, category, count};
     this.nextService.product.next(order);
     this.routes.navigate([`${'/order/'}${this.singleProduct._id}`]);
   }
+
+  userOrder() {
+    this.userOrders = JSON.parse(localStorage.getItem('orders'));
+    const isPresent = this.userOrders.includes(this.id);
+    if (!isPresent) {
+      this.userOrders.push(this.id);
+      localStorage.setItem('orders', JSON.stringify(this.userOrders));
+    }
+  }
+
 }
