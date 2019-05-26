@@ -27,7 +27,7 @@ export class ProductGridComponent implements OnInit {
 
   constructor(
     private productService: ProductService,
-    private filterService: DataService,
+    private dataService: DataService,
     private configService: ConfigService,
     private router: ActivatedRoute,
     private renderer: Renderer2
@@ -42,8 +42,9 @@ export class ProductGridComponent implements OnInit {
     this.productService.getAllProduct(query).subscribe((res) => {
       // @ts-ignore
       const {products, count} = res;
+      console.log(res);
       this.products = products;
-      this.filterService.subject.next(this.products[0]);
+      this.dataService.subject.next(this.products);
     });
   }
 

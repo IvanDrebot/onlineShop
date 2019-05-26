@@ -36,6 +36,7 @@ export class FilterComponent implements OnInit {
     });
     this.getProducer();
     this.getCategory();
+    this.getFilterKeys();
   }
 
   getProducer() {
@@ -62,6 +63,12 @@ export class FilterComponent implements OnInit {
         'max': this.price.max
       },
       queryParamsHandling: 'merge',
+    });
+  }
+
+  getFilterKeys() {
+    this.dataService.subject.subscribe(res => {
+      // console.log(res);
     });
   }
 }
