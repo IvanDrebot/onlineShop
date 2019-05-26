@@ -1,5 +1,5 @@
 import {Component, ElementRef, Input, OnInit, ViewChild} from '@angular/core';
-import {ActivatedRoute} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import {Producer} from '../../../models/Producer';
 import {DataService} from '../../../services/dataService';
 import {NgForm} from '@angular/forms';
@@ -14,15 +14,12 @@ import {ProducerService} from '../../../services/producer.service';
 export class FilterComponent implements OnInit {
 
   producer: Producer[] = [];
-  laptops = false;
-  tv = false;
-  Phones = false;
-  reloading = false;
+  price: any = {};
 
   constructor(
     private producerService: ProducerService,
-    private router: ActivatedRoute,
-    private filterService: DataService
+    private router: Router,
+    private dataService: DataService
   ) {
   }
 
@@ -30,30 +27,16 @@ export class FilterComponent implements OnInit {
     this.producerService.getProducer().subscribe((producer) => {
       this.producer = producer;
     });
-    this.reloading = true;
-    this.getFilters();
-  }
-
-  getFilters() {
-    this.filterService.subject.subscribe(res => {
-      if (res.category.name === 'Phones') {
-        this.Phones = true;
-        this.laptops = false;
-        this.tv = false;
-      } else if (res.category.name === 'Tv') {
-        this.Phones = false;
-        this.laptops = false;
-        this.tv = true;
-      } else {
-        this.laptops = true;
-        this.Phones = false;
-        this.tv = false;
-      }
-    });
   }
 
   getPrice(form: NgForm) {
-    const price = form.value;
-    console.log(price);
+    this.price = form.value;
+    this.router.navigate([], {
+      queryParams: {
+        'min': this.price.min,
+        'max': this.price.max
+      },
+      queryParamsHandling: 'merge',
+    });
   }
 }

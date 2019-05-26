@@ -1,18 +1,18 @@
-<div class="products">
-  <div class="gallery" *ngFor="let product of products">
+<div>
+  <div class="product" *ngFor="let product of products">
     <a [routerLink]="'/product/' + product._id">
-      <img src="{{this.configService.host}}/{{product.image}}" width="100%" height="160px">
-      <div class="desc">
-        <p>Producer: {{product.producer.name}}</p>
-        <p>Brand: {{product.brand}}</p>
-        <p>Price: {{product.price}}</p>
-        <button type="button" class="btn btn-primary">Купити</button>
-      </div>
+      <img src="{{this.configService.host}}/{{product.image}}">
+      <span>Category: {{product.category.name}}</span>
+      <span>Producer: {{product.producer.name}}</span>
+      <span>Brand: {{product.brand}}</span>
+      <span>Price: {{product.price}}</span>
+      <hr>
     </a>
+    <button>Купити</button>
   </div>
-</div>
-
-<div class="pagination">
-  <a class="previous" (click)="previousPage(-5)">&laquo; Previous</a>
-  <a class="next" (click)="nextPage(5)">Next &raquo;</a>
+  <hr>
+  <div class="control">
+    <button (click)="previousPage(-3)">&laquo; Back</button>
+    <button (click)="nextPage(3)">Next &raquo;</button>
+  </div>
 </div>

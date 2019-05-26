@@ -15,10 +15,10 @@ import {ConfigService} from '../../../services/config.service';
 export class ProductGridComponent implements OnInit {
   @ViewChild('filterCom') filterCom: FilterComponent;
 
-  products: Product[] = [];
+  products: any = [];
 
   query: any = {
-    limit: 5,
+    limit: 3,
     skip: 0
   };
 
