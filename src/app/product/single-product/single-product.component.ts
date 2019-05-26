@@ -92,6 +92,7 @@ export class SingleProductComponent implements OnInit {
   }
 
   userOrder() {
+    localStorage.setItem('order', JSON.stringify(this.userOrders));
     this.userOrders = JSON.parse(localStorage.getItem('orders'));
     const isPresent = this.userOrders.includes(this.id);
     if (!isPresent) {

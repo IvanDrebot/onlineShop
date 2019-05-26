@@ -19,6 +19,14 @@
              value="OK">
     </form>
 
+    <!--    <p>Category:</p>-->
+    <!--    <span *ngFor="let category of category">-->
+    <!--      <input type="radio" name=""-->
+    <!--             [routerLink]="['/products']"-->
+    <!--             [queryParams]="{ category: category._id}"-->
+    <!--             queryParamsHandling="merge">{{category.name}}-->
+    <!--    </span>-->
+
     <p>Producer:</p>
     <span *ngFor="let producer of producer">
       <input type="radio" name=""
@@ -26,6 +34,9 @@
              [queryParams]="{ producer: producer._id}"
              queryParamsHandling="merge">{{producer.name}}
     </span>
+
+
+    <p *ngFor="let filter of filters">{{filter.name}}: </p>
 
   </div>
 </div>
