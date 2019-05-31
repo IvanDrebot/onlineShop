@@ -37,6 +37,7 @@ export class SingleProductComponent implements OnInit {
   }
 
   viewedProduct() {
+    localStorage.setItem('viewedProducts', JSON.stringify(this.viewedProducts));
     this.viewedProducts = JSON.parse(localStorage.getItem('viewedProducts'));
     const isPresent = this.viewedProducts.includes(this.id);
     if (!isPresent) {
@@ -73,6 +74,7 @@ export class SingleProductComponent implements OnInit {
     this.input.value = this.count;
   }
 
+
   decrement() {
     if (this.count === 1) {
       this.count = 1;
@@ -92,6 +94,7 @@ export class SingleProductComponent implements OnInit {
   }
 
   userOrder() {
+    localStorage.setItem('orders', JSON.stringify(this.userOrders));
     this.userOrders = JSON.parse(localStorage.getItem('orders'));
     const isPresent = this.userOrders.includes(this.id);
     if (!isPresent) {

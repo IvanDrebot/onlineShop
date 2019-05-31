@@ -11,9 +11,9 @@ import {ConfigService} from '../../../services/config.service';
 })
 export class WishListComponent implements OnInit {
 
-  wishList: Product[] = [];
+  wishList: any = [];
   emptyList = true;
-  count: any = null;
+  count: any = 1;
   price: any = null;
 
   constructor(
