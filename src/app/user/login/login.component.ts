@@ -3,6 +3,7 @@ import {InitService} from '../../../services/auth.service';
 import {NgForm} from '@angular/forms';
 import {Response} from '../../../models/Response';
 import {Router} from '@angular/router';
+import {AppComponent} from '../../app.component';
 
 @Component({
   selector: 'app-login',
@@ -13,7 +14,8 @@ export class LoginComponent implements OnInit {
 
   constructor(
     private userService: InitService,
-    private router: Router
+    private router: Router,
+    private appComp: AppComponent
   ) {
   }
 
@@ -22,14 +24,12 @@ export class LoginComponent implements OnInit {
 
   loginUser(login: NgForm) {
     const credentials = login.value;
-    this.userService.loginUser(credentials).subscribe((newUser: Response) => {
-      console.log(newUser);
-      if (newUser.success) {
-        this.router.navigate(['user']);
-        localStorage.setItem('token', newUser.message);
-      } else {
-        console.log(newUser);
-      }
-    });
+    if (credentials.email.length && credentials.password.length) {
+      this.router.navigate(['/user']);
+      this.userService.loginUser(credentials).subscribe((newUser: Response) => {
+      });
+      localStorage.setItem('user', credentials.email);
+      this.appComp.user = credentials.email;
+    }
   }
 }

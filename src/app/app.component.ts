@@ -3,7 +3,7 @@ import {NgForm} from '@angular/forms';
 import {DataService} from '../services/dataService';
 import {Category} from '../models/Category';
 import {Producer} from '../models/Producer';
-import {ActivatedRoute} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import {CategoryService} from '../services/category.service';
 import {AuthComponent} from './admin/auth/auth.component';
 import {SingleProductComponent} from './product/single-product/single-product.component';
@@ -20,25 +20,34 @@ export class AppComponent implements OnInit {
   isAdmin: Boolean = false;
   wishList = 0;
 
+  user: String = '';
+
+  links = [
+    {url: '/', name: 'Info'},
+    {url: '/', name: 'Contacts'},
+    {url: '/register', name: 'Sign in'},
+  ];
+
   constructor(
-    private categoryService: CategoryService
+    private categoryService: CategoryService,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
+    // this.user = localStorage.getItem('user');
     this.categoryService.getAllCategory().subscribe((category) => {
       this.category = category;
     });
   }
 
-  closeMenu() {
-    this.isOpen = !this.isOpen;
-  }
-
-  searchAllProduct(form: NgForm) {
-    const product = form.value;
-  }
-
   check() {
     this.isAdmin = !this.isAdmin;
+  }
+
+  logout() {
+    const confirm = window.confirm('Do you want to exit?');
+    if (confirm) {
+      this.router.navigate(['/logout']);
+    }
   }
 }

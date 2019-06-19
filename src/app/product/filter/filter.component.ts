@@ -5,7 +5,6 @@ import {DataService} from '../../../services/dataService';
 import {NgForm} from '@angular/forms';
 import {ProducerService} from '../../../services/producer.service';
 import {CategoryService} from '../../../services/category.service';
-import {Category} from '../../../models/Category';
 
 @Component({
   selector: 'app-filter',
